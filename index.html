@@ -12,6 +12,9 @@
     <!-- Подключаем стили для слайдера Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
+    <!-- Подключаем стили для Fancybox (Всплывающие картинки) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    
     <!-- Подключаем наши стили -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -70,28 +73,36 @@
                     <!-- Слайд 1 (Спенд $2000+) -->
                     <div class="swiper-slide">
                         <div class="proof-card">
-                            <img src="img/1.jpg" alt="Спенд $2000 в Google Ads">
+                            <a href="img/1.jpg" data-fancybox="gallery">
+                                <img src="img/image_681134.png" alt="Спенд $2000 в Google Ads">
+                            </a>
                             <div class="proof-caption">Demand Gen открут $2,050+ без банов</div>
                         </div>
                     </div>
                     <!-- Слайд 2 (Спенд $489) -->
                     <div class="swiper-slide">
                         <div class="proof-card">
-                            <img src="img/image_681131.png" alt="Стабильный открут Google Ads">
+                            <a href="img/image_681131.png" data-fancybox="gallery">
+                                <img src="img/image_681131.png" alt="Стабильный открут Google Ads">
+                            </a>
                             <div class="proof-caption">Стабильный старт кампании</div>
                         </div>
                     </div>
                     <!-- Слайд 3 (Биллинг) -->
                     <div class="swiper-slide">
                         <div class="proof-card">
-                            <img src="img/image_68147c.png" alt="Успешный биллинг">
+                            <a href="img/image_68147c.png" data-fancybox="gallery">
+                                <img src="img/image_68147c.png" alt="Успешный биллинг">
+                            </a>
                             <div class="proof-caption">Беспроблемная привязка карт и оплата</div>
                         </div>
                     </div>
                      <!-- Слайд 4 (Биллинг $500 порог) -->
                      <div class="swiper-slide">
                         <div class="proof-card">
-                            <img src="img/image_68147a.png" alt="Биллинг Google Ads">
+                            <a href="img/image_68147a.png" data-fancybox="gallery">
+                                <img src="img/image_68147a.png" alt="Биллинг Google Ads">
+                            </a>
                             <div class="proof-caption">Стабильные списания, рост порога</div>
                         </div>
                     </div>
@@ -169,13 +180,16 @@
 
     <!-- Подключаем скрипт Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Подключаем скрипт Fancybox -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
-    <!-- Инициализация слайдера -->
+    <!-- Инициализация -->
     <script>
+        // Запуск слайдера
         const swiper = new Swiper('.proofs-slider', {
-            slidesPerView: 1, // По умолчанию (для мобилок) показываем 1 слайд
-            spaceBetween: 20, // Расстояние между слайдами
-            loop: true,       // Бесконечная прокрутка
+            slidesPerView: 1, 
+            spaceBetween: 20, 
+            loop: true,       
             
             pagination: {
                 el: '.swiper-pagination',
@@ -197,6 +211,11 @@
                     spaceBetween: 40,
                 }
             }
+        });
+
+        // Запуск галереи (всплывающих окон)
+        Fancybox.bind("[data-fancybox]", {
+            backdropClick: "close",
         });
     </script>
 </body>

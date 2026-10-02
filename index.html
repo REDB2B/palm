@@ -33,7 +33,6 @@
             <div class="hero-badge">Crypto • DeFi • Finance • Gambling</div>
             <h1 class="hero-title">Трастовые аккаунты Google Ads, <span>которые держат спенд</span></h1>
             
-            <!-- ОБНОВЛЕННЫЙ ТЕКСТ -->
             <p class="hero-subtitle">Забудьте про микро-спенды и баны на старте. Проверенные аккаунты с историей. Быстрая замена при невалиде.</p>
             
             <div class="hero-actions">
@@ -55,6 +54,7 @@
                 </div>
             </div>
         </div>
+        <!-- Декоративный фоновый элемент -->
         <div class="hero-glow"></div>
     </section>
 
@@ -105,37 +105,93 @@
         </div>
     </section>
 
+    <!-- Блок Преимуществ -->
+    <section class="advantages" id="advantages">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают <span>наши аккаунты</span></h2>
+            <p class="section-subtitle">Технологичный подход к фарму и выдаче. Мы минимизируем ваши риски.</p>
+            
+            <div class="grid-layout">
+                <div class="glass-card">
+                    <div class="adv-icon">⚡</div>
+                    <h3>Быстрая замена</h3>
+                    <p>Если аккаунт отлетает до запуска рекламы — меняем бесплатно и без лишних вопросов в течение 2-х часов.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="adv-icon">🛡️</div>
+                    <h3>Трастовый фарм</h3>
+                    <p>Аккаунты прогреты реальными действиями, имеют историю поиска и нагулянные куки. Идеально для серых ниш.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="adv-icon">🌍</div>
+                    <h3>Любые ГЕО</h3>
+                    <p>Подберем платежки и прокси под нужное вам ГЕО, чтобы избежать триггеров алгоритмов Google.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="adv-icon">💬</div>
+                    <h3>Саппорт 24/7</h3>
+                    <p>Наши менеджеры всегда на связи. Поможем с настройкой антидетект браузера и привязкой карт.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок Отзывов -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Что говорят <span>арбитражники</span></h2>
+            
+            <div class="grid-layout reviews-grid">
+                <div class="glass-card review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">TG</div>
+                        <div class="review-author">
+                            <h4>@traffic_god</h4>
+                            <span>Media Buyer (Gambling)</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Брал пачку на тест. Из 10 акков 9 зацепились сразу, спенд полетел. На одном вылетел фриз — саппорт заменил за 15 минут. Рекомендую."</p>
+                </div>
+                
+                <div class="glass-card review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">VK</div>
+                        <div class="review-author">
+                            <h4>CryptoNinja</h4>
+                            <span>Solo Affiliate</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Долго искал нормальные сетапы под крипту. Эти ребята знают свое дело. Биллинги растут стабильно, ROI радует. Работаем дальше."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Подключаем скрипт Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <!-- Инициализация слайдера -->
     <script>
         const swiper = new Swiper('.proofs-slider', {
-            // Параметры слайдера
             slidesPerView: 1, // По умолчанию (для мобилок) показываем 1 слайд
             spaceBetween: 20, // Расстояние между слайдами
             loop: true,       // Бесконечная прокрутка
             
-            // Включаем точки
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
             
-            // Включаем стрелки
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
 
-            // Настройки для разных экранов (Адаптив)
             breakpoints: {
-                // от 768px (Планшеты)
                 768: {
                     slidesPerView: 2,
                     spaceBetween: 30,
                 },
-                // от 1024px (ПК)
                 1024: {
                     slidesPerView: 3,
                     spaceBetween: 40,

@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Подключаем стили для слайдера Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
     <!-- Подключаем наши стили -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,16 +23,18 @@
             <div class="logo">
                 PALMA <span>MEDIA</span>
             </div>
-            <a href="#contact" class="btn btn-outline">Связаться</a>
+            <a href="#contact" class="btn btn-outline">Связаться в TG</a>
         </div>
     </header>
 
     <!-- Главный экран (Hero) -->
     <section class="hero">
         <div class="container hero-container">
-            <div class="hero-badge">Для Crypto, DeFi, Finance и Gambling</div>
-            <h1 class="hero-title">Запускайте рекламу <span>без банов</span> на трастовых аккаунтах Google Ads</h1>
-            <p class="hero-subtitle">Готовые решения под любой ГЕО (включая LatAm-Африка) и вертикаль. Быстрая замена при фризах и стабильный спенд.</p>
+            <div class="hero-badge">Crypto • DeFi • Finance • Gambling</div>
+            <h1 class="hero-title">Трастовые аккаунты Google Ads, <span>которые держат спенд</span></h1>
+            
+            <!-- ОБНОВЛЕННЫЙ ТЕКСТ -->
+            <p class="hero-subtitle">Забудьте про микро-спенды и баны на старте. Проверенные аккаунты с историей. Быстрая замена при невалиде.</p>
             
             <div class="hero-actions">
                 <a href="#contact" class="btn btn-primary">Получить аккаунт</a>
@@ -37,21 +43,105 @@
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-value">24ч</span>
-                    <span class="stat-label">Выдача</span>
+                    <span class="stat-label">Скорость выдачи</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value">4.5</span>
-                    <span class="stat-label">Года на рынке</span>
+                    <span class="stat-label">Года опыта</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value">3000+</span>
-                    <span class="stat-label">Продаж</span>
+                    <span class="stat-label">Довольных клиентов</span>
                 </div>
             </div>
         </div>
-        <!-- Декоративный фоновый элемент -->
         <div class="hero-glow"></div>
     </section>
 
+    <!-- Блок со скриншотами (Пруфы) -->
+    <section class="proofs">
+        <div class="container">
+            <h2 class="section-title">Хватит верить на слово. <span>Смотрите на цифры.</span></h2>
+            <p class="section-subtitle">Реальный открут и стабильные биллинги наших клиентов на высокорисковых вертикалях прямо сейчас.</p>
+            
+            <!-- Слайдер Swiper -->
+            <div class="swiper proofs-slider">
+                <div class="swiper-wrapper">
+                    <!-- Слайд 1 (Спенд $2000+) -->
+                    <div class="swiper-slide">
+                        <div class="proof-card">
+                            <img src="img/image_681134.png" alt="Спенд $2000 в Google Ads">
+                            <div class="proof-caption">Demand Gen открут $2,050+ без банов</div>
+                        </div>
+                    </div>
+                    <!-- Слайд 2 (Спенд $489) -->
+                    <div class="swiper-slide">
+                        <div class="proof-card">
+                            <img src="img/image_681131.png" alt="Стабильный открут Google Ads">
+                            <div class="proof-caption">Стабильный старт кампании</div>
+                        </div>
+                    </div>
+                    <!-- Слайд 3 (Биллинг) -->
+                    <div class="swiper-slide">
+                        <div class="proof-card">
+                            <img src="img/image_68147c.png" alt="Успешный биллинг">
+                            <div class="proof-caption">Беспроблемная привязка карт и оплата</div>
+                        </div>
+                    </div>
+                     <!-- Слайд 4 (Биллинг $500 порог) -->
+                     <div class="swiper-slide">
+                        <div class="proof-card">
+                            <img src="img/image_68147a.png" alt="Биллинг Google Ads">
+                            <div class="proof-caption">Стабильные списания, рост порога</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Кнопки навигации -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Пагинация (точки) -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подключаем скрипт Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Инициализация слайдера -->
+    <script>
+        const swiper = new Swiper('.proofs-slider', {
+            // Параметры слайдера
+            slidesPerView: 1, // По умолчанию (для мобилок) показываем 1 слайд
+            spaceBetween: 20, // Расстояние между слайдами
+            loop: true,       // Бесконечная прокрутка
+            
+            // Включаем точки
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            
+            // Включаем стрелки
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // Настройки для разных экранов (Адаптив)
+            breakpoints: {
+                // от 768px (Планшеты)
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                // от 1024px (ПК)
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                }
+            }
+        });
+    </script>
 </body>
 </html>

@@ -73,8 +73,9 @@
                     <!-- Слайд 1 (Спенд $2000+) -->
                     <div class="swiper-slide">
                         <div class="proof-card">
+                            <!-- Ссылка для Fancybox. Браузер покажет картинку, когда найдет файл по этому пути -->
                             <a href="img/1.jpg" data-fancybox="gallery">
-                                <img src="img/image_681134.png" alt="Спенд $2000 в Google Ads">
+                                <img src="img/1.jpg" alt="Спенд $2000 в Google Ads">
                             </a>
                             <div class="proof-caption">Demand Gen открут $2,050+ без банов</div>
                         </div>
@@ -213,9 +214,21 @@
             }
         });
 
-        // Запуск галереи (всплывающих окон)
+        // Запуск галереи (всплывающих окон) с кастомными настройками
         Fancybox.bind("[data-fancybox]", {
             backdropClick: "close",
+            animated: true,
+            dragToClose: false, // Отключаем закрытие смахиванием, чтобы не конфликтовало
+            Toolbar: {
+                display: {
+                    left: [],
+                    middle: [],
+                    right: ["close"], // Оставляем только кнопку закрытия
+                },
+            },
+            Images: {
+                zoom: true, // Плавное увеличение
+            }
         });
     </script>
 </body>

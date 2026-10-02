@@ -1,57 +1,377 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Трастовые аккаунты Google Ads | Palma Media</title>
-    <!-- Подключаем современный шрифт -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Подключаем наши стили -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* =========================================
+   БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ
+========================================= */
+:root {
+    --bg-dark: #0B0F19; /* Глубокий темный фон */
+    --primary-green: #00D364; /* Неоновый зеленый */
+    --text-main: #FFFFFF;
+    --text-muted: #9CA3AF;
+    --font-main: 'Inter', sans-serif;
+}
 
-    <!-- Навигация -->
-    <header class="header">
-        <div class="container header-container">
-            <div class="logo">
-                PALMA <span>MEDIA</span>
-            </div>
-            <a href="#contact" class="btn btn-outline">Связаться</a>
-        </div>
-    </header>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Главный экран (Hero) -->
-    <section class="hero">
-        <div class="container hero-container">
-            <div class="hero-badge">Для Crypto, DeFi, Finance и Gambling</div>
-            <h1 class="hero-title">Запускайте рекламу <span>без банов</span> на трастовых аккаунтах Google Ads</h1>
-            <p class="hero-subtitle">Готовые решения под любой ГЕО (включая LatAm-Африка) и вертикаль. Быстрая замена при фризах и стабильный спенд.</p>
-            
-            <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">Получить аккаунт</a>
-            </div>
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
 
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-value">24ч</span>
-                    <span class="stat-label">Выдача</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">4.5</span>
-                    <span class="stat-label">Года на рынке</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">3000+</span>
-                    <span class="stat-label">Продаж</span>
-                </div>
-            </div>
-        </div>
-        <!-- Декоративный фоновый элемент -->
-        <div class="hero-glow"></div>
-    </section>
+/* Контейнер для центрирования контента */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-</body>
-</html>
+/* =========================================
+   КНОПКИ С НЕОНОВЫМ ОТКЛИКОМ
+========================================= */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 211, 100, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: #00ff7b;
+    box-shadow: 0 0 25px rgba(0, 211, 100, 0.7), 0 0 45px rgba(0, 211, 100, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(1px) scale(0.96);
+    box-shadow: 0 0 10px rgba(0, 211, 100, 0.9);
+}
+
+.btn-outline {
+    background: rgba(0, 211, 100, 0.05);
+    border: 1px solid var(--primary-green);
+    color: var(--primary-green);
+    backdrop-filter: blur(5px);
+}
+
+.btn-outline:hover {
+    background: rgba(0, 211, 100, 0.15);
+    box-shadow: 0 0 20px rgba(0, 211, 100, 0.4) inset, 0 0 20px rgba(0, 211, 100, 0.4);
+}
+
+.btn-outline:active {
+    transform: scale(0.96);
+}
+
+/* =========================================
+   ШАПКА (HEADER)
+========================================= */
+.header {
+    padding: 20px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--primary-green);
+}
+
+/* =========================================
+   ГЛАВНЫЙ ЭКРАН (HERO)
+========================================= */
+.hero {
+    position: relative;
+    padding: 60px 0 80px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(0, 211, 100, 0.1);
+    color: var(--primary-green);
+    border: 1px solid rgba(0, 211, 100, 0.2);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title span {
+    color: var(--primary-green);
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+/* Фоновое свечение */
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 211, 100, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* =========================================
+   УНИВЕРСАЛЬНЫЕ СТЕКЛЯННЫЕ КАРТОЧКИ
+========================================= */
+.glass-card, .stat-item, .proof-card {
+    background: rgba(21, 26, 39, 0.4); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Эффект подсветки при наведении */
+.glass-card:hover, .stat-item:hover, .proof-card:hover {
+    transform: translateY(-5px);
+    background: rgba(21, 26, 39, 0.6);
+    border-color: rgba(0, 211, 100, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 211, 100, 0.15), 0 0 15px rgba(0, 211, 100, 0.1) inset;
+}
+
+/* Уточнения для статистики на главном экране */
+.stat-item {
+    min-width: 150px;
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Уточнения для карточек пруфов (скриншоты) */
+.proof-card {
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.proof-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255,255,255, 0.05);
+}
+
+.proof-caption {
+    padding: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* =========================================
+   ЗАГОЛОВКИ СЕКЦИЙ И СЕТКИ
+========================================= */
+.section-title {
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.section-title span {
+    color: var(--primary-green);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* =========================================
+   СПЕЦИФИЧНЫЕ БЛОКИ (ПРУФЫ, ПРЕИМУЩЕСТВА, ОТЗЫВЫ)
+========================================= */
+.proofs {
+    padding: 80px 0;
+    background-color: #0d121d;
+}
+
+.proofs-slider {
+    padding-bottom: 50px;
+}
+
+/* Кастомизация Swiper */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-green) !important;
+}
+.swiper-pagination-bullet-active {
+    background: var(--primary-green) !important;
+}
+
+/* Преимущества */
+.advantages {
+    padding: 80px 0;
+    position: relative;
+}
+
+.adv-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+    background: rgba(0, 211, 100, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 211, 100, 0.2);
+}
+
+.glass-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.glass-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* Отзывы */
+.reviews {
+    padding: 40px 0 100px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-green), #007bb5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #fff;
+}
+
+.review-author h4 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.review-author span {
+    font-size: 13px;
+    color: var(--primary-green);
+}
+
+.review-text {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* =========================================
+   АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ)
+========================================= */
+@media (min-width: 768px) {
+    .hero {
+        padding: 100px 0 120px;
+    }
+    
+    .hero-title {
+        font-size: 56px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .section-title {
+        font-size: 42px;
+    }
+
+    .grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

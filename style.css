@@ -2,11 +2,18 @@
    БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ
 ========================================= */
 :root {
-    --bg-dark: #0B0F19; /* Глубокий темный фон */
-    --primary-green: #00D364; /* Неоновый зеленый */
+    --bg-dark: #0B0F19; 
+    --primary-green: #00D364; 
     --text-main: #FFFFFF;
     --text-muted: #9CA3AF;
     --font-main: 'Inter', sans-serif;
+
+    /* Настройки стилистики всплывающего окна Fancybox */
+    --f-button-color: var(--primary-green);
+    --f-button-hover-color: #000;
+    --f-button-bg: rgba(21, 26, 39, 0.8);
+    --f-button-hover-bg: var(--primary-green);
+    --f-button-border-radius: 50%;
 }
 
 * {
@@ -23,7 +30,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Контейнер для центрирования контента */
 .container {
     width: 100%;
     max-width: 1100px;
@@ -158,7 +164,6 @@ body {
     margin-top: 50px;
 }
 
-/* Фоновое свечение */
 .hero-glow {
     position: absolute;
     top: 50%;
@@ -185,7 +190,6 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Эффект подсветки при наведении на статистику, преимущества и отзывы */
 .glass-card:hover, .stat-item:hover, .proof-card:hover {
     transform: translateY(-5px);
     background: rgba(21, 26, 39, 0.6);
@@ -224,7 +228,9 @@ body {
 
 .proof-card a {
     display: block;
-    overflow: hidden; /* Скрываем края картинки при её увеличении */
+    overflow: hidden; 
+    text-decoration: none; /* Убираем синее подчеркивание, если картинка не найдена */
+    color: inherit;
 }
 
 .proof-card img {
@@ -233,10 +239,9 @@ body {
     display: block;
     object-fit: cover;
     border-bottom: 1px solid rgba(255,255,255, 0.05);
-    transition: transform 0.4s ease; /* Анимация для зума */
+    transition: transform 0.4s ease; 
 }
 
-/* Картинка приближается внутри карточки при наведении */
 .proof-card:hover img {
     transform: scale(1.05);
 }
@@ -246,6 +251,34 @@ body {
     font-weight: 600;
     font-size: 16px;
     text-align: center;
+}
+
+/* =========================================
+   КАСТОМИЗАЦИЯ ВСПЛЫВАЮЩИХ ОКОН (FANCYBOX)
+========================================= */
+/* Темный размытый фон за открытой картинкой */
+.fancybox__backdrop {
+    background: rgba(11, 15, 25, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Скругление самой картинки при открытии */
+.fancybox__image {
+    border-radius: 16px !important;
+    box-shadow: 0 10px 40px rgba(0, 211, 100, 0.2) !important;
+}
+
+/* Стиль крестика закрытия */
+.f-button[title="Close"] {
+    border: 1px solid var(--primary-green) !important;
+    box-shadow: 0 0 15px rgba(0, 211, 100, 0.3) !important;
+    margin: 15px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.f-button[title="Close"]:hover {
+    transform: scale(1.1) rotate(90deg) !important;
+    box-shadow: 0 0 25px rgba(0, 211, 100, 0.6) !important;
 }
 
 /* =========================================
@@ -287,7 +320,6 @@ body {
     padding-bottom: 50px;
 }
 
-/* Кастомизация Swiper */
 .swiper-button-next, .swiper-button-prev {
     color: var(--primary-green) !important;
 }
@@ -295,7 +327,6 @@ body {
     background: var(--primary-green) !important;
 }
 
-/* Преимущества */
 .advantages {
     padding: 80px 0;
     position: relative;
@@ -325,7 +356,6 @@ body {
     font-size: 15px;
 }
 
-/* Отзывы */
 .reviews {
     padding: 40px 0 100px;
 }

@@ -33,17 +33,13 @@
                 <!-- Выбор языка -->
                 <div class="language-switcher" id="langSwitcher">
                     <button class="lang-btn" id="langBtn">RU</button>
+                    <!-- Выпадающий список (только RU и EN) -->
                     <ul class="lang-dropdown" id="langDropdown">
-                        <li data-lang="ru" class="active"><span class="lang-code">RU</span> Русский</li>
+                        <li data-lang="ru"><span class="lang-code">RU</span> Русский</li>
                         <li data-lang="en"><span class="lang-code">EN</span> English</li>
-                        <li data-lang="es"><span class="lang-code">ES</span> Español</li>
-                        <li data-lang="de"><span class="lang-code">DE</span> Deutsch</li>
-                        <li data-lang="fr"><span class="lang-code">FR</span> Français</li>
-                        <li data-lang="zh"><span class="lang-code">ZH</span> 中文</li>
                     </ul>
                 </div>
                 
-                <!-- Ссылка на менеджера -->
                 <a href="https://t.me/alex_palma_0001" target="_blank" class="btn btn-outline" data-i18n="nav_contact">Связаться с менеджером</a>
             </div>
         </div>
@@ -265,7 +261,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>
-        // Инициализация слайдера
+        // Инициализация слайдера и всплывающих окон
         const swiper = new Swiper('.proofs-slider', {
             slidesPerView: 1, 
             spaceBetween: 20, 
@@ -278,7 +274,6 @@
             }
         });
 
-        // Инициализация всплывающих окон
         Fancybox.bind("[data-fancybox]", {
             backdropClick: "close",
             animated: true,
@@ -287,7 +282,7 @@
             Images: { zoom: true }
         });
 
-        // ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКОВ
+        // ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКОВ И АВТООПРЕДЕЛЕНИЯ
         const translations = {
             ru: {
                 page_title: "Трастовые аккаунты Google Ads | Palma Media",
@@ -332,7 +327,7 @@
                 stat_1_val: "4.5 years", stat_1_lbl: "on the market",
                 stat_2_val: "48 hours", stat_2_lbl: "replacement guarantee",
                 stat_3_val: "3000+", stat_3_lbl: "regular clients",
-                feat_title: "Our accounts fit <span>any verticals</span>",
+                feat_title: "Our accounts fit <span>any vertical</span>",
                 feat_1_title: "We use them ourselves", feat_1_desc: "You can feel the difference. We run traffic ourselves and know what actually works.",
                 feat_2_title: "48-Hour Guarantee", feat_2_desc: "If an account gets banned before launch — we replace it for free, no questions asked.",
                 feat_3_title: "GEO without borders", feat_3_desc: "Over 20 countries for payment profiles (EU, AU, NZ, etc). We match the best for your offer.",
@@ -363,34 +358,48 @@
         const langSwitcher = document.getElementById('langSwitcher');
         const langItems = document.querySelectorAll('.lang-dropdown li');
 
-        // Открытие/закрытие меню
+        // Функция смены языка с обновлением интерфейса
+        function setLanguage(lang) {
+            langItems.forEach(el => el.classList.remove('active'));
+            const activeItem = document.querySelector(`.lang-dropdown li[data-lang="${lang}"]`) || document.querySelector('.lang-dropdown li[data-lang="en"]');
+            activeItem.classList.add('active');
+            
+            langBtn.textContent = activeItem.getAttribute('data-lang').toUpperCase();
+            
+            const dict = translations[lang] || translations['en']; 
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerHTML = dict[key];
+                }
+            });
+        }
+
+        // Авто-определение языка браузера/IP пользователя
+        document.addEventListener('DOMContentLoaded', () => {
+            const userLang = navigator.language || navigator.userLanguage;
+            const shortLang = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['ru', 'en']; 
+            const defaultLang = supportedLangs.includes(shortLang) ? shortLang : 'en';
+            setLanguage(defaultLang);
+        });
+
+        // Открытие/закрытие меню по клику
         langBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             langSwitcher.classList.toggle('open');
         });
 
-        // Закрытие при клике вне меню
         document.addEventListener('click', () => {
             langSwitcher.classList.remove('open');
         });
 
-        // Смена языка
+        // Ручная смена языка из списка
         langItems.forEach(item => {
             item.addEventListener('click', () => {
                 const selectedLang = item.getAttribute('data-lang');
-                
-                langItems.forEach(el => el.classList.remove('active'));
-                item.classList.add('active');
-                langBtn.textContent = selectedLang.toUpperCase();
+                setLanguage(selectedLang);
                 langSwitcher.classList.remove('open');
-
-                const dict = translations[selectedLang] || translations['en']; 
-                document.querySelectorAll('[data-i18n]').forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    if (dict[key]) {
-                        el.innerHTML = dict[key];
-                    }
-                });
             });
         });
     </script>

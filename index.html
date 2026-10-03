@@ -16,6 +16,24 @@
     
     <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2261545901293911');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2261545901293911&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -40,7 +58,7 @@
                     </ul>
                 </div>
                 
-                <a href="https://t.me/alex_palma_0001" target="_blank" class="btn btn-outline" data-i18n="nav_contact">Связаться с менеджером</a>
+                <a href="https://t.me/alex_palma_0001" target="_blank" class="btn btn-outline" data-i18n="nav_contact" onclick="fbq('track', 'Contact');">Связаться с менеджером</a>
             </div>
         </div>
     </header>
@@ -55,7 +73,7 @@
             <p class="hero-subtitle" data-i18n="hero_subtitle">Забудьте про микро-спенды и баны на старте. Проверенные аккаунты с историей. Быстрая замена при невалиде.</p>
             
             <div class="hero-actions">
-                <a href="https://t.me/pereho1dpalma_bot" target="_blank" class="btn btn-primary" data-i18n="btn_bot">Запустить бота</a>
+                <a href="https://t.me/pereho1dpalma_bot" target="_blank" class="btn btn-primary" data-i18n="btn_bot" onclick="fbq('track', 'Lead');">Запустить бота</a>
             </div>
 
             <!-- Статистика -->
@@ -152,7 +170,7 @@
                                 <img src="img/4.jpg" alt="Отзывы Palma Media">
                             </a>
                             <div class="proof-caption" data-i18n="slide_4">Остальные результаты с отзывами вы можете посмотреть в канале</div>
-                            <a href="https://t.me/YouPalma" target="_blank" class="btn btn-outline slide-btn" data-i18n="btn_reviews">Канал с отзывами</a>
+                            <a href="https://t.me/YouPalma" target="_blank" class="btn btn-outline slide-btn" data-i18n="btn_reviews" onclick="fbq('track', 'ViewContent');">Канал с отзывами</a>
                         </div>
                     </div>
                 </div>
@@ -191,7 +209,7 @@
 
             <div class="accounts-action">
                 <p class="extra-supplies" data-i18n="acc_extra">Есть и другие расходники, которые понадобятся каждому!</p>
-                <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_buy">Купить</a>
+                <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_buy" onclick="fbq('track', 'Lead');">Купить</a>
             </div>
         </div>
     </section>
@@ -256,7 +274,7 @@
             </div>
 
             <div class="main-channel-action">
-                <a href="https://channel.geopalm.shop/" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_main_channel">Перейти в наш Основной Telegram канал</a>
+                <a href="https://channel.geopalm.shop/" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_main_channel" onclick="fbq('track', 'ViewContent');">Перейти в наш Основной Telegram канал</a>
             </div>
         </div>
     </section>

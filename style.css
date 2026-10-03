@@ -3,18 +3,18 @@
 ========================================= */
 :root {
     /* Теплая песочная палитра */
-    --bg-sand: #F7F3E9;         /* Основной песочный фон */
-    --text-main: #2C3525;       /* Темно-оливковый текст для читаемости */
-    --text-muted: #647059;      /* Приглушенный текст */
+    --bg-sand: #F7F5EE;         /* Основной светлый песочный фон */
+    --text-main: #2C3525;       /* Темно-оливковый текст */
+    --text-muted: #647059;      
     
     /* Акцентные цвета */
-    --primary-olive: #5F7A36;   /* Основной оливковый */
-    --primary-orange: #E67E22;  /* Оранжевый для наведения и акцентов */
+    --primary-olive: #627F38;   /* Оливковый для кнопок и цифр */
+    --primary-orange: #E87A24;  /* Оранжевый для бейджа и наведения */
     
-    /* Цвета для стекла (Glassmorphism) */
+    /* Цвета для матового стекла */
     --glass-bg: rgba(255, 255, 255, 0.5); 
     --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-shadow: rgba(0, 0, 0, 0.05);
+    --glass-shadow: rgba(0, 0, 0, 0.04);
 
     --font-main: 'Inter', sans-serif;
 
@@ -41,7 +41,9 @@ body {
     position: relative;
 }
 
-/* Фоновые пальмы (SVG Pattern) */
+/* =========================================
+   ФОН (ПАТТЕРН ИЗ СИЛУЭТОВ ПАЛЬМ)
+========================================= */
 .palm-background {
     position: fixed;
     top: 0;
@@ -49,10 +51,10 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.04; /* Едва заметные */
+    opacity: 0.05; /* Легкая прозрачность, чтобы не мешать тексту */
     pointer-events: none;
-    /* Паттерн тропического листа */
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 100c0-20 10-40 30-50-20 0-30-10-30-30 0 20-10 40-30 50 20 0 30 10 30 30z' fill='%235F7A36'/%3E%3C/svg%3E");
+    /* Паттерн пальмы (SVG) */
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.5 10c-1.4 0-2.8-.4-4-1.1-.3-.2-.7.1-.5.4 1 1.6 1.1 3.5.3 5.2-.2.3-.6.2-.7-.1-1.1-2.9-3.7-5-6.8-5.3-.4 0-.6-.5-.3-.7 1.8-1.5 3-3.7 3.2-6.1 0-.4-.5-.6-.8-.3-1.6 1.8-4.2 2.5-6.4 1.5-.3-.1-.5.2-.3.5.8 1 1.2 2.3 1.2 3.6 0 1.2-.4 2.4-1.1 3.4-.2.3.2.7.5.4 1.4-1 3.2-1.3 4.9-.8 1.4.4 2.6 1.4 3.4 2.6.2.3-.1.7-.4.6-2.5-.9-5.3-.6-7.5 1-.3.2-.7-.1-.6-.4.7-2.3.1-4.8-1.6-6.1-.3-.2-.1-.7.3-.6 2.3.4 4.5-.5 5.7-2.4.2-.3-.1-.7-.5-.6C7 6.4 4.7 8.1 2.8 10.3c-.2.3-.7 0-.5-.3 1-2 2.9-3.4 5.1-3.7.4-.1.4-.6 0-.7-2.1-.5-4.1.3-5.2 2-.2.3-.7 0-.5-.3.8-1.6 2.3-2.6 4-2.8.4 0 .4-.6 0-.7-2.6-.4-5 1-6.1 3.2-.2.3-.7 0-.5-.3 1.5-2.7 4.5-4 7.5-3.3.4.1.6-.3.4-.6C9.6.9 7 0 4 0c-.4 0-.6.5-.4.7 1.5 1.5 2.1 3.7 1.6 5.8-.1.4-.7.4-.8 0-1-4.2-4.5-7-8.8-6.5C-4.7.1-4.9.6-4.7.8c1.5 1.3 3.6 1.8 5.6 1.2.4-.1.6.4.4.6-1.7 1.9-4.2 2.8-6.7 2.1-.4-.1-.6.4-.3.6 2 1.5 4.7 1.7 6.9.5.3-.2.7.1.5.4-1 1.7-.7 3.8.7 5.2.3.3 0 .8-.4.6-2.3-1.2-5-1.1-7.2.2-.3.2-.1.7.3.5 3-2 6.7-1.4 9 1.4.2.3 0 .8-.4.6C.4 13.5-2 14.8-4.6 14.8c-.4 0-.6.5-.3.7 3.3 2.1 7.6 2.1 10.9 0 .3-.2.7.1.6.5-.7 2.9-.1 5.9 1.8 8.1.3.3.8 0 .6-.4-.9-2.1-1-4.5-.2-6.5.1-.3-.2-.7-.5-.5-2 1.4-4.5 1.7-6.8.8-.4-.1-.6.4-.3.6 2.6 1.9 6.1 1.8 8.6-.2.3-.2.8.1.6.4-1.3 2.2-.6 4.7.7 6.7.2.3.7 0 .5-.3-1-2.1-.7-4.5.6-6.3.2-.3-.1-.7-.4-.6-2.5 1.1-5.4.6-7.4-1.3-.3-.2-.1-.8.3-.6 2.9 1.4 6.3.5 8.2-2 .2-.3 0-.8-.4-.6-1.7.9-3.7 1-5.5.3-.4-.1-.6.4-.4.6.6 1.5 2 2.5 3.6 2.6.4 0 .5-.5.2-.7-1.2-.6-2.2-1.7-2.6-3-.1-.4.4-.7.7-.4 1.7 1.5 4.3 1.6 6.1.3.3-.2.8.1.6.4-1 2-.5 4.3.9 6 .3.3.8 0 .6-.4C20.3 15.3 19 12.8 19 10c0-.4.5-.6.8-.3 1.3 1.1 2.8 1.7 4.5 1.7.4 0 .6-.5.4-.7-1-.7-2.2-1-3.4-.9-.4 0-.6-.5-.3-.7 1.5-.9 3.2-1.3 5-1.2.4 0 .6-.5.4-.7-.9-.6-2-1-3.2-1-.4 0-.6-.5-.3-.7z' fill='%23627F38'/%3E%3C/svg%3E");
     background-size: 150px 150px;
 }
 
@@ -74,22 +76,21 @@ body {
     border-radius: 10px;
     text-decoration: none;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     z-index: 1;
 }
 
-/* Основная кнопка (Оливковая -> Оранжевая) */
 .btn-primary {
     background-color: var(--primary-olive);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(95, 122, 54, 0.3);
+    box-shadow: 0 4px 15px rgba(98, 127, 56, 0.3);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-orange);
-    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+    box-shadow: 0 6px 20px rgba(232, 122, 36, 0.4);
     transform: translateY(-2px);
 }
 
@@ -97,7 +98,6 @@ body {
     transform: translateY(1px) scale(0.97);
 }
 
-/* Кнопка с контуром */
 .btn-outline {
     background: rgba(255, 255, 255, 0.3);
     border: 2px solid var(--primary-olive);
@@ -108,13 +108,18 @@ body {
 .btn-outline:hover {
     background: var(--primary-olive);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(95, 122, 54, 0.3);
+    box-shadow: 0 4px 15px rgba(98, 127, 56, 0.3);
     transform: translateY(-2px);
 }
 
 .btn-large {
     padding: 18px 40px;
     font-size: 18px;
+}
+
+/* Вспомогательный класс для оранжевого текста */
+.text-orange {
+    color: var(--primary-orange) !important;
 }
 
 /* =========================================
@@ -152,14 +157,15 @@ body {
     text-align: center;
 }
 
+/* Оранжевый бейдж с вертикалями */
 .hero-badge {
     display: inline-block;
-    padding: 8px 20px;
-    background: rgba(230, 126, 34, 0.1);
+    padding: 8px 24px;
+    background: rgba(232, 122, 36, 0.1);
     color: var(--primary-orange);
-    border: 1px solid rgba(230, 126, 34, 0.3);
+    border: 1px solid var(--primary-orange);
     border-radius: 50px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     margin-bottom: 24px;
 }
@@ -195,12 +201,12 @@ body {
 }
 
 /* =========================================
-   УНИВЕРСАЛЬНЫЕ СТЕКЛЯННЫЕ КАРТОЧКИ (СВЕТЛОЕ СТЕКЛО)
+   УНИВЕРСАЛЬНЫЕ КАРТОЧКИ (СТЕКЛО И БЕЛЫЕ)
 ========================================= */
-.glass-card, .stat-item {
+/* Стеклянные карточки (Фичи, Слайдер) */
+.glass-card {
     background: var(--glass-bg); 
     backdrop-filter: blur(16px); 
-    -webkit-backdrop-filter: blur(16px); 
     border: 1px solid var(--glass-border); 
     border-radius: 16px;
     padding: 24px;
@@ -208,21 +214,38 @@ body {
     box-shadow: 0 8px 30px var(--glass-shadow);
 }
 
-.glass-card:hover, .stat-item:hover {
+.glass-card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.8);
     border-color: var(--primary-olive);
-    box-shadow: 0 15px 35px rgba(95, 122, 54, 0.1);
+    box-shadow: 0 15px 35px rgba(98, 127, 56, 0.1);
 }
 
+/* Белые карточки (Статистика, Отзывы) */
+.white-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.white-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* Элементы статистики */
 .stat-item {
-    min-width: 160px;
+    min-width: 170px;
     text-align: center;
+    padding: 24px 30px;
 }
 
 .stat-value {
     display: block;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 800;
     color: var(--primary-olive);
 }
@@ -233,6 +256,8 @@ body {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-top: 5px;
+    display: block;
 }
 
 /* =========================================
@@ -247,7 +272,7 @@ body {
 }
 
 .section-title span {
-    color: var(--primary-orange);
+    color: var(--primary-olive);
 }
 
 .section-subtitle {
@@ -274,14 +299,14 @@ body {
 .feature-icon {
     font-size: 32px;
     margin-bottom: 15px;
-    background: rgba(95, 122, 54, 0.1);
+    background: rgba(98, 127, 56, 0.1);
     width: 64px;
     height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 14px;
-    border: 1px solid rgba(95, 122, 54, 0.2);
+    border: 1px solid rgba(98, 127, 56, 0.2);
 }
 
 .feature-card h3 {
@@ -319,7 +344,7 @@ body {
     overflow: hidden; 
     text-decoration: none; 
     color: inherit;
-    flex-grow: 1; /* Картинка занимает максимум места */
+    flex-grow: 1; 
 }
 
 .proof-card img {
@@ -340,10 +365,10 @@ body {
     font-weight: 600;
     font-size: 15px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.6);
 }
 
-/* Кастомизация 4-го слайда (с кнопкой) */
+/* Слайд с кнопкой */
 .custom-slide-content {
     position: relative;
 }
@@ -352,7 +377,7 @@ body {
     margin: 0 20px 20px 20px;
 }
 
-/* Кастомизация Swiper под светлую тему */
+/* Swiper Controls */
 .swiper-button-next, .swiper-button-prev {
     color: var(--primary-olive) !important;
 }
@@ -364,7 +389,7 @@ body {
    БЛОК ОТЗЫВОВ И ГЛАВНАЯ КНОПКА
 ========================================= */
 .reviews {
-    padding: 60px 0 100px;
+    padding: 60px 0 80px;
 }
 
 .review-header {
@@ -374,16 +399,19 @@ body {
     margin-bottom: 15px;
 }
 
-/* Аватарка Telegram */
+/* Синяя иконка Telegram для аватаров */
+.tg-blue {
+    background: #0088cc;
+}
+
 .review-avatar {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #0088cc, #00aaff); /* Цвет Telegram */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.2);
 }
 
 .review-author h4 {
@@ -395,7 +423,6 @@ body {
 .review-author span {
     font-size: 13px;
     font-weight: 600;
-    color: var(--primary-orange);
 }
 
 .review-text {
@@ -404,17 +431,53 @@ body {
     color: var(--text-muted);
 }
 
-/* Главная кнопка внизу */
 .main-channel-action {
     text-align: center;
     margin-top: 50px;
 }
 
 /* =========================================
+   ПОДВАЛ (CLIENTS FOOTER С КРАСНОЙ ЛИНИЕЙ)
+========================================= */
+.clients-footer {
+    border-top: 4px solid #E32636; /* Ярко-красная линия */
+    background: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.clients-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.clients-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.clients-logos span {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.clients-logos span:hover {
+    color: var(--primary-olive);
+}
+
+/* =========================================
    КАСТОМИЗАЦИЯ ВСПЛЫВАЮЩИХ ОКОН (FANCYBOX)
 ========================================= */
 .fancybox__backdrop {
-    background: rgba(247, 243, 233, 0.9) !important; /* Светлый матовый фон */
+    background: rgba(247, 245, 238, 0.95) !important;
     backdrop-filter: blur(8px);
 }
 .fancybox__image {

@@ -1,18 +1,28 @@
 /* =========================================
-   БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ
+   БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ (ПЕСОЧНАЯ ТЕМА)
 ========================================= */
 :root {
-    --bg-dark: #0B0F19; 
-    --primary-green: #00D364; 
-    --text-main: #FFFFFF;
-    --text-muted: #9CA3AF;
+    /* Теплая песочная палитра */
+    --bg-sand: #F7F3E9;         /* Основной песочный фон */
+    --text-main: #2C3525;       /* Темно-оливковый текст для читаемости */
+    --text-muted: #647059;      /* Приглушенный текст */
+    
+    /* Акцентные цвета */
+    --primary-olive: #5F7A36;   /* Основной оливковый */
+    --primary-orange: #E67E22;  /* Оранжевый для наведения и акцентов */
+    
+    /* Цвета для стекла (Glassmorphism) */
+    --glass-bg: rgba(255, 255, 255, 0.5); 
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+
     --font-main: 'Inter', sans-serif;
 
-    /* Настройки стилистики всплывающего окна Fancybox */
-    --f-button-color: var(--primary-green);
-    --f-button-hover-color: #000;
-    --f-button-bg: rgba(21, 26, 39, 0.8);
-    --f-button-hover-bg: var(--primary-green);
+    /* Настройки Fancybox */
+    --f-button-color: #fff;
+    --f-button-hover-color: #fff;
+    --f-button-bg: var(--primary-olive);
+    --f-button-hover-bg: var(--primary-orange);
     --f-button-border-radius: 50%;
 }
 
@@ -24,28 +34,44 @@
 
 body {
     font-family: var(--font-main);
-    background-color: var(--bg-dark);
+    background-color: var(--bg-sand);
     color: var(--text-main);
-    line-height: 1.5;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+/* Фоновые пальмы (SVG Pattern) */
+.palm-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.04; /* Едва заметные */
+    pointer-events: none;
+    /* Паттерн тропического листа */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 100c0-20 10-40 30-50-20 0-30-10-30-30 0 20-10 40-30 50 20 0 30 10 30 30z' fill='%235F7A36'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
 }
 
 .container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1150px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 /* =========================================
-   КНОПКИ С НЕОНОВЫМ ОТКЛИКОМ
+   КНОПКИ (ОЛИВКОВЫЙ И ОРАНЖЕВЫЙ)
 ========================================= */
 .btn {
     display: inline-block;
     padding: 14px 28px;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 10px;
     text-decoration: none;
     text-align: center;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -54,37 +80,41 @@ body {
     z-index: 1;
 }
 
+/* Основная кнопка (Оливковая -> Оранжевая) */
 .btn-primary {
-    background-color: var(--primary-green);
-    color: #000;
-    box-shadow: 0 0 15px rgba(0, 211, 100, 0.4);
+    background-color: var(--primary-olive);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(95, 122, 54, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #00ff7b;
-    box-shadow: 0 0 25px rgba(0, 211, 100, 0.7), 0 0 45px rgba(0, 211, 100, 0.3);
+    background-color: var(--primary-orange);
+    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
     transform: translateY(-2px);
 }
 
 .btn-primary:active {
-    transform: translateY(1px) scale(0.96);
-    box-shadow: 0 0 10px rgba(0, 211, 100, 0.9);
+    transform: translateY(1px) scale(0.97);
 }
 
+/* Кнопка с контуром */
 .btn-outline {
-    background: rgba(0, 211, 100, 0.05);
-    border: 1px solid var(--primary-green);
-    color: var(--primary-green);
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid var(--primary-olive);
+    color: var(--primary-olive);
     backdrop-filter: blur(5px);
 }
 
 .btn-outline:hover {
-    background: rgba(0, 211, 100, 0.15);
-    box-shadow: 0 0 20px rgba(0, 211, 100, 0.4) inset, 0 0 20px rgba(0, 211, 100, 0.4);
+    background: var(--primary-olive);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(95, 122, 54, 0.3);
+    transform: translateY(-2px);
 }
 
-.btn-outline:active {
-    transform: scale(0.96);
+.btn-large {
+    padding: 18px 40px;
+    font-size: 18px;
 }
 
 /* =========================================
@@ -103,13 +133,14 @@ body {
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 800;
     letter-spacing: 1px;
+    color: var(--text-main);
 }
 
 .logo span {
-    color: var(--primary-green);
+    color: var(--primary-orange);
 }
 
 /* =========================================
@@ -117,43 +148,43 @@ body {
 ========================================= */
 .hero {
     position: relative;
-    padding: 60px 0 80px;
+    padding: 60px 0 60px;
     text-align: center;
-    overflow: hidden;
 }
 
 .hero-badge {
     display: inline-block;
-    padding: 6px 16px;
-    background: rgba(0, 211, 100, 0.1);
-    color: var(--primary-green);
-    border: 1px solid rgba(0, 211, 100, 0.2);
+    padding: 8px 20px;
+    background: rgba(230, 126, 34, 0.1);
+    color: var(--primary-orange);
+    border: 1px solid rgba(230, 126, 34, 0.3);
     border-radius: 50px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 24px;
 }
 
 .hero-title {
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
-    position: relative;
-    z-index: 2;
+    color: var(--text-main);
 }
 
 .hero-title span {
-    color: var(--primary-green);
+    color: var(--primary-olive);
 }
 
 .hero-subtitle {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--text-muted);
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto 40px;
-    position: relative;
-    z-index: 2;
+}
+
+.hero-actions {
+    margin-bottom: 50px;
 }
 
 .hero-stats {
@@ -161,84 +192,142 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-top: 50px;
-}
-
-.hero-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(0, 211, 100, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
-    z-index: 1;
-    pointer-events: none;
 }
 
 /* =========================================
-   УНИВЕРСАЛЬНЫЕ СТЕКЛЯННЫЕ КАРТОЧКИ
+   УНИВЕРСАЛЬНЫЕ СТЕКЛЯННЫЕ КАРТОЧКИ (СВЕТЛОЕ СТЕКЛО)
 ========================================= */
-.glass-card, .stat-item, .proof-card {
-    background: rgba(21, 26, 39, 0.4); 
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px); 
-    border: 1px solid rgba(255, 255, 255, 0.08); 
+.glass-card, .stat-item {
+    background: var(--glass-bg); 
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px); 
+    border: 1px solid var(--glass-border); 
     border-radius: 16px;
     padding: 24px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 30px var(--glass-shadow);
 }
 
-.glass-card:hover, .stat-item:hover, .proof-card:hover {
+.glass-card:hover, .stat-item:hover {
     transform: translateY(-5px);
-    background: rgba(21, 26, 39, 0.6);
-    border-color: rgba(0, 211, 100, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 211, 100, 0.15), 0 0 15px rgba(0, 211, 100, 0.1) inset;
+    background: rgba(255, 255, 255, 0.8);
+    border-color: var(--primary-olive);
+    box-shadow: 0 15px 35px rgba(95, 122, 54, 0.1);
 }
 
-/* =========================================
-   ИНДИВИДУАЛЬНЫЕ БЛОКИ КАРТОЧЕК
-========================================= */
 .stat-item {
-    min-width: 150px;
+    min-width: 160px;
     text-align: center;
 }
 
 .stat-value {
     display: block;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 800;
-    color: var(--text-main);
+    color: var(--primary-olive);
 }
 
 .stat-label {
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 600;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-/* Уточнения для карточек пруфов (всплывающие скриншоты) */
+/* =========================================
+   СЕТКИ И ЗАГОЛОВКИ СЕКЦИЙ
+========================================= */
+.section-title {
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.section-title span {
+    color: var(--primary-orange);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 50px;
+    font-size: 16px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* =========================================
+   ПРЕИМУЩЕСТВА (ФИЧИ)
+========================================= */
+.features {
+    padding: 60px 0;
+}
+
+.feature-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+    background: rgba(95, 122, 54, 0.1);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    border: 1px solid rgba(95, 122, 54, 0.2);
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* =========================================
+   БЛОК ПРУФОВ (СЛАЙДЕР СО СКРИНШОТАМИ)
+========================================= */
+.proofs {
+    padding: 60px 0;
+}
+
+.proofs-slider {
+    padding-bottom: 60px;
+}
+
 .proof-card {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .proof-card a {
     display: block;
     overflow: hidden; 
-    text-decoration: none; /* Убираем синее подчеркивание, если картинка не найдена */
+    text-decoration: none; 
     color: inherit;
+    flex-grow: 1; /* Картинка занимает максимум места */
 }
 
 .proof-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
-    border-bottom: 1px solid rgba(255,255,255, 0.05);
+    border-bottom: 1px solid rgba(0,0,0, 0.05);
     transition: transform 0.4s ease; 
 }
 
@@ -249,115 +338,33 @@ body {
 .proof-caption {
     padding: 20px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.4);
 }
 
-/* =========================================
-   КАСТОМИЗАЦИЯ ВСПЛЫВАЮЩИХ ОКОН (FANCYBOX)
-========================================= */
-/* Темный размытый фон за открытой картинкой */
-.fancybox__backdrop {
-    background: rgba(11, 15, 25, 0.95) !important;
-    backdrop-filter: blur(10px);
-}
-
-/* Скругление самой картинки при открытии */
-.fancybox__image {
-    border-radius: 16px !important;
-    box-shadow: 0 10px 40px rgba(0, 211, 100, 0.2) !important;
-}
-
-/* Стиль крестика закрытия */
-.f-button[title="Close"] {
-    border: 1px solid var(--primary-green) !important;
-    box-shadow: 0 0 15px rgba(0, 211, 100, 0.3) !important;
-    margin: 15px !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.f-button[title="Close"]:hover {
-    transform: scale(1.1) rotate(90deg) !important;
-    box-shadow: 0 0 25px rgba(0, 211, 100, 0.6) !important;
-}
-
-/* =========================================
-   ЗАГОЛОВКИ СЕКЦИЙ И СЕТКИ
-========================================= */
-.section-title {
-    font-size: 32px;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.section-title span {
-    color: var(--primary-green);
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto 50px;
-}
-
-.grid-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-/* =========================================
-   СПЕЦИФИЧНЫЕ БЛОКИ (ПРУФЫ, ПРЕИМУЩЕСТВА, ОТЗЫВЫ)
-========================================= */
-.proofs {
-    padding: 80px 0;
-    background-color: #0d121d;
-}
-
-.proofs-slider {
-    padding-bottom: 50px;
-}
-
-.swiper-button-next, .swiper-button-prev {
-    color: var(--primary-green) !important;
-}
-.swiper-pagination-bullet-active {
-    background: var(--primary-green) !important;
-}
-
-.advantages {
-    padding: 80px 0;
+/* Кастомизация 4-го слайда (с кнопкой) */
+.custom-slide-content {
     position: relative;
 }
-
-.adv-icon {
-    font-size: 32px;
-    margin-bottom: 15px;
-    background: rgba(0, 211, 100, 0.1);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 211, 100, 0.2);
+.slide-btn {
+    display: block;
+    margin: 0 20px 20px 20px;
 }
 
-.glass-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #fff;
+/* Кастомизация Swiper под светлую тему */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-olive) !important;
+}
+.swiper-pagination-bullet-active {
+    background: var(--primary-orange) !important;
 }
 
-.glass-card p {
-    color: var(--text-muted);
-    font-size: 15px;
-}
-
+/* =========================================
+   БЛОК ОТЗЫВОВ И ГЛАВНАЯ КНОПКА
+========================================= */
 .reviews {
-    padding: 40px 0 100px;
+    padding: 60px 0 100px;
 }
 
 .review-header {
@@ -367,31 +374,59 @@ body {
     margin-bottom: 15px;
 }
 
+/* Аватарка Telegram */
 .review-avatar {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-green), #007bb5);
+    background: linear-gradient(135deg, #0088cc, #00aaff); /* Цвет Telegram */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
 }
 
 .review-author h4 {
-    font-size: 16px;
+    font-size: 17px;
     margin-bottom: 2px;
+    color: var(--text-main);
 }
 
 .review-author span {
     font-size: 13px;
-    color: var(--primary-green);
+    font-weight: 600;
+    color: var(--primary-orange);
 }
 
 .review-text {
     font-style: italic;
     line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Главная кнопка внизу */
+.main-channel-action {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* =========================================
+   КАСТОМИЗАЦИЯ ВСПЛЫВАЮЩИХ ОКОН (FANCYBOX)
+========================================= */
+.fancybox__backdrop {
+    background: rgba(247, 243, 233, 0.9) !important; /* Светлый матовый фон */
+    backdrop-filter: blur(8px);
+}
+.fancybox__image {
+    border-radius: 16px !important;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15) !important;
+}
+.f-button[title="Close"] {
+    margin: 15px !important;
+    transition: transform 0.3s ease !important;
+}
+.f-button[title="Close"]:hover {
+    transform: scale(1.1) rotate(90deg) !important;
 }
 
 /* =========================================
@@ -399,19 +434,19 @@ body {
 ========================================= */
 @media (min-width: 768px) {
     .hero {
-        padding: 100px 0 120px;
+        padding: 80px 0 100px;
     }
     
     .hero-title {
-        font-size: 56px;
+        font-size: 52px;
     }
     
     .hero-subtitle {
-        font-size: 18px;
+        font-size: 19px;
     }
     
     .section-title {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     .grid-layout {

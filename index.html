@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Трастовые аккаунты Google Ads | Palma Media</title>
-    <!-- Подключаем современный шрифт -->
+    
+    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     
-    <!-- Подключаем стили для слайдера Swiper -->
+    <!-- Стили библиотек -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    
-    <!-- Подключаем стили для Fancybox (Всплывающие картинки) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     
-    <!-- Подключаем наши стили -->
+    <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Фоновые пальмы (SVG паттерн) -->
+    <div class="palm-background"></div>
 
     <!-- Навигация -->
     <header class="header">
@@ -26,124 +28,124 @@
             <div class="logo">
                 PALMA <span>MEDIA</span>
             </div>
-            <a href="#contact" class="btn btn-outline">Связаться в TG</a>
+            <a href="https://t.me/alex_palma_0001" target="_blank" class="btn btn-outline">Связаться с менеджером</a>
         </div>
     </header>
 
     <!-- Главный экран (Hero) -->
     <section class="hero">
         <div class="container hero-container">
-            <div class="hero-badge">Crypto • DeFi • Finance • Gambling</div>
+            <div class="hero-badge">iGaming • Betting • Dating • Crypto</div>
             <h1 class="hero-title">Трастовые аккаунты Google Ads, <span>которые держат спенд</span></h1>
             
             <p class="hero-subtitle">Забудьте про микро-спенды и баны на старте. Проверенные аккаунты с историей. Быстрая замена при невалиде.</p>
             
             <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">Получить аккаунт</a>
+                <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary">Запустить бота</a>
             </div>
 
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-value">24ч</span>
-                    <span class="stat-label">Скорость выдачи</span>
+                    <span class="stat-value">20+</span>
+                    <span class="stat-label">Стран для платежек</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value">4.5</span>
-                    <span class="stat-label">Года опыта</span>
+                    <span class="stat-value">48ч</span>
+                    <span class="stat-label">Гарантия замены</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value">3000+</span>
-                    <span class="stat-label">Довольных клиентов</span>
+                    <span class="stat-value">3 мес</span>
+                    <span class="stat-label">Стабильной работы</span>
                 </div>
             </div>
         </div>
-        <!-- Декоративный фоновый элемент -->
-        <div class="hero-glow"></div>
+    </section>
+
+    <!-- Новый блок: Вертикали и Фичи (на основе примеров) -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Наши аккаунты подойдут под <span>любые вертикали</span></h2>
+            
+            <div class="grid-layout features-grid">
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Используют сами</h3>
+                    <p>Разница чувствуется. Мы сами льем трафик и понимаем, какие расходники реально работают в боевых условиях.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Гарантия 48 часов</h3>
+                    <p>Если аккаунт отлетает до запуска рекламы — меняем бесплатно и без лишних вопросов.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>ГЕО без границ</h3>
+                    <p>Более 20 стран для платежных профилей (EU, AU, NZ и другие). Подбираем лучшее под ваш оффер.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Высокий средний спенд</h3>
+                    <p>От $200 до $16k среднего спенда до бана в наших кейсах на серых нишах.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Блок со скриншотами (Пруфы) -->
     <section class="proofs">
         <div class="container">
             <h2 class="section-title">Хватит верить на слово. <span>Смотрите на цифры.</span></h2>
-            <p class="section-subtitle">Реальный открут и стабильные биллинги наших клиентов на высокорисковых вертикалях прямо сейчас.</p>
+            <p class="section-subtitle">Реальный открут и стабильные биллинги наших клиентов прямо сейчас.</p>
             
             <!-- Слайдер Swiper -->
             <div class="swiper proofs-slider">
                 <div class="swiper-wrapper">
-                    <!-- Слайд 1 (Спенд $2000+) -->
+                    <!-- Слайд 1 (Спенд) -->
                     <div class="swiper-slide">
-                        <div class="proof-card">
-                            <!-- Ссылка для Fancybox. Браузер покажет картинку, когда найдет файл по этому пути -->
+                        <div class="proof-card glass-card">
                             <a href="img/1.jpg" data-fancybox="gallery">
-                                <img src="img/1.jpg" alt="Спенд $2000 в Google Ads">
+                                <img src="img/1.jpg" alt="Спенд в Google Ads">
                             </a>
-                            <div class="proof-caption">Demand Gen открут $2,050+ без банов</div>
+                            <div class="proof-caption">Открут $2050+ без банов и проблем запуска</div>
                         </div>
                     </div>
-                    <!-- Слайд 2 (Спенд $489) -->
+                    
+                    <!-- Слайд 2 (Биллинг $1964) -->
                     <div class="swiper-slide">
-                        <div class="proof-card">
-                            <a href="img/image_681131.png" data-fancybox="gallery">
-                                <img src="img/image_681131.png" alt="Стабильный открут Google Ads">
+                        <div class="proof-card glass-card">
+                            <a href="img/image_a9e439.png" data-fancybox="gallery">
+                                <img src="img/image_a9e439.png" alt="Биллинг Google Ads">
                             </a>
-                            <div class="proof-caption">Стабильный старт кампании</div>
+                            <div class="proof-caption">Траст, который видно сразу. Успешные биллинги и стабильные списания.</div>
                         </div>
                     </div>
-                    <!-- Слайд 3 (Биллинг) -->
+                    
+                    <!-- Слайд 3 (CPA и Cost) -->
                     <div class="swiper-slide">
-                        <div class="proof-card">
-                            <a href="img/image_68147c.png" data-fancybox="gallery">
-                                <img src="img/image_68147c.png" alt="Успешный биллинг">
+                        <div class="proof-card glass-card">
+                            <a href="img/image_a9e783.png" data-fancybox="gallery">
+                                <img src="img/image_a9e783.png" alt="Стабильный открут">
                             </a>
-                            <div class="proof-caption">Беспроблемная привязка карт и оплата</div>
+                            <div class="proof-caption">Низкий CPA с первых дней. Кампании цепляются быстро и без фризов.</div>
                         </div>
                     </div>
-                     <!-- Слайд 4 (Биллинг $500 порог) -->
-                     <div class="swiper-slide">
-                        <div class="proof-card">
-                            <a href="img/image_68147a.png" data-fancybox="gallery">
-                                <img src="img/image_68147a.png" alt="Биллинг Google Ads">
+                    
+                    <!-- Слайд 4 (Отзывы + Кнопка) -->
+                    <div class="swiper-slide">
+                        <div class="proof-card glass-card custom-slide-content">
+                            <a href="img/image_a9eb7d.png" data-fancybox="gallery">
+                                <img src="img/image_a9eb7d.png" alt="Отзывы Palma Media">
                             </a>
-                            <div class="proof-caption">Стабильные списания, рост порога</div>
+                            <div class="proof-caption">Остальные результаты с отзывами вы можете посмотреть в канале</div>
+                            <!-- Кнопка внутри слайда -->
+                            <a href="https://t.me/YouPalma" target="_blank" class="btn btn-outline slide-btn">Канал с отзывами</a>
                         </div>
                     </div>
                 </div>
-                <!-- Кнопки навигации -->
+                <!-- Навигация -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <!-- Пагинация (точки) -->
                 <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Блок Преимуществ -->
-    <section class="advantages" id="advantages">
-        <div class="container">
-            <h2 class="section-title">Почему выбирают <span>наши аккаунты</span></h2>
-            <p class="section-subtitle">Технологичный подход к фарму и выдаче. Мы минимизируем ваши риски.</p>
-            
-            <div class="grid-layout">
-                <div class="glass-card">
-                    <div class="adv-icon">⚡</div>
-                    <h3>Быстрая замена</h3>
-                    <p>Если аккаунт отлетает до запуска рекламы — меняем бесплатно и без лишних вопросов в течение 2-х часов.</p>
-                </div>
-                <div class="glass-card">
-                    <div class="adv-icon">🛡️</div>
-                    <h3>Трастовый фарм</h3>
-                    <p>Аккаунты прогреты реальными действиями, имеют историю поиска и нагулянные куки. Идеально для серых ниш.</p>
-                </div>
-                <div class="glass-card">
-                    <div class="adv-icon">🌍</div>
-                    <h3>Любые ГЕО</h3>
-                    <p>Подберем платежки и прокси под нужное вам ГЕО, чтобы избежать триггеров алгоритмов Google.</p>
-                </div>
-                <div class="glass-card">
-                    <div class="adv-icon">💬</div>
-                    <h3>Саппорт 24/7</h3>
-                    <p>Наши менеджеры всегда на связи. Поможем с настройкой антидетект браузера и привязкой карт.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -154,81 +156,94 @@
             <h2 class="section-title">Что говорят <span>арбитражники</span></h2>
             
             <div class="grid-layout reviews-grid">
+                <!-- Отзыв 1 -->
                 <div class="glass-card review-card">
                     <div class="review-header">
-                        <div class="review-avatar">TG</div>
+                        <div class="review-avatar">
+                            <!-- Иконка Telegram -->
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </div>
                         <div class="review-author">
                             <h4>@traffic_god</h4>
-                            <span>Media Buyer (Gambling)</span>
+                            <span>Media Buyer (iGaming)</span>
                         </div>
                     </div>
-                    <p class="review-text">"Брал пачку на тест. Из 10 акков 9 зацепились сразу, спенд полетел. На одном вылетел фриз — саппорт заменил за 15 минут. Рекомендую."</p>
+                    <p class="review-text">"Брал пачку на тест. Из 10 акков 9 зацепились сразу, спенд полетел. На одном вылетел фриз — саппорт заменил за 15 минут по гарантии. Рекомендую."</p>
                 </div>
                 
+                <!-- Отзыв 2 -->
                 <div class="glass-card review-card">
                     <div class="review-header">
-                        <div class="review-avatar">VK</div>
+                        <div class="review-avatar">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </div>
                         <div class="review-author">
                             <h4>CryptoNinja</h4>
                             <span>Solo Affiliate</span>
                         </div>
                     </div>
-                    <p class="review-text">"Долго искал нормальные сетапы под крипту. Эти ребята знают свое дело. Биллинги растут стабильно, ROI радует. Работаем дальше."</p>
+                    <p class="review-text">"Долго искал нормальные сетапы под крипту. Биллинги растут стабильно, ROI радует. За 3 месяца работы качество не просело ни разу."</p>
                 </div>
+
+                <!-- Отзыв 3 -->
+                <div class="glass-card review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </div>
+                        <div class="review-author">
+                            <h4>@max_leads</h4>
+                            <span>Team Lead (Dating)</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Заливаем дейтинг объемами. Ребята из Palma реально спасли, когда другие шопы продавали шлак. Аккаунты крепкие, фарм отличный, прокси под ГЕО подобрали идеально."</p>
+                </div>
+
+                <!-- Отзыв 4 -->
+                <div class="glass-card review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </div>
+                        <div class="review-author">
+                            <h4>@arbitraj_king</h4>
+                            <span>Media Buyer (Betting)</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Отличный саппорт. Была проблема с привязкой карты на старте, менеджер подключился и всё решил за пару минут. Спенды держат заявленные 100%."</p>
+                </div>
+            </div>
+
+            <!-- Главная кнопка под отзывами -->
+            <div class="main-channel-action">
+                <a href="https://t.me/PalmaMediaLove" target="_blank" class="btn btn-primary btn-large">Перейти в наш Основной Telegram канал</a>
             </div>
         </div>
     </section>
 
-    <!-- Подключаем скрипт Swiper -->
+    <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- Подключаем скрипт Fancybox -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
-    <!-- Инициализация -->
     <script>
-        // Запуск слайдера
         const swiper = new Swiper('.proofs-slider', {
             slidesPerView: 1, 
             spaceBetween: 20, 
             loop: true,       
-            
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 30,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 40,
-                }
+                768: { slidesPerView: 2, spaceBetween: 30 },
+                1024: { slidesPerView: 3, spaceBetween: 40 }
             }
         });
 
-        // Запуск галереи (всплывающих окон) с кастомными настройками
         Fancybox.bind("[data-fancybox]", {
             backdropClick: "close",
             animated: true,
-            dragToClose: false, // Отключаем закрытие смахиванием, чтобы не конфликтовало
-            Toolbar: {
-                display: {
-                    left: [],
-                    middle: [],
-                    right: ["close"], // Оставляем только кнопку закрытия
-                },
-            },
-            Images: {
-                zoom: true, // Плавное увеличение
-            }
+            dragToClose: false,
+            Toolbar: { display: { left: [], middle: [], right: ["close"] } },
+            Images: { zoom: true }
         });
     </script>
 </body>

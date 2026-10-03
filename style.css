@@ -1,24 +1,20 @@
 /* =========================================
-   БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ (ПЕСОЧНАЯ ТЕМА)
+   БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ
 ========================================= */
 :root {
-    /* Теплая песочная палитра */
-    --bg-sand: #F7F5EE;         /* Основной светлый песочный фон */
-    --text-main: #2C3525;       /* Темно-оливковый текст */
+    --bg-sand: #F7F5EE;         
+    --text-main: #2C3525;       
     --text-muted: #647059;      
     
-    /* Акцентные цвета */
-    --primary-olive: #627F38;   /* Оливковый для кнопок и цифр */
-    --primary-orange: #E87A24;  /* Оранжевый для бейджа и наведения */
+    --primary-olive: #627F38;   
+    --primary-orange: #E87A24;  
     
-    /* Цвета для матового стекла */
     --glass-bg: rgba(255, 255, 255, 0.5); 
     --glass-border: rgba(255, 255, 255, 0.8);
     --glass-shadow: rgba(0, 0, 0, 0.04);
 
     --font-main: 'Inter', sans-serif;
 
-    /* Настройки Fancybox */
     --f-button-color: #fff;
     --f-button-hover-color: #fff;
     --f-button-bg: var(--primary-olive);
@@ -51,9 +47,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.05; /* Легкая прозрачность, чтобы не мешать тексту */
+    opacity: 0.05; 
     pointer-events: none;
-    /* Паттерн пальмы (SVG) */
     background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.5 10c-1.4 0-2.8-.4-4-1.1-.3-.2-.7.1-.5.4 1 1.6 1.1 3.5.3 5.2-.2.3-.6.2-.7-.1-1.1-2.9-3.7-5-6.8-5.3-.4 0-.6-.5-.3-.7 1.8-1.5 3-3.7 3.2-6.1 0-.4-.5-.6-.8-.3-1.6 1.8-4.2 2.5-6.4 1.5-.3-.1-.5.2-.3.5.8 1 1.2 2.3 1.2 3.6 0 1.2-.4 2.4-1.1 3.4-.2.3.2.7.5.4 1.4-1 3.2-1.3 4.9-.8 1.4.4 2.6 1.4 3.4 2.6.2.3-.1.7-.4.6-2.5-.9-5.3-.6-7.5 1-.3.2-.7-.1-.6-.4.7-2.3.1-4.8-1.6-6.1-.3-.2-.1-.7.3-.6 2.3.4 4.5-.5 5.7-2.4.2-.3-.1-.7-.5-.6C7 6.4 4.7 8.1 2.8 10.3c-.2.3-.7 0-.5-.3 1-2 2.9-3.4 5.1-3.7.4-.1.4-.6 0-.7-2.1-.5-4.1.3-5.2 2-.2.3-.7 0-.5-.3.8-1.6 2.3-2.6 4-2.8.4 0 .4-.6 0-.7-2.6-.4-5 1-6.1 3.2-.2.3-.7 0-.5-.3 1.5-2.7 4.5-4 7.5-3.3.4.1.6-.3.4-.6C9.6.9 7 0 4 0c-.4 0-.6.5-.4.7 1.5 1.5 2.1 3.7 1.6 5.8-.1.4-.7.4-.8 0-1-4.2-4.5-7-8.8-6.5C-4.7.1-4.9.6-4.7.8c1.5 1.3 3.6 1.8 5.6 1.2.4-.1.6.4.4.6-1.7 1.9-4.2 2.8-6.7 2.1-.4-.1-.6.4-.3.6 2 1.5 4.7 1.7 6.9.5.3-.2.7.1.5.4-1 1.7-.7 3.8.7 5.2.3.3 0 .8-.4.6-2.3-1.2-5-1.1-7.2.2-.3.2-.1.7.3.5 3-2 6.7-1.4 9 1.4.2.3 0 .8-.4.6C.4 13.5-2 14.8-4.6 14.8c-.4 0-.6.5-.3.7 3.3 2.1 7.6 2.1 10.9 0 .3-.2.7.1.6.5-.7 2.9-.1 5.9 1.8 8.1.3.3.8 0 .6-.4-.9-2.1-1-4.5-.2-6.5.1-.3-.2-.7-.5-.5-2 1.4-4.5 1.7-6.8.8-.4-.1-.6.4-.3.6 2.6 1.9 6.1 1.8 8.6-.2.3-.2.8.1.6.4-1.3 2.2-.6 4.7.7 6.7.2.3.7 0 .5-.3-1-2.1-.7-4.5.6-6.3.2-.3-.1-.7-.4-.6-2.5 1.1-5.4.6-7.4-1.3-.3-.2-.1-.8.3-.6 2.9 1.4 6.3.5 8.2-2 .2-.3 0-.8-.4-.6-1.7.9-3.7 1-5.5.3-.4-.1-.6.4-.4.6.6 1.5 2 2.5 3.6 2.6.4 0 .5-.5.2-.7-1.2-.6-2.2-1.7-2.6-3-.1-.4.4-.7.7-.4 1.7 1.5 4.3 1.6 6.1.3.3-.2.8.1.6.4-1 2-.5 4.3.9 6 .3.3.8 0 .6-.4C20.3 15.3 19 12.8 19 10c0-.4.5-.6.8-.3 1.3 1.1 2.8 1.7 4.5 1.7.4 0 .6-.5.4-.7-1-.7-2.2-1-3.4-.9-.4 0-.6-.5-.3-.7 1.5-.9 3.2-1.3 5-1.2.4 0 .6-.5.4-.7-.9-.6-2-1-3.2-1-.4 0-.6-.5-.3-.7z' fill='%23627F38'/%3E%3C/svg%3E");
     background-size: 150px 150px;
 }
@@ -62,16 +57,16 @@ body {
     width: 100%;
     max-width: 1150px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px; /* Уменьшен отступ для мобилок */
 }
 
 /* =========================================
-   КНОПКИ (ОЛИВКОВЫЙ И ОРАНЖЕВЫЙ)
+   КНОПКИ
 ========================================= */
 .btn {
     display: inline-block;
-    padding: 14px 28px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 15px;
     font-weight: 600;
     border-radius: 10px;
     text-decoration: none;
@@ -113,11 +108,12 @@ body {
 }
 
 .btn-large {
-    padding: 18px 40px;
-    font-size: 18px;
+    padding: 16px 32px;
+    font-size: 16px;
+    width: 100%; /* На мобилках на всю ширину */
+    max-width: 400px;
 }
 
-/* Вспомогательный класс для оранжевого текста */
 .text-orange {
     color: var(--primary-orange) !important;
 }
@@ -126,7 +122,7 @@ body {
    ШАПКА (HEADER)
 ========================================= */
 .header {
-    padding: 20px 0;
+    padding: 15px 0;
     position: relative;
     z-index: 10;
 }
@@ -138,7 +134,7 @@ body {
 }
 
 .logo {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 800;
     letter-spacing: 1px;
     color: var(--text-main);
@@ -148,33 +144,37 @@ body {
     color: var(--primary-orange);
 }
 
+.header .btn-outline {
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
 /* =========================================
    ГЛАВНЫЙ ЭКРАН (HERO)
 ========================================= */
 .hero {
     position: relative;
-    padding: 60px 0 60px;
+    padding: 40px 0;
     text-align: center;
 }
 
-/* Оранжевый бейдж с вертикалями */
 .hero-badge {
     display: inline-block;
-    padding: 8px 24px;
+    padding: 6px 16px;
     background: rgba(232, 122, 36, 0.1);
     color: var(--primary-orange);
     border: 1px solid var(--primary-orange);
     border-radius: 50px;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .hero-title {
-    font-size: 38px;
+    font-size: 28px;
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: var(--text-main);
 }
 
@@ -183,75 +183,78 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 17px;
+    font-size: 15px;
     color: var(--text-muted);
     max-width: 650px;
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
 }
 
 .hero-actions {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
+/* АДАПТАЦИЯ ДЛЯ МОБИЛОК: СТАТИСТИКА */
 .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* По 2 в ряд на мобилках */
+    gap: 15px;
+    justify-items: center;
+}
+/* Чтобы третья карточка была по центру на мобилках */
+.hero-stats .stat-item:last-child {
+    grid-column: span 2;
+    width: 100%;
+    max-width: 250px;
 }
 
 /* =========================================
-   УНИВЕРСАЛЬНЫЕ КАРТОЧКИ (СТЕКЛО И БЕЛЫЕ)
+   КАРТОЧКИ (СТЕКЛО И БЕЛЫЕ)
 ========================================= */
-/* Стеклянные карточки (Фичи, Слайдер) */
 .glass-card {
     background: var(--glass-bg); 
     backdrop-filter: blur(16px); 
     border: 1px solid var(--glass-border); 
-    border-radius: 16px;
-    padding: 24px;
+    border-radius: 12px;
+    padding: 15px;
     transition: all 0.3s ease;
     box-shadow: 0 8px 30px var(--glass-shadow);
 }
 
 .glass-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     background: rgba(255, 255, 255, 0.8);
     border-color: var(--primary-olive);
-    box-shadow: 0 15px 35px rgba(98, 127, 56, 0.1);
+    box-shadow: 0 10px 25px rgba(98, 127, 56, 0.1);
 }
 
-/* Белые карточки (Статистика, Отзывы) */
 .white-card {
     background: #ffffff;
-    border-radius: 16px;
-    padding: 24px;
+    border-radius: 12px;
+    padding: 15px;
     transition: all 0.3s ease;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0,0,0,0.02);
+    width: 100%;
 }
 
 .white-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* Элементы статистики */
 .stat-item {
-    min-width: 170px;
     text-align: center;
-    padding: 24px 30px;
 }
 
 .stat-value {
     display: block;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 800;
     color: var(--primary-olive);
 }
 
 .stat-label {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -264,10 +267,10 @@ body {
    СЕТКИ И ЗАГОЛОВКИ СЕКЦИЙ
 ========================================= */
 .section-title {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 800;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: var(--text-main);
 }
 
@@ -279,56 +282,59 @@ body {
     text-align: center;
     color: var(--text-muted);
     max-width: 650px;
-    margin: 0 auto 50px;
-    font-size: 16px;
+    margin: 0 auto 30px;
+    font-size: 14px;
 }
 
+/* АДАПТАЦИЯ ДЛЯ МОБИЛОК: СЕТКИ (ФИЧИ И ОТЗЫВЫ) */
 .grid-layout {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на мобилках */
+    gap: 15px;
 }
 
 /* =========================================
    ПРЕИМУЩЕСТВА (ФИЧИ)
 ========================================= */
 .features {
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .feature-icon {
-    font-size: 32px;
-    margin-bottom: 15px;
+    font-size: 24px;
+    margin-bottom: 10px;
     background: rgba(98, 127, 56, 0.1);
-    width: 64px;
-    height: 64px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 14px;
+    border-radius: 10px;
     border: 1px solid rgba(98, 127, 56, 0.2);
 }
 
 .feature-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    margin-bottom: 5px;
     color: var(--text-main);
+    line-height: 1.2;
 }
 
 .feature-card p {
     color: var(--text-muted);
-    font-size: 15px;
+    font-size: 11px;
+    line-height: 1.3;
 }
 
 /* =========================================
-   БЛОК ПРУФОВ (СЛАЙДЕР СО СКРИНШОТАМИ)
+   БЛОК ПРУФОВ
 ========================================= */
 .proofs {
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .proofs-slider {
-    padding-bottom: 60px;
+    padding-bottom: 50px;
 }
 
 .proof-card {
@@ -342,8 +348,6 @@ body {
 .proof-card a {
     display: block;
     overflow: hidden; 
-    text-decoration: none; 
-    color: inherit;
     flex-grow: 1; 
 }
 
@@ -361,52 +365,53 @@ body {
 }
 
 .proof-caption {
-    padding: 20px;
+    padding: 15px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
     background: rgba(255, 255, 255, 0.6);
 }
 
-/* Слайд с кнопкой */
 .custom-slide-content {
     position: relative;
 }
 .slide-btn {
     display: block;
-    margin: 0 20px 20px 20px;
+    margin: 0 15px 15px 15px;
+    font-size: 13px;
+    padding: 10px;
 }
 
-/* Swiper Controls */
 .swiper-button-next, .swiper-button-prev {
     color: var(--primary-olive) !important;
+    transform: scale(0.7); /* Меньше стрелки на мобилке */
 }
 .swiper-pagination-bullet-active {
     background: var(--primary-orange) !important;
 }
 
 /* =========================================
-   БЛОК ОТЗЫВОВ И ГЛАВНАЯ КНОПКА
+   БЛОК ОТЗЫВОВ
 ========================================= */
 .reviews {
-    padding: 60px 0 80px;
+    padding: 40px 0 60px;
 }
 
 .review-header {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+    flex-direction: column; /* На мобилке имя под аватаркой */
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
-/* Синяя иконка Telegram для аватаров */
 .tg-blue {
     background: #0088cc;
 }
 
 .review-avatar {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -415,62 +420,27 @@ body {
 }
 
 .review-author h4 {
-    font-size: 17px;
-    margin-bottom: 2px;
+    font-size: 13px;
+    margin-bottom: 0;
     color: var(--text-main);
+    line-height: 1.1;
 }
 
 .review-author span {
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 600;
 }
 
 .review-text {
     font-style: italic;
-    line-height: 1.6;
+    font-size: 11px;
+    line-height: 1.4;
     color: var(--text-muted);
 }
 
 .main-channel-action {
     text-align: center;
-    margin-top: 50px;
-}
-
-/* =========================================
-   ПОДВАЛ (CLIENTS FOOTER С КРАСНОЙ ЛИНИЕЙ)
-========================================= */
-.clients-footer {
-    border-top: 4px solid #E32636; /* Ярко-красная линия */
-    background: #ffffff;
-    padding: 40px 0;
-    text-align: center;
-}
-
-.clients-title {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 20px;
-}
-
-.clients-logos {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.clients-logos span {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
-
-.clients-logos span:hover {
-    color: var(--primary-olive);
+    margin-top: 30px;
 }
 
 /* =========================================
@@ -481,11 +451,11 @@ body {
     backdrop-filter: blur(8px);
 }
 .fancybox__image {
-    border-radius: 16px !important;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
 }
 .f-button[title="Close"] {
-    margin: 15px !important;
+    margin: 10px !important;
     transition: transform 0.3s ease !important;
 }
 .f-button[title="Close"]:hover {
@@ -493,26 +463,120 @@ body {
 }
 
 /* =========================================
-   АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ)
+   АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ) ДЛЯ ПК
 ========================================= */
 @media (min-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    .header .btn-outline {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+    .logo {
+        font-size: 26px;
+    }
     .hero {
         padding: 80px 0 100px;
     }
-    
+    .hero-badge {
+        font-size: 15px;
+        padding: 8px 24px;
+    }
     .hero-title {
         font-size: 52px;
     }
-    
     .hero-subtitle {
         font-size: 19px;
     }
     
+    /* Возвращаем стату в 1 ряд на ПК */
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .hero-stats .stat-item:last-child {
+        grid-column: auto;
+    }
+    .stat-item {
+        min-width: 170px;
+        padding: 24px 30px;
+    }
+    .stat-value {
+        font-size: 28px;
+    }
+    .stat-label {
+        font-size: 13px;
+    }
+    
     .section-title {
         font-size: 40px;
+        margin-bottom: 15px;
+    }
+    .section-subtitle {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    
+    /* Сетки на ПК */
+    .grid-layout {
+        grid-template-columns: repeat(4, 1fr); /* Фичи в 4 колонки */
+        gap: 24px;
+    }
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr); /* Отзывы в 2 колонки */
     }
 
-    .grid-layout {
-        grid-template-columns: repeat(2, 1fr);
+    .glass-card, .white-card {
+        padding: 24px;
+        border-radius: 16px;
+    }
+
+    .feature-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 32px;
+    }
+    .feature-card h3 {
+        font-size: 20px;
+    }
+    .feature-card p {
+        font-size: 15px;
+    }
+
+    .proof-caption {
+        font-size: 15px;
+        padding: 20px;
+    }
+    .slide-btn {
+        font-size: 15px;
+        margin: 0 20px 20px 20px;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        transform: scale(1); 
+    }
+
+    .review-header {
+        flex-direction: row; /* На ПК аватар и имя в одну строку */
+        align-items: center;
+        gap: 15px;
+    }
+    .review-avatar {
+        width: 50px;
+        height: 50px;
+    }
+    .review-author h4 {
+        font-size: 17px;
+    }
+    .review-author span {
+        font-size: 13px;
+    }
+    .review-text {
+        font-size: 15px;
+    }
+    
+    .btn-large {
+        width: auto;
     }
 }

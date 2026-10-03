@@ -19,8 +19,8 @@
 </head>
 <body>
 
-    <!-- Фоновые фигуры пальм -->
-    <div class="palm-background"></div>
+    <!-- Новый спокойный геометрический фон (точки) -->
+    <div class="abstract-background"></div>
 
     <!-- Навигация -->
     <header class="header">
@@ -115,36 +115,40 @@
             <!-- Слайдер Swiper -->
             <div class="swiper proofs-slider">
                 <div class="swiper-wrapper">
+                    <!-- Слайд 1 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
-                            <a href="img/1.jpg" data-fancybox="gallery">
+                            <a href="img/1.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/1.jpg" alt="Спенд в Google Ads">
                             </a>
                             <div class="proof-caption" data-i18n="slide_1">Открут $2050+ без банов и проблем запуска</div>
                         </div>
                     </div>
                     
+                    <!-- Слайд 2 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
-                            <a href="img/2.jpg" data-fancybox="gallery">
+                            <a href="img/2.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/2.jpg" alt="Биллинг Google Ads">
                             </a>
                             <div class="proof-caption" data-i18n="slide_2">Траст, который видно сразу. Успешные биллинги и стабильные списания.</div>
                         </div>
                     </div>
                     
+                    <!-- Слайд 3 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
-                            <a href="img/3.jpg" data-fancybox="gallery">
+                            <a href="img/3.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/3.jpg" alt="Стабильный открут">
                             </a>
                             <div class="proof-caption" data-i18n="slide_3">Низкий CPA с первых дней. Кампании цепляются быстро и без фризов.</div>
                         </div>
                     </div>
                     
+                    <!-- Слайд 4 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card custom-slide-content">
-                            <a href="img/4.jpg" data-fancybox="gallery">
+                            <a href="img/4.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/4.jpg" alt="Отзывы Palma Media">
                             </a>
                             <div class="proof-caption" data-i18n="slide_4">Остальные результаты с отзывами вы можете посмотреть в канале</div>
@@ -152,6 +156,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Навигация -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
@@ -358,7 +363,6 @@
         const langSwitcher = document.getElementById('langSwitcher');
         const langItems = document.querySelectorAll('.lang-dropdown li');
 
-        // Функция смены языка с обновлением интерфейса
         function setLanguage(lang) {
             langItems.forEach(el => el.classList.remove('active'));
             const activeItem = document.querySelector(`.lang-dropdown li[data-lang="${lang}"]`) || document.querySelector('.lang-dropdown li[data-lang="en"]');
@@ -375,7 +379,7 @@
             });
         }
 
-        // Авто-определение языка браузера/IP пользователя
+        // Авто-определение языка браузера пользователя
         document.addEventListener('DOMContentLoaded', () => {
             const userLang = navigator.language || navigator.userLanguage;
             const shortLang = userLang.substring(0, 2).toLowerCase();

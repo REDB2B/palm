@@ -47,9 +47,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.04; /* Очень легкая прозрачность */
+    opacity: 0.04;
     pointer-events: none;
-    /* Красивый и детальный силуэт пальмы */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23627F38' d='M351.4 121.2c-15.5-5.8-31-4.9-44.5 1.5-3.3-15-13.6-28.1-29.2-35.3-18.4-8.5-39.7-7-57 2.3 3.8-11.4 2.8-24.6-4.5-34.9-10.7-15.1-30.8-20.9-48.8-13.3-5.2-12.7-17-21.7-31.5-23.7-18.1-2.5-36.1 5.3-46.7 20.3-2.1 2.9-1.2 6.8 1.9 8.6 15 8.6 25.1 22.8 28.5 39.3-5.5-2.7-11.7-4.3-18.1-4.5-17.6-.6-34 9.1-42.5 25.3-7.5 14.3-7.5 32.1.2 46.5 1.7 3.2 5.8 4 8.6 1.7 11.2-8.9 25.6-12.7 40-10.8 1.9 3.2 4 6.3 6.3 9.2-12.8 1.4-25.2 6.5-35.5 15.3-13.2 11.3-20.6 27.6-20.4 44.9.2 17.6 8 33.7 21.6 44.5 2.8 2.2 6.9 1 8.5-2.1 6.8-13.2 18-23.6 31.8-29.3-3.1 11.5-2.9 23.9 1.3 35.1 4.7 12.6 13.9 22.5 25.8 27.6 18.5 8 39.5 5.8 55.9-6.1 2.9-2.1 3.2-6.3 1-8.8-9.4-10.8-14.7-25-14.9-39.6.9 1 1.9 1.9 3 2.8 17.5 14 42.6 16.5 62.7 5.7 19.3-10.4 30.5-31.3 28.9-53.5-.3-3.6-4.2-5.4-7.1-3.3-11.8 8.6-26.6 11.4-40.8 7.9 16.2-7.1 29.2-19.8 36.6-35.6 7-14.9 6.8-32.5-.5-47.3-1.6-3.2-5.8-3.9-8.5-1.6-9.8 8-22 12.3-34.6 12.4 12.2-7.2 21.6-18.6 26.6-32 4.9-13.2 4-27.9-2.8-40.4-1.8-3.1-6-3.8-8.7-1.4zM245.9 191.1c-1.3-1.1-2.9-1.9-4.7-2.3l-10-44.5c-1-4.4 2.8-8.3 7-7 l15.7 4.7c4 1.2 6.4 5.5 5.2 9.4l-8.5 28.6c-1 3.3-2.9 6-5.3 7.8L245.9 191.1z M228.6 220l-16.5 282.8c-.3 4.3 3 8 7.3 8.2h32c4.3.2 7.9-3.2 8.3-7.5L274 219.6c.2-4.1-3-7.6-7.1-7.8h-31.2c-4-.2-7.4 2.9-7.1 7V220z'/%3E%3C/svg%3E");
     background-size: 140px 140px;
 }
@@ -120,12 +119,12 @@ body {
 }
 
 /* =========================================
-   ШАПКА (HEADER)
+   ШАПКА И ВЫБОР ЯЗЫКА
 ========================================= */
 .header {
     padding: 15px 0;
     position: relative;
-    z-index: 10;
+    z-index: 100;
 }
 
 .header-container {
@@ -145,9 +144,90 @@ body {
     color: var(--primary-orange);
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .header .btn-outline {
     padding: 8px 16px;
     font-size: 13px;
+}
+
+/* Переключатель языков */
+.language-switcher {
+    position: relative;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 10px;
+    border-radius: 4px; 
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+    background: rgba(232, 122, 36, 0.1);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: #1A1A1A; 
+    border-radius: 4px;
+    list-style: none;
+    min-width: 140px;
+    padding: 10px 0;
+    margin: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.language-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-dropdown li {
+    padding: 10px 20px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s ease;
+}
+
+.lang-dropdown li:hover {
+    background-color: #2a2a2a;
+}
+
+.lang-code {
+    color: #888888;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 800;
+    width: 20px;
+}
+
+.lang-dropdown li.active, 
+.lang-dropdown li.active .lang-code {
+    color: var(--primary-orange);
 }
 
 /* =========================================
@@ -194,7 +274,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* Адаптация статы для мобилок: 2 в ряд */
 .hero-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -286,7 +365,6 @@ body {
     font-size: 14px;
 }
 
-/* 2 колонки на мобилках для фич и отзывов */
 .grid-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
@@ -327,14 +405,13 @@ body {
 }
 
 /* =========================================
-   БЛОК ПРУФОВ (СЛАЙДЕР)
+   БЛОК ПРУФОВ
 ========================================= */
 .proofs {
     padding: 40px 0;
 }
 
 .proofs-slider {
-    /* Добавляем боковые отступы, чтобы стрелочки были "снаружи" карточек */
     padding: 0 35px 50px 35px;
 }
 
@@ -383,7 +460,6 @@ body {
     padding: 10px;
 }
 
-/* Стрелочки сбоку слайдера */
 .swiper-button-next { right: 0 !important; }
 .swiper-button-prev { left: 0 !important; }
 .swiper-button-next, .swiper-button-prev {
@@ -401,7 +477,6 @@ body {
     padding: 40px 0;
 }
 
-/* На мобилке тарифы идут в один столбец для удобства чтения */
 .accounts-grid {
     grid-template-columns: 1fr;
     gap: 15px;
@@ -519,10 +594,17 @@ body {
     .container {
         padding: 0 20px;
     }
+    
     .header .btn-outline {
+        display: inline-block;
         padding: 12px 24px;
         font-size: 15px;
     }
+    .lang-btn {
+        padding: 9px 12px;
+        font-size: 14px;
+    }
+    
     .logo {
         font-size: 26px;
     }
@@ -540,7 +622,6 @@ body {
         font-size: 19px;
     }
     
-    /* Возвращаем стату в 1 ряд на ПК */
     .hero-stats {
         display: flex;
         justify-content: center;
@@ -569,16 +650,15 @@ body {
         margin-bottom: 50px;
     }
     
-    /* Сетки на ПК */
     .grid-layout {
-        grid-template-columns: repeat(4, 1fr); /* Фичи в 4 колонки */
+        grid-template-columns: repeat(4, 1fr); 
         gap: 24px;
     }
     .reviews-grid {
-        grid-template-columns: repeat(2, 1fr); /* Отзывы в 2 колонки */
+        grid-template-columns: repeat(2, 1fr); 
     }
     .accounts-grid {
-        grid-template-columns: repeat(3, 1fr); /* Аккаунты в 3 колонки */
+        grid-template-columns: repeat(3, 1fr); 
     }
 
     .glass-card, .white-card {
@@ -598,7 +678,6 @@ body {
         font-size: 15px;
     }
     
-    /* Аккаунты на ПК */
     .account-card h3 {
         font-size: 22px;
         margin-bottom: 12px;
@@ -643,5 +722,12 @@ body {
     
     .btn-large {
         width: auto;
+    }
+}
+
+/* Скрываем кнопку менеджера на мобилках, чтобы влез язык и логотип */
+@media (max-width: 500px) {
+    .header .btn-outline {
+        display: none; 
     }
 }

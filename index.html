@@ -17,7 +17,7 @@
     <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code (Мульти-пиксель: 3 шт.) -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -27,12 +27,21 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // Пиксель 1
     fbq('init', '2261545901293911');
+    // Пиксель 2
+    fbq('init', '1105215478631709');
+    // Пиксель 3 (Новый)
+    fbq('init', '2671858263285801');
+    
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2261545901293911&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2261545901293911&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1105215478631709&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2671858263285801&ev=PageView&noscript=1"/>
+    </noscript>
     <!-- End Meta Pixel Code -->
 </head>
 <body>
@@ -397,7 +406,6 @@
             });
         }
 
-        // Авто-определение языка браузера пользователя
         document.addEventListener('DOMContentLoaded', () => {
             const userLang = navigator.language || navigator.userLanguage;
             const shortLang = userLang.substring(0, 2).toLowerCase();
@@ -406,7 +414,6 @@
             setLanguage(defaultLang);
         });
 
-        // Открытие/закрытие меню по клику
         langBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             langSwitcher.classList.toggle('open');
@@ -416,7 +423,6 @@
             langSwitcher.classList.remove('open');
         });
 
-        // Ручная смена языка из списка
         langItems.forEach(item => {
             item.addEventListener('click', () => {
                 const selectedLang = item.getAttribute('data-lang');

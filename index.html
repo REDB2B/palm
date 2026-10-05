@@ -17,7 +17,7 @@
     <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Meta Pixel Code (Мульти-пиксель + ДИНАМИЧЕСКИЙ) -->
+    <!-- Meta Pixel Code (Мульти-пиксель + Динамический) -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -28,17 +28,19 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // 1. Ваши постоянные базовые пиксели
+    // Пиксель 1
     fbq('init', '2261545901293911');
+    // Пиксель 2
     fbq('init', '1105215478631709');
+    // Пиксель 3 (Новый)
     fbq('init', '2671858263285801');
     
-    // 2. ДИНАМИЧЕСКИЙ ПИКСЕЛЬ ИЗ ССЫЛКИ
+    // ДИНАМИЧЕСКИЙ ПИКСЕЛЬ ИЗ URL
     const urlParams = new URLSearchParams(window.location.search);
     const dynamicPixel = urlParams.get('pixel') || urlParams.get('px');
     
     if (dynamicPixel) {
-        fbq('init', dynamicPixel); // Автоматически запускает пиксель, если он есть в ссылке
+        fbq('init', dynamicPixel);
     }
     
     fbq('track', 'PageView');
@@ -66,6 +68,7 @@
                 <!-- Выбор языка -->
                 <div class="language-switcher" id="langSwitcher">
                     <button class="lang-btn" id="langBtn">RU</button>
+                    <!-- Выпадающий список (только RU и EN) -->
                     <ul class="lang-dropdown" id="langDropdown">
                         <li data-lang="ru"><span class="lang-code">RU</span> Русский</li>
                         <li data-lang="en"><span class="lang-code">EN</span> English</li>
@@ -311,12 +314,8 @@
             }
         });
 
-        Fancybox.bind("[data-fancybox]", {
-            backdropClick: "close",
-            animated: true,
-            dragToClose: false,
-            Toolbar: { display: { left: [], middle: [], right: ["close"] } },
-            Images: { zoom: true }
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            // Используем стандартные настройки Fancybox, чтобы ничего не ломалось
         });
 
         // ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКОВ
@@ -329,4 +328,112 @@
                 btn_bot: "Запустить бота",
                 stat_1_val: "4.5 года", stat_1_lbl: "на рынке",
                 stat_2_val: "48 часов", stat_2_lbl: "гарантии замены",
-                stat_3_val: "3000+",
+                stat_3_val: "3000+", stat_3_lbl: "постоянных клиентов",
+                feat_title: "Наши аккаунты подойдут под <span>любые вертикали</span>",
+                feat_1_title: "Используем аккаунты сами", feat_1_desc: "Разница чувствуется. Мы сами льем трафик и понимаем, какие расходники реально работают.",
+                feat_2_title: "Гарантия 48 часов", feat_2_desc: "Если аккаунт отлетает до запуска рекламы — меняем бесплатно и без лишних вопросов.",
+                feat_3_title: "ГЕО без границ", feat_3_desc: "Более 20 стран для платежных профилей (EU, AU, NZ и другие). Подбираем лучшее.",
+                feat_4_title: "Высокий средний спенд", feat_4_desc: "От $200 до $16k среднего спенда до бана в наших кейсах на серых нишах.",
+                proofs_title: "Хватит верить на слово. <span>Смотрите на цифры.</span>",
+                proofs_subtitle: "Реальный открут и стабильные биллинги наших клиентов прямо сейчас.",
+                slide_1: "Открут $2050+ без банов и проблем запуска",
+                slide_2: "Траст, который видно сразу. Успешные биллинги и стабильные списания.",
+                slide_3: "Низкий CPA с первых дней. Кампании цепляются быстро и без фризов.",
+                slide_4: "Остальные результаты с отзывами вы можете посмотреть в канале",
+                btn_reviews: "Канал с отзывами",
+                acc_title: "Выберите подходящий <span>аккаунт</span>",
+                acc_1_desc: "Базовый аккаунт для самостоятельной настройки и запуска.",
+                acc_2_desc: "Аккаунт с пройденной верификацией рекламодателя и подготовленным окружением.",
+                acc_3_desc: "Максимальная подготовка аккаунта и окружения.",
+                acc_extra: "Есть и другие расходники, которые понадобятся каждому!",
+                btn_buy: "Купить",
+                rev_title: "Что говорят <span class='text-orange'>арбитражники</span>",
+                rev_1: "\"Брал пачку на тест. Из 10 акков 9 зацепились сразу, спенд полетел. Рекомендую.\"",
+                rev_2: "\"Долго искал нормальные сетапы под крипту. Биллинги растут, ROI радует.\"",
+                rev_3: "\"Заливаем дейтинг. Ребята спасли от шлака, фарм отличный, прокси идеальны.\"",
+                rev_4: "\"Была проблема на старте, саппорт решил за пару минут. Спенды держат 100%.\"",
+                btn_main_channel: "Перейти в наш Основной Telegram канал"
+            },
+            en: {
+                page_title: "Trusted Google Ads Accounts | Palma Media",
+                nav_contact: "Contact Manager",
+                hero_title: "Trusted Google Ads Accounts <span>That Hold Spend</span>",
+                hero_subtitle: "Forget about micro-spends and instant bans. Verified accounts with history. Fast replacement on failure.",
+                btn_bot: "Launch Bot",
+                stat_1_val: "4.5 years", stat_1_lbl: "on the market",
+                stat_2_val: "48 hours", stat_2_lbl: "replacement guarantee",
+                stat_3_val: "3000+", stat_3_lbl: "regular clients",
+                feat_title: "Our accounts fit <span>any vertical</span>",
+                feat_1_title: "We use them ourselves", feat_1_desc: "You can feel the difference. We run traffic ourselves and know what actually works.",
+                feat_2_title: "48-Hour Guarantee", feat_2_desc: "If an account gets banned before launch — we replace it for free, no questions asked.",
+                feat_3_title: "GEO without borders", feat_3_desc: "Over 20 countries for payment profiles (EU, AU, NZ, etc). We match the best for your offer.",
+                feat_4_title: "High Average Spend", feat_4_desc: "From $200 to $16k average spend before ban in our gray-niche cases.",
+                proofs_title: "Stop taking our word for it. <span>Look at the numbers.</span>",
+                proofs_subtitle: "Real spend and stable billing from our clients right now.",
+                slide_1: "Spend $2050+ with no bans or launch issues",
+                slide_2: "Trust you can see. Successful billing and stable charges.",
+                slide_3: "Low CPA from day one. Campaigns catch on fast without freezes.",
+                slide_4: "Check out the rest of the results and reviews in our channel",
+                btn_reviews: "Reviews Channel",
+                acc_title: "Choose the right <span>account</span>",
+                acc_1_desc: "Basic account for self-setup and launch.",
+                acc_2_desc: "Account with passed advertiser verification and prepared environment.",
+                acc_3_desc: "Maximum preparation of the account and environment.",
+                acc_extra: "There are other supplies that everyone needs!",
+                btn_buy: "Buy Now",
+                rev_title: "What <span class='text-orange'>affiliates</span> say",
+                rev_1: "\"Took a batch to test. 9 out of 10 accounts hooked immediately, spend flew. Highly recommend.\"",
+                rev_2: "\"Searched a long time for decent crypto setups. Billings grow, ROI is pleasing.\"",
+                rev_3: "\"Running dating volume. The guys saved us from garbage accounts. Great farm, perfect proxies.\"",
+                rev_4: "\"Excellent support. Had an issue with card linking, manager fixed it in minutes. Spend holds 100%.\"",
+                btn_main_channel: "Join our Main Telegram Channel"
+            }
+        };
+
+        const langBtn = document.getElementById('langBtn');
+        const langSwitcher = document.getElementById('langSwitcher');
+        const langItems = document.querySelectorAll('.lang-dropdown li');
+
+        function setLanguage(lang) {
+            langItems.forEach(el => el.classList.remove('active'));
+            const activeItem = document.querySelector(`.lang-dropdown li[data-lang="${lang}"]`) || document.querySelector('.lang-dropdown li[data-lang="en"]');
+            activeItem.classList.add('active');
+            
+            langBtn.textContent = activeItem.getAttribute('data-lang').toUpperCase();
+            
+            const dict = translations[lang] || translations['en']; 
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerHTML = dict[key];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userLang = navigator.language || navigator.userLanguage;
+            const shortLang = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['ru', 'en']; 
+            const defaultLang = supportedLangs.includes(shortLang) ? shortLang : 'en';
+            setLanguage(defaultLang);
+        });
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langSwitcher.classList.toggle('open');
+        });
+
+        document.addEventListener('click', () => {
+            langSwitcher.classList.remove('open');
+        });
+
+        langItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const selectedLang = item.getAttribute('data-lang');
+                setLanguage(selectedLang);
+                langSwitcher.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>

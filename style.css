@@ -47,9 +47,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.15; /* Оптимальная видимость узора */
+    opacity: 0.15;
     pointer-events: none;
-    /* Стильный, не бросающийся в глаза точечный паттерн */
     background-image: radial-gradient(var(--primary-olive) 1.5px, transparent 1.5px);
     background-size: 25px 25px;
 }
@@ -172,7 +171,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px; /* Стильный квадратик */
+    border-radius: 8px;
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -191,7 +190,7 @@ body {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
-    background-color: #1A1A1A; /* Темный фон меню */
+    background-color: #1A1A1A;
     border-radius: 8px;
     min-width: 140px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -425,7 +424,6 @@ body {
     padding: 0 35px 50px 35px;
 }
 
-/* Настройки для выравнивания высоты карточек */
 .proofs-slider .swiper-slide {
     height: auto; 
     display: flex;
@@ -438,7 +436,7 @@ body {
     flex-direction: column;
 }
 
-/* Жестко фиксируем пропорции для фотографий, чтобы они не скакали */
+/* Fix para sa mga ladawan tapno napintas da a buyaen */
 .proof-img-wrap {
     display: block;
     width: 100%;
@@ -462,7 +460,7 @@ body {
 
 .proof-caption {
     padding: 15px;
-    flex-grow: 1; /* Растягивает текст до конца, выравнивая карточки */
+    flex-grow: 1; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -600,13 +598,6 @@ body {
 .fancybox__image {
     border-radius: 12px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-}
-.f-button[title="Close"] {
-    margin: 10px !important;
-    transition: transform 0.3s ease !important;
-}
-.f-button[title="Close"]:hover {
-    transform: scale(1.1) rotate(90deg) !important;
 }
 
 /* =========================================

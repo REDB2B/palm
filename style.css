@@ -436,7 +436,6 @@ body {
     flex-direction: column;
 }
 
-/* Fix para sa mga ladawan tapno napintas da a buyaen */
 .proof-img-wrap {
     display: block;
     width: 100%;
@@ -601,6 +600,142 @@ body {
 }
 
 /* =========================================
+   ДОПОЛНЕНИЯ: ЛИД-МАГНИТЫ И ССЫЛКИ
+========================================= */
+.lead-magnet {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-orange);
+    margin-bottom: 12px;
+}
+
+.secondary-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.secondary-link:hover {
+    color: var(--primary-olive);
+}
+
+/* =========================================
+   ДОПОЛНЕНИЯ: АККОРДЕОНЫ (ТАРИФЫ И FAQ)
+========================================= */
+.accounts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-card {
+    padding: 0 !important; 
+    text-align: left;
+    overflow: hidden;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+    user-select: none;
+}
+.accordion-header:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.acc-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.acc-icon-small {
+    font-size: 22px;
+}
+.accordion-header h3 {
+    font-size: 18px;
+    margin: 0;
+    color: var(--primary-olive);
+}
+
+.acc-toggle-icon {
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+}
+.accordion-content {
+    overflow: hidden;
+    padding: 0 25px; 
+}
+.accordion-content > *:last-child {
+    margin-bottom: 25px;
+}
+
+.accordion-card.active .accordion-body {
+    grid-template-rows: 1fr;
+}
+.accordion-card.active .acc-toggle-icon {
+    transform: rotate(180deg);
+    color: var(--primary-orange);
+}
+.accordion-card.active .accordion-header {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.acc-desc {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.acc-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    color: var(--text-main);
+}
+.acc-list li {
+    margin-bottom: 6px;
+    padding-left: 5px;
+}
+.accordion-content p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* =========================================
+   БЛОК FAQ
+========================================= */
+.faq {
+    padding: 40px 0;
+}
+.faq .accordion-header h3 {
+    font-size: 16px;
+    color: var(--text-main);
+}
+.faq .accordion-content p {
+    margin-top: 15px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================
    АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ) ДЛЯ ПК
 ========================================= */
 @media (min-width: 768px) {
@@ -736,6 +871,35 @@ body {
     
     .btn-large {
         width: auto;
+    }
+    
+    /* Адаптив для новых блоков ПК (Аккордеоны и Лид-магниты) */
+    .lead-magnet {
+        font-size: 15px;
+    }
+    .secondary-link {
+        font-size: 14px;
+    }
+    .accordion-header {
+        padding: 24px 30px;
+    }
+    .accordion-header h3 {
+        font-size: 20px;
+    }
+    .accordion-content {
+        padding: 0 30px;
+    }
+    .accordion-content > *:last-child {
+        margin-bottom: 30px;
+    }
+    .acc-desc {
+        font-size: 16px;
+    }
+    .acc-list, .accordion-content p {
+        font-size: 15px;
+    }
+    .faq .accordion-header h3 {
+        font-size: 18px;
     }
 }
 

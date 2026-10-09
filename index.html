@@ -78,8 +78,6 @@
                         <li data-lang="en"><span class="lang-code">EN</span> English</li>
                     </ul>
                 </div>
-                
-                <a href="https://t.me/alex_palma_0001" target="_blank" class="btn btn-outline" data-i18n="nav_contact" onclick="fbq('track', 'Contact');">Связаться с менеджером</a>
             </div>
         </div>
     </header>
@@ -91,10 +89,13 @@
             
             <h1 class="hero-title" data-i18n="hero_title">Трастовые аккаунты Google Ads, <span>которые держат спенд</span></h1>
             
-            <p class="hero-subtitle" data-i18n="hero_subtitle">Забудьте про микро-спенды и баны на старте. Проверенные аккаунты с историю. Быстрая замена при невалиде.</p>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Забудьте про микро-спенды и баны на старте. Проверенные аккаунты с историей. Быстрая замена при невалиде.</p>
             
             <div class="hero-actions">
-                <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary" data-i18n="btn_bot" onclick="fbq('track', 'Lead');">Запустить бота</a>
+                <p class="lead-magnet" data-i18n="lead_magnet_hero">🎁 Запустите бота сейчас и получите бесплатную консультацию по сетапу!</p>
+                <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_bot" onclick="fbq('track', 'Lead');">Перейти в бот-магазин</a>
+                <br>
+                <a href="https://t.me/alex_palma_0001" target="_blank" class="secondary-link" data-i18n="nav_contact_alt">или связаться с менеджером</a>
             </div>
 
             <!-- Статистика -->
@@ -203,34 +204,125 @@
         </div>
     </section>
 
-    <!-- БЛОК: ТИПЫ АККАУНТОВ И ПОКУПКА -->
+    <!-- БЛОК: ТИПЫ АККАУНТОВ (АККОРДЕОНЫ) -->
     <section class="accounts" id="accounts">
         <div class="container">
             <h2 class="section-title" data-i18n="acc_title">Выберите подходящий <span>аккаунт</span></h2>
             
-            <div class="grid-layout accounts-grid">
-                <div class="white-card account-card">
-                    <div class="acc-icon">🚀</div>
-                    <h3>BASE</h3>
-                    <p data-i18n="acc_1_desc">Базовый аккаунт для самостоятельной настройки и запуска.</p>
-                </div>
+            <div class="accounts-list">
                 
-                <div class="white-card account-card">
-                    <div class="acc-icon">✅</div>
-                    <h3>VERIFIED</h3>
-                    <p data-i18n="acc_2_desc">Аккаунт с пройденной верификацией рекламодателя и подготовленным окружением.</p>
+                <!-- Тариф BASE -->
+                <div class="white-card accordion-card">
+                    <div class="accordion-header">
+                        <div class="acc-title-wrap">
+                            <span class="acc-icon-small">🚀</span>
+                            <h3 data-i18n="acc_1_title">Google Ads BASE — от $10</h3>
+                        </div>
+                        <div class="acc-toggle-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content" data-i18n="acc_1_body">
+                            <!-- Контент вставится через JS -->
+                        </div>
+                    </div>
                 </div>
 
-                <div class="white-card account-card">
-                    <div class="acc-icon">💎</div>
-                    <h3>TRUST MAX</h3>
-                    <p data-i18n="acc_3_desc">Максимальная подготовка аккаунта и окружения.</p>
+                <!-- Тариф VERIFIED -->
+                <div class="white-card accordion-card">
+                    <div class="accordion-header">
+                        <div class="acc-title-wrap">
+                            <span class="acc-icon-small">✅</span>
+                            <h3 data-i18n="acc_2_title">Google Ads VERIFIED — от $40</h3>
+                        </div>
+                        <div class="acc-toggle-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content" data-i18n="acc_2_body">
+                            <!-- Контент вставится через JS -->
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Тариф TRUST MAX -->
+                <div class="white-card accordion-card">
+                    <div class="accordion-header">
+                        <div class="acc-title-wrap">
+                            <span class="acc-icon-small">💎</span>
+                            <h3 data-i18n="acc_3_title">Google Ads TRUST MAX</h3>
+                        </div>
+                        <div class="acc-toggle-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content" data-i18n="acc_3_body">
+                            <!-- Контент вставится через JS -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="accounts-action">
-                <p class="extra-supplies" data-i18n="acc_extra">Есть и другие расходники, которые понадобятся каждому!</p>
-                <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_buy" onclick="fbq('track', 'Lead');">Купить</a>
+                <p class="lead-magnet" data-i18n="lead_magnet_buy">Есть и другие расходники! Запустите бота сейчас, чтобы проверить наличие.</p>
+                <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_buy" onclick="fbq('track', 'Lead');">Посмотреть наличие в боте</a>
+                <br>
+                <a href="https://t.me/alex_palma_0001" target="_blank" class="secondary-link" data-i18n="nav_contact_alt">или связаться с менеджером</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title" data-i18n="faq_title">Частые <span>вопросы</span></h2>
+            
+            <div class="accounts-list">
+                <div class="white-card accordion-card">
+                    <div class="accordion-header">
+                        <h3 data-i18n="faq_1_q">Как быстро выдается аккаунт?</h3>
+                        <div class="acc-toggle-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p data-i18n="faq_1_a">Обычно выдача занимает от 1 до 2 дней. Для сборок TRUST MAX может потребоваться от 2 до 4 дней на полную подготовку и привязку биллинга.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="white-card accordion-card">
+                    <div class="accordion-header">
+                        <h3 data-i18n="faq_2_q">Что делать, если аккаунт улетел на полиси сразу после входа?</h3>
+                        <div class="acc-toggle-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p data-i18n="faq_2_a">У нас действует гарантия 48 часов. Если аккаунт отлетает в бан до запуска рекламы — мы меняем его бесплатно и без лишних вопросов.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="white-card accordion-card">
+                    <div class="accordion-header">
+                        <h3 data-i18n="faq_3_q">Какие бины вяжете?</h3>
+                        <div class="acc-toggle-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p data-i18n="faq_3_a">Используем самые трастовые карты и надежные платежки под конкретные гео. Актуальную информацию по рабочим бинам всегда можно уточнить у саппорта.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -305,7 +397,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>
-        // Инициализация слайдера и всплывающих окон
+        // Инициализация слайдера
         const swiper = new Swiper('.proofs-slider', {
             slidesPerView: 1, 
             spaceBetween: 20, 
@@ -318,18 +410,34 @@
             }
         });
 
-        Fancybox.bind('[data-fancybox="gallery"]', {
-            // Используем стандартные настройки Fancybox, чтобы ничего не ломалось
+        Fancybox.bind('[data-fancybox="gallery"]', {});
+
+        // Логика аккордеонов (Тарифы и FAQ)
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const card = header.closest('.accordion-card');
+                
+                // Раскомментируйте код ниже, если нужно, чтобы при открытии одного закрывались другие
+                /* 
+                document.querySelectorAll('.accordion-card').forEach(otherCard => {
+                    if (otherCard !== card) otherCard.classList.remove('active');
+                });
+                */
+
+                card.classList.toggle('active');
+            });
         });
 
         // ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКОВ
         const translations = {
             ru: {
                 page_title: "Трастовые аккаунты Google Ads | Palma Media",
-                nav_contact: "Связаться с менеджером",
+                nav_contact_alt: "или связаться с менеджером",
                 hero_title: "Трастовые аккаунты Google Ads, <span>которые держат спенд</span>",
                 hero_subtitle: "Забудьте про микро-спенды и баны на старте. Проверенные аккаунты с историей. Быстрая замена при невалиде.",
-                btn_bot: "Запустить бота",
+                lead_magnet_hero: "🎁 Запустите бота сейчас и получите бесплатную консультацию по сетапу!",
+                lead_magnet_buy: "Есть и другие расходники! Запустите бота сейчас, чтобы проверить наличие.",
+                btn_bot: "Перейти в бот-магазин",
                 stat_1_val: "4.5 года", stat_1_lbl: "на рынке",
                 stat_2_val: "48 часов", stat_2_lbl: "гарантии замены",
                 stat_3_val: "3000+", stat_3_lbl: "постоянных клиентов",
@@ -346,11 +454,72 @@
                 slide_4: "Остальные результаты с отзывами вы можете посмотреть в канале",
                 btn_reviews: "Канал с отзывами",
                 acc_title: "Выберите подходящий <span>аккаунт</span>",
-                acc_1_desc: "Базовый аккаунт для самостоятельной настройки и запуска.",
-                acc_2_desc: "Аккаунт с пройденной верификацией рекламодателя и подготовленным окружением.",
-                acc_3_desc: "Максимальная подготовка аккаунта и окружения.",
-                acc_extra: "Есть и другие расходники, которые понадобятся каждому!",
-                btn_buy: "Купить",
+                
+                // ТАРИФЫ RU 
+                acc_1_title: "Google Ads BASE — от $10",
+                acc_1_body: `
+                    <p class="acc-desc">Базовый аккаунт для самостоятельной настройки и запуска.</p>
+                    <p><strong>👤 Подойдёт, если:</strong><br>у вас уже есть свой процесс прогрева, настройки окружения и запуска.</p>
+                    <p><strong>📦 Что входит:</strong></p>
+                    <ul class="acc-list">
+                        <li>✅ Gmail 2023–2025</li>
+                        <li>✅ Cookies</li>
+                        <li>✅ 2FA + Backup codes</li>
+                    </ul>
+                    <p><strong>⚙️ Особенности:</strong></p>
+                    <ul class="acc-list">
+                        <li>🌍 GEO: MIX</li>
+                        <li>❌ Без верификации рекламодателя</li>
+                        <li>❌ Без прогревочного РК</li>
+                        <li>❌ Без прокси и антидетект-профиля</li>
+                        <li>🚫 Без Google Ads</li>
+                        <li>⏱️ Передача: 1–2 дня</li>
+                    </ul>
+                `,
+                acc_2_title: "Google Ads VERIFIED — от $40",
+                acc_2_body: `
+                    <p class="acc-desc">Аккаунт с пройденной верификацией рекламодателя и подготовленным окружением.</p>
+                    <p><strong>👤 Подойдёт, если:</strong><br>нужен готовый вариант без самостоятельного прохождения верификации и настройки окружения.</p>
+                    <p><strong>📦 Что входит:</strong></p>
+                    <ul class="acc-list">
+                        <li>✅ Google Ads аккаунт (логин и пароль)</li>
+                        <li>✅ 2FA + Backup codes</li>
+                        <li>✅ Приватный прокси</li>
+                        <li>✅ Настроенный профиль Octo Browser</li>
+                        <li>✅ Документы верификации (по запросу)</li>
+                    </ul>
+                    <p><strong>⚙️ Особенности:</strong></p>
+                    <ul class="acc-list">
+                        <li>🌍 GEO: Самые крепкие Индонезия, Индия и другие (по запросу)</li>
+                        <li>✅ Пройдена верификация рекламодателя</li>
+                        <li>✍️ Ручная регистрация</li>
+                        <li>❌ Без прогревочного РК</li>
+                        <li>⚡️ Срок фарма: от 7 дней</li>
+                        <li>⏱️ Передача: 1–2 дня</li>
+                    </ul>
+                `,
+                acc_3_title: "Google Ads TRUST MAX",
+                acc_3_body: `
+                    <p class="acc-desc">Аккаунт с максимальным трастом: полная верификация, прогрев белой кампанией и готовый сетап.</p>
+                    <p><strong>👤 Подойдёт, если:</strong><br>нужен быстрый запуск с минимальной подготовкой — у аккаунта уже есть история рекламной активности.</p>
+                    <p><strong>💳 Биллинг на выбор:</strong></p>
+                    <ul class="acc-list">
+                        <li>💰 <strong>PrePay — $55</strong> — $10 уже на балансе аккаунта, наша платёжная карта</li>
+                        <li>💳 <strong>PostPay — $50</strong> — платёжная карта наша или ваша</li>
+                    </ul>
+                    <p><strong>⏱️ Передача:</strong> 2–4 дня</p>
+                `,
+                
+                btn_buy: "Посмотреть наличие в боте",
+                
+                faq_title: "Частые <span>вопросы</span>",
+                faq_1_q: "Как быстро выдается аккаунт?",
+                faq_1_a: "Обычно выдача занимает от 1 до 2 дней. Для сборок TRUST MAX может потребоваться от 2 до 4 дней на полную подготовку и привязку биллинга.",
+                faq_2_q: "Что делать, если аккаунт улетел на полиси сразу после входа?",
+                faq_2_a: "У нас действует гарантия 48 часов. Если аккаунт отлетает в бан до запуска рекламы — мы меняем его бесплатно и без лишних вопросов.",
+                faq_3_q: "Какие бины вяжете?",
+                faq_3_a: "Используем самые трастовые карты и надежные платежки под конкретные гео. Актуальную информацию по рабочим бинам всегда можно уточнить у саппорта.",
+
                 rev_title: "Что говорят <span class='text-orange'>арбитражники</span>",
                 rev_1: "\"Брал пачку на тест. Из 10 акков 9 зацепились сразу, спенд полетел. Рекомендую.\"",
                 rev_2: "\"Долго искал нормальные сетапы под крипту. Биллинги растут, ROI радует.\"",
@@ -360,10 +529,12 @@
             },
             en: {
                 page_title: "Trusted Google Ads Accounts | Palma Media",
-                nav_contact: "Contact Manager",
+                nav_contact_alt: "or contact a manager",
                 hero_title: "Trusted Google Ads Accounts <span>That Hold Spend</span>",
                 hero_subtitle: "Forget about micro-spends and instant bans. Verified accounts with history. Fast replacement on failure.",
-                btn_bot: "Launch Bot",
+                lead_magnet_hero: "🎁 Launch the bot now and get a free setup consultation!",
+                lead_magnet_buy: "Need other supplies? Launch the bot to check stock.",
+                btn_bot: "Go to Bot Shop",
                 stat_1_val: "4.5 years", stat_1_lbl: "on the market",
                 stat_2_val: "48 hours", stat_2_lbl: "replacement guarantee",
                 stat_3_val: "3000+", stat_3_lbl: "regular clients",
@@ -380,11 +551,71 @@
                 slide_4: "Check out the rest of the results and reviews in our channel",
                 btn_reviews: "Reviews Channel",
                 acc_title: "Choose the right <span>account</span>",
-                acc_1_desc: "Basic account for self-setup and launch.",
-                acc_2_desc: "Account with passed advertiser verification and prepared environment.",
-                acc_3_desc: "Maximum preparation of the account and environment.",
-                acc_extra: "There are other supplies that everyone needs!",
-                btn_buy: "Buy Now",
+                
+                acc_1_title: "Google Ads BASE — from $10",
+                acc_1_body: `
+                    <p class="acc-desc">Basic account for self-setup and launch.</p>
+                    <p><strong>👤 Good if:</strong><br>you already have your own warm-up, setup, and launch process.</p>
+                    <p><strong>📦 What's included:</strong></p>
+                    <ul class="acc-list">
+                        <li>✅ Gmail 2023–2025</li>
+                        <li>✅ Cookies</li>
+                        <li>✅ 2FA + Backup codes</li>
+                    </ul>
+                    <p><strong>⚙️ Details:</strong></p>
+                    <ul class="acc-list">
+                        <li>🌍 GEO: MIX</li>
+                        <li>❌ No advertiser verification</li>
+                        <li>❌ No warm-up campaigns</li>
+                        <li>❌ No proxy or anti-detect profile</li>
+                        <li>🚫 No Google Ads</li>
+                        <li>⏱️ Delivery: 1–2 days</li>
+                    </ul>
+                `,
+                acc_2_title: "Google Ads VERIFIED — from $40",
+                acc_2_body: `
+                    <p class="acc-desc">Account with passed advertiser verification and prepared environment.</p>
+                    <p><strong>👤 Good if:</strong><br>you need a ready option without passing verification and setting up the environment yourself.</p>
+                    <p><strong>📦 What's included:</strong></p>
+                    <ul class="acc-list">
+                        <li>✅ Google Ads account (login & pass)</li>
+                        <li>✅ 2FA + Backup codes</li>
+                        <li>✅ Private proxy</li>
+                        <li>✅ Octo Browser profile</li>
+                        <li>✅ Verification docs (on request)</li>
+                    </ul>
+                    <p><strong>⚙️ Details:</strong></p>
+                    <ul class="acc-list">
+                        <li>🌍 GEO: Strongest ones like Indonesia, India, etc. (on request)</li>
+                        <li>✅ Advertiser verification passed</li>
+                        <li>✍️ Manual registration</li>
+                        <li>❌ No warm-up campaigns</li>
+                        <li>⚡️ Farm time: 7+ days</li>
+                        <li>⏱️ Delivery: 1–2 days</li>
+                    </ul>
+                `,
+                acc_3_title: "Google Ads TRUST MAX",
+                acc_3_body: `
+                    <p class="acc-desc">Maximum trust account: full verification, white campaign warm-up, and ready setup.</p>
+                    <p><strong>👤 Good if:</strong><br>you need a fast launch with minimal prep — account already has ad history.</p>
+                    <p><strong>💳 Billing options:</strong></p>
+                    <ul class="acc-list">
+                        <li>💰 <strong>PrePay — $55</strong> — $10 already on balance, our payment card</li>
+                        <li>💳 <strong>PostPay — $50</strong> — our or your payment card</li>
+                    </ul>
+                    <p><strong>⏱️ Delivery:</strong> 2–4 days</p>
+                `,
+                
+                btn_buy: "Check Stock in Bot",
+                
+                faq_title: "Frequently Asked <span>Questions</span>",
+                faq_1_q: "How fast is the account delivered?",
+                faq_1_a: "Usually, delivery takes 1 to 2 days. For TRUST MAX builds, it might take 2 to 4 days for full preparation and billing link.",
+                faq_2_q: "What if the account gets a policy ban right after login?",
+                faq_2_a: "We provide a 48-hour guarantee. If the account is banned before ad launch, we replace it for free with no hassle.",
+                faq_3_q: "What BINs do you use?",
+                faq_3_a: "We use the most trusted cards and reliable payments for specific GEOs. Current info on working BINs can be requested from support.",
+
                 rev_title: "What <span class='text-orange'>affiliates</span> say",
                 rev_1: "\"Took a batch to test. 9 out of 10 accounts hooked immediately, spend flew. Highly recommend.\"",
                 rev_2: "\"Searched a long time for decent crypto setups. Billings grow, ROI is pleasing.\"",

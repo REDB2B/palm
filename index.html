@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
   <link rel="stylesheet" href="style.css">
 
-  <!-- ================= META PIXEL + CAPI + DYNAMIC PIXEL SETUP ================= -->
+  <!-- Meta Pixel Code (Чистая связка с Cloudflare + Динамический ?px=) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,117 +21,45 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
-    // 1. База твоих пикселей и токенов CAPI
-    const PIXEL_CONFIG = {
-      '1105215478631709': null, // 1 пиксель (браузерный)
-      '2671858263285801': 'EAAjNgwATcRYBSun3QYlibD9y42TZAOXhYzDiHs6DAp2i3TLLSMrmOFvwNFPfi2FeeC81en6akWTfUeFWJKvv17VhIaHaWHaGOZBxAkdKSV18vMdL15UUozCbKuuJXXGjodZBtVNlvSwSMTAyfviVJNQhIwe569ZCFGpmvIS3l916brIg9geIZAT6CABK0WIuWvgZDZD', // 2 пиксель + токен
-      '1792798531871240': 'EAGUJi76ztAoBSpvdu4nmHXEJUfZAPTaNZCRAllJmiUZCG2L4lAEpvXAZCQIITlH5GNtEZCZAZB8VxZAARzY8Aw3JGxbNKpp7b1ZCLyf7O2ctM24yFUCwXx9wwyhZB3y3OAKbXGhc5XLSpmxT5JzDSvkt4SBEDAKZA4RPznwMbH412bbla1qZCbAxdMx21qp3WIhGVJceuwZDZD'  // 3 пиксель + токен
-    };
-
-    // 2. Парсим URL-параметры (динамический пиксель и UTM-метки от ФБ)
+    // Читаем параметры из твоей рекламной ссылки
     const urlParams = new URLSearchParams(window.location.search);
-    const dynamicPx = urlParams.get('px') || urlParams.get('pixel');
-    const dynamicToken = urlParams.get('token') || urlParams.get('access_token');
+    const dynamicPx = (urlParams.get('px') || urlParams.get('pixel') || '').trim();
 
-    // Сохраняем UTM-параметры кампании для передачи в событие Contact
-    const fbUtmData = {
-      utm_campaign: urlParams.get('utm_campaign') || '',
-      adset_id: urlParams.get('adset_id') || '',
-      utm_content: urlParams.get('utm_content') || '',
-      px_source: dynamicPx || 'all_default'
-    };
+    // Твои 3 базовых пикселя
+    const defaultPixels = ['1105215478631709', '2671858263285801', '1792798531871240'];
 
-    // Если в ссылке передан новый пиксель (?px=...), добавляем его в список активных
+    // Если в ссылке передан конкретный ?px=..., инициализируем его (чтобы отбив шел четко в нужный адсет).
+    // Если зашли по прямой ссылке без ?px=, инициализируем все 3 пикселя.
     if (dynamicPx && /^\d+$/.test(dynamicPx)) {
-      if (!PIXEL_CONFIG.hasOwnProperty(dynamicPx)) {
-        PIXEL_CONFIG[dynamicPx] = dynamicToken || null;
-      } else if (dynamicToken) {
-        PIXEL_CONFIG[dynamicPx] = dynamicToken;
-      }
+      fbq('init', dynamicPx);
+    } else {
+      defaultPixels.forEach(function(id) {
+        fbq('init', id);
+      });
     }
 
-    const ACTIVE_PIXELS = Object.keys(PIXEL_CONFIG);
+    // Стандартный PageView (Cloudflare сам перехватит его для CAPI)
+    fbq('track', 'PageView');
 
-    // 3. Вспомогательные функции для точного трекинга и дедупликации (Event ID, _fbp, _fbc)
-    function generateEventId() {
-      return 'evt_' + Date.now() + '_' + Math.random().toString(36).substring(2, 10);
-    }
+    // Функция чистого отбива Contact (строго 1 раз за визит юзера, без дублей)
+    window.fireTelegramContact = function(btnName) {
+      if (sessionStorage.getItem('tg_contact_sent')) return;
+      sessionStorage.setItem('tg_contact_sent', '1');
 
-    function getCookie(name) {
-      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-      return match ? match[2] : null;
-    }
-
-    function getFbc() {
-      let fbc = getCookie('_fbc');
-      if (!fbc && urlParams.get('fbclid')) {
-        fbc = 'fb.1.' + Date.now() + '.' + urlParams.get('fbclid');
-      }
-      return fbc;
-    }
-
-    // 4. Отправка серверного события через Conversions API (CAPI)
-    function sendServerCAPI(pixelId, token, eventName, eventId, customData = {}) {
-      if (!token) return;
-
-      const userData = {
-        client_user_agent: navigator.userAgent
-      };
-      const fbp = getCookie('_fbp');
-      const fbc = getFbc();
-      if (fbp) userData.fbp = fbp;
-      if (fbc) userData.fbc = fbc;
-
-      const payload = {
-        data: [{
-          event_name: eventName,
-          event_time: Math.floor(Date.now() / 1000),
-          action_source: 'website',
-          event_id: eventId,
-          event_source_url: window.location.href,
-          user_data: userData,
-          custom_data: { ...fbUtmData, ...customData }
-        }]
-      };
-
-      fetch(`https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${token}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true // Гарантирует доставку запроса даже при мгновенном редиректе в Telegram
-      }).catch(() => {});
-    }
-
-    // 5. Универсальная функция отстрела события (Браузер + CAPI с дедупликацией)
-    window.trackFBEvent = function(eventName, customData = {}) {
-      const eventId = generateEventId();
-      const fullCustomData = { ...fbUtmData, ...customData };
-
-      // Браузерный отбив во все активные пиксели
-      fbq('track', eventName, fullCustomData, { eventID: eventId });
-
-      // Серверный отбив (CAPI) для пикселей с токенами
-      ACTIVE_PIXELS.forEach(pxId => {
-        if (PIXEL_CONFIG[pxId]) {
-          sendServerCAPI(pxId, PIXEL_CONFIG[pxId], eventName, eventId, customData);
-        }
+      fbq('track', 'Contact', {
+        content_name: btnName || 'Telegram Contact',
+        utm_campaign: urlParams.get('utm_campaign') || '',
+        adset_id: urlParams.get('adset_id') || '',
+        utm_content: urlParams.get('utm_content') || ''
       });
     };
-
-    // 6. Инициализация всех пикселей и отправка PageView
-    ACTIVE_PIXELS.forEach(pxId => {
-      fbq('init', pxId);
-    });
-    window.trackFBEvent('PageView');
   </script>
-
-  <!-- Noscript фоллбэк для всех 3 базовых пикселей -->
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1105215478631709&ev=PageView&noscript=1" />
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2671858263285801&ev=PageView&noscript=1" />
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1792798531871240&ev=PageView&noscript=1" />
   </noscript>
-  <!-- ================= END META PIXEL SETUP ================= -->
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
   <!-- ТАЙМЕР БАННЕР -->
@@ -908,13 +836,10 @@
       });
     });
 
-    // Обработка кнопки результата квиза + ОТБИВ CONTACT В ФБ
+    // Обработка кнопки результата квиза + чистый отбив Contact
     document.getElementById('send-choice').addEventListener('click', () => {
-      if (typeof window.trackFBEvent === 'function') {
-        window.trackFBEvent('Contact', {
-          content_name: 'Quiz: ' + selections.plan,
-          content_category: 'Telegram Quiz Contact'
-        });
+      if (typeof window.fireTelegramContact === 'function') {
+        window.fireTelegramContact('Quiz: ' + selections.plan);
       }
 
       const msg = `Здравствуйте! Мне нужен аккаунт.\n\nМои ответы:\n- Опыт: ${selections.experience}\n- Верификация: ${selections.verification}\n- История: ${selections.history}\n\nПредварительный выбор: ${selections.plan}\n\nПодскажите стоимость и актуальные гео.`;
@@ -922,31 +847,11 @@
       window.open(url, '_blank', 'noopener');
     });
 
-    // --- ГЛОБАЛЬНЫЙ ОТБИВ КОНВЕРСИЙ НА ВСЕ КНОПКИ TELEGRAM ---
-    // Работает даже для динамических карточек тарифов после смены языка
+    // Нативный отбив Contact при клике по любой ссылке на менеджера @alex_palma_0001 (без блокировки перехода!)
     document.addEventListener('click', function(e) {
-      const tgLink = e.target.closest('a[href*="t.me/"]');
-      if (tgLink) {
-        const btnText = tgLink.innerText.trim() || 'Telegram Button';
-        const isChannel = tgLink.href.includes('YouPalma');
-
-        if (typeof window.trackFBEvent === 'function') {
-          if (isChannel) {
-            // Клик на канал с отзывами (@YouPalma) — отбиваем ViewContent, чтобы не портить оптимизацию Contact
-            window.trackFBEvent('ViewContent', {
-              content_name: btnText,
-              content_category: 'Telegram Channel Reviews',
-              destination_url: tgLink.href
-            });
-          } else {
-            // Клик на любую кнопку связи с менеджером (@alex_palma_0001) — чистый отбив Contact
-            window.trackFBEvent('Contact', {
-              content_name: btnText,
-              content_category: 'Telegram Direct Contact',
-              destination_url: tgLink.href
-            });
-          }
-        }
+      const tgLink = e.target.closest('a[href*="t.me/alex_palma_0001"]');
+      if (tgLink && typeof window.fireTelegramContact === 'function') {
+        window.fireTelegramContact(tgLink.innerText.trim());
       }
     });
 

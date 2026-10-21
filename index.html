@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
   <link rel="stylesheet" href="style.css">
 
-  <!-- Meta Pixel Code (Чистая связка с Cloudflare + Динамический ?px=) -->
+  <!-- Meta Pixel Code (Чистая связка под отбив Lead по кнопке Start в боте ?start=b_01) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,15 +21,12 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
-    // Читаем параметры из твоей рекламной ссылки
     const urlParams = new URLSearchParams(window.location.search);
     const dynamicPx = (urlParams.get('px') || urlParams.get('pixel') || '').trim();
 
     // Твои 3 базовых пикселя
     const defaultPixels = ['1105215478631709', '2671858263285801', '1792798531871240'];
 
-    // Если в ссылке передан конкретный ?px=..., инициализируем его (чтобы отбив шел четко в нужный адсет).
-    // Если зашли по прямой ссылке без ?px=, инициализируем все 3 пикселя.
     if (dynamicPx && /^\d+$/.test(dynamicPx)) {
       fbq('init', dynamicPx);
     } else {
@@ -38,16 +35,18 @@
       });
     }
 
-    // Стандартный PageView (Cloudflare сам перехватит его для CAPI)
+    // Отбиваем PageView при входе (передает fbclid и куки _fbp/_fbc в систему)
     fbq('track', 'PageView');
 
-    // Функция чистого отбива Contact (строго 1 раз за визит юзера, без дублей)
-    window.fireTelegramContact = function(btnName) {
-      if (sessionStorage.getItem('tg_contact_sent')) return;
-      sessionStorage.setItem('tg_contact_sent', '1');
+    // ВАЖНО: Поскольку событие Lead отбивается сервером/ботом при нажатии START (start=b_01),
+    // на самом сайте при клике по кнопке мы НЕ шлем Lead (чтобы не было фейковых лидов от тех, кто не нажал Start).
+    // Вместо этого фиксируем микро-конверсию перехода в бота (InitiateCheckout).
+    window.trackBotRedirect = function(btnName) {
+      if (sessionStorage.getItem('tg_redirect_tracked')) return;
+      sessionStorage.setItem('tg_redirect_tracked', '1');
 
-      fbq('track', 'Contact', {
-        content_name: btnName || 'Telegram Contact',
+      fbq('track', 'InitiateCheckout', {
+        content_name: btnName || 'Bot Redirect b_01',
         utm_campaign: urlParams.get('utm_campaign') || '',
         adset_id: urlParams.get('adset_id') || '',
         utm_content: urlParams.get('utm_content') || ''
@@ -71,7 +70,7 @@
       </div>
       <div class="banner-actions">
         <div class="timer" id="countdown">30:00</div>
-        <a href="https://t.me/alex_palma_0001?text=Привет,%20я%20по%20поводу%20аккаунтов.%20Хочу%20получить%20один%20в%20тест." target="_blank" class="btn btn-primary btn-small" data-i18n="banner_btn">Взять в тест</a>
+        <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="test_banner" target="_blank" class="btn btn-primary btn-small" data-i18n="banner_btn">Взять в тест</a>
       </div>
     </div>
   </div>
@@ -89,7 +88,6 @@
       <nav class="navlinks" aria-label="Основная навигация">
         <a href="#plans" data-i18n="nav_plans">Аккаунты</a>
         <a href="#how" data-i18n="nav_how">Как это работает</a>
-        <!-- Теперь ведет четко на Гарантию -->
         <a href="#guarantee" data-i18n="nav_guarantee">Гарантия</a> 
         <a href="#faq" data-i18n="nav_faq">FAQ</a>
       </nav>
@@ -99,7 +97,7 @@
           <button class="lang-btn" onclick="toggleLang('ru')" id="btn-ru">RU</button>
           <button class="lang-btn" onclick="toggleLang('en')" id="btn-en">EN</button>
         </div>
-        <a class="btn btn-primary nav-cta" href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20получить%20консультацию%20и%20подобрать%20аккаунт." target="_blank" data-i18n="nav_cta">Подобрать аккаунт ↗</a>
+        <a class="btn btn-primary nav-cta" href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="nav_cta" target="_blank" data-i18n="nav_cta">Запустить подбор ↗</a>
       </div>
     </div>
   </header>
@@ -118,18 +116,17 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20получить%20консультацию%20и%20подобрать%20аккаунт." target="_blank" data-i18n="hero_btn_1">Подобрать аккаунт ↗</a>
+            <a class="btn btn-primary" href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="hero_main" target="_blank" data-i18n="hero_btn_1">Подобрать в Telegram ↗</a>
             <a class="btn btn-secondary" href="#plans" data-i18n="hero_btn_2">Сравнить варианты ↓</a>
           </div>
 
           <div class="microproof">
             <span class="mini-badges"><i>PM</i><i>AD</i><i>MB</i></span>
-            <span data-i18n="hero_microproof"><strong>Поддержка по делу</strong> · прозрачные условия до покупки</span>
+            <span data-i18n="hero_microproof"><strong>Быстрая выдача</strong> · прозрачные условия до покупки</span>
           </div>
         </div>
 
         <div class="hero-art" aria-label="Иллюстрация панели кампании">
-          <!-- Фоновое свечение теперь жестко привязано сюда -->
           <div class="glow-bg"></div>
 
           <div class="float-card float-left">
@@ -175,7 +172,7 @@
       </div>
     </section>
 
-    <!-- ТАРИФЫ (Цены убраны, аккордеон работает) -->
+    <!-- ТАРИФЫ -->
     <section class="section" id="plans">
       <div class="wrap">
         <div class="section-head">
@@ -184,7 +181,7 @@
             <h2 data-i18n="plans_h2">Три варианта<br>Один понятный выбор</h2>
           </div>
           <p data-i18n="plans_p">
-            Сравните варианты и выберите подходящий. Точную цену, наличие сетапов и лимиты менеджер подскажет перед оформлением заказа.
+            Сравните варианты и выберите подходящий. Актуальный прайс, наличие сетапов и лимиты доступны сразу после перехода в Telegram.
           </p>
         </div>
 
@@ -193,7 +190,7 @@
         </div>
 
         <p class="note" data-i18n="plans_note">
-          Перед оплатой запросите актуальные характеристики, цену, правила использования и полные условия гарантии.
+          Перед оплатой ознакомьтесь с актуальными характеристиками, ценой, правилами использования и условиями гарантии.
         </p>
       </div>
     </section>
@@ -205,7 +202,7 @@
           <div>
             <div class="kicker" data-i18n="quiz_kicker">Быстрый подбор</div>
             <h2 data-i18n="quiz_h2">Какой вариант вам подходит?</h2>
-            <p data-i18n="quiz_p">Ответьте на три простых вопроса — и система покажет, какой аккаунт вам нужен для обсуждения.</p>
+            <p data-i18n="quiz_p">Ответьте на три простых вопроса — система подберет оптимальный сетап под ваш залив.</p>
           </div>
 
           <div class="choices">
@@ -237,7 +234,7 @@
                 <strong id="recommend-name">Google Ads BASE</strong>
                 <small id="recommend-reason">Идеально для самостоятельного запуска.</small>
               </div>
-              <button class="btn btn-primary" id="send-choice" data-i18n="quiz_btn">Обсудить выбор ↗</button>
+              <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary" id="send-choice" data-tg-target="quiz_submit" data-i18n="quiz_btn">Продолжить в Telegram ↗</a>
             </div>
           </div>
         </div>
@@ -252,30 +249,30 @@
             <div class="kicker" data-i18n="how_kicker">Без сюрпризов</div>
             <h2 data-i18n="how_h2">От выбора до заказа<br>в три шага</h2>
           </div>
-          <p data-i18n="how_p">Заранее объясняем, что будет дальше, и помогаем разобраться в условиях.</p>
+          <p data-i18n="how_p">Простой и быстрый процесс получения готовой инфраструктуры под ваш трафик.</p>
         </div>
 
         <div class="steps">
           <article class="step">
             <span data-i18n="how_s1_tag">ШАГ 01 / ВЫБОР</span>
-            <h3 data-i18n="how_s1_h3">Опишите задачу</h3>
-            <p data-i18n="how_s1_p">Выберите вариант на сайте или расскажите менеджеру о своих требованиях.</p>
+            <h3 data-i18n="how_s1_h3">Выберите сетап</h3>
+            <p data-i18n="how_s1_p">Определитесь с подходящим вариантом на сайте и перейдите в наш Telegram.</p>
           </article>
           <article class="step">
-            <span data-i18n="how_s2_tag">ШАГ 02 / СОГЛАСОВАНИЕ</span>
-            <h3 data-i18n="how_s2_h3">Проверьте детали</h3>
-            <p data-i18n="how_s2_p">Уточните цену, комплектацию, ограничения, поддержку и условия гарантии.</p>
+            <span data-i18n="how_s2_tag">ШАГ 02 / ПАРАМЕТРЫ</span>
+            <h3 data-i18n="how_s2_h3">Уточните детали</h3>
+            <p data-i18n="how_s2_p">Ознакомьтесь с прайсом, доступными ГЕО, комплектацией и условиями гарантии.</p>
           </article>
           <article class="step">
-            <span data-i18n="how_s3_tag">ШАГ 03 / ОФОРМЛЕНИЕ</span>
-            <h3 data-i18n="how_s3_h3">Примите решение</h3>
-            <p data-i18n="how_s3_p">Переходим к оплате и выдаче только после того, как согласуем все детали и у вас не останется вопросов.</p>
+            <span data-i18n="how_s3_tag">ШАГ 03 / ЗАПУСК</span>
+            <h3 data-i18n="how_s3_h3">Получите доступ</h3>
+            <p data-i18n="how_s3_p">Оформляйте заказ в пару кликов и получайте полностью готовый к заливу аккаунт.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- КЕЙСЫ (Фото открываются!) -->
+    <!-- КЕЙСЫ -->
     <section class="section" id="cases">
       <div class="wrap">
         <div class="section-head">
@@ -365,12 +362,11 @@
               <span data-i18n="gar_b2">🔄 Бесплатная замена</span>
             </div>
           </div>
-          <!-- Эта кнопка ведет на FAQ, так как полные условия расписаны там во втором вопросе -->
           <a class="btn btn-secondary" href="#faq" data-i18n="gar_btn">Читать условия в FAQ ↓</a>
         </div>
         
         <div class="guarantee-cta">
-          <a href="https://t.me/alex_palma_0001?text=Привет,%20я%20по%20поводу%20аккаунтов.%20Хочу%20получить%20один%20в%20тест." target="_blank" class="btn btn-primary btn-large glow-btn" data-i18n="gar_cta">Попробуй взять один из качественных аккаунтов в тест ↗</a>
+          <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="guarantee_test" target="_blank" class="btn btn-primary btn-large glow-btn" data-i18n="gar_cta">Получить качественный аккаунт в тест ↗</a>
         </div>
       </div>
     </section>
@@ -397,7 +393,7 @@
                 <li><strong data-i18n="sup_wp_3">⭐️ Special (custom):</strong> <span data-i18n="sup_wp_3d">Кастомный проект под вашу нишу и GEO. Для долгих кампаний и крупных бюджетов.</span></li>
               </ul>
               <p class="supply-time" data-i18n="sup_wp_time">⏱️ Готовность — от 2 до 12 часов</p>
-              <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20заказать%20White%20Page." target="_blank" class="btn btn-secondary" data-i18n="sup_wp_btn">Заказать White Page ↗</a>
+              <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="white_page" target="_blank" class="btn btn-secondary" data-i18n="sup_wp_btn">Оформить White Page ↗</a>
             </div>
           </details>
 
@@ -413,7 +409,7 @@
                 <li data-i18n="sup_qs_5">📊 Настройка потоков по GEO, устройствам и источникам</li>
                 <li data-i18n="sup_qs_6">🔧 Техподдержка 24/7</li>
               </ul>
-              <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Интересует%20инфраструктура%20Quick%20START." target="_blank" class="btn btn-secondary" data-i18n="sup_qs_btn">Узнать про Quick START ↗</a>
+              <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="quick_start" target="_blank" class="btn btn-secondary" data-i18n="sup_qs_btn">Подключить Quick START ↗</a>
             </div>
           </details>
         </div>
@@ -428,7 +424,7 @@
             <div class="kicker" data-i18n="faq_kicker">Ответы на частые вопросы</div>
             <h2 data-i18n="faq_h2">FAQ</h2>
           </div>
-          <p data-i18n="faq_p">Собрали всё, что полезно знать перед заказом. Если не нашли нужный ответ — напишите нашему менеджеру 🤝</p>
+          <p data-i18n="faq_p">Собрали всё, что полезно знать перед заказом. Переходите в наш Telegram для быстрого подбора и связи с поддержкой 🤝</p>
         </div>
 
         <div class="faq">
@@ -438,7 +434,7 @@
           </details>
           <details>
             <summary data-i18n="faq_q2">2. Что делать, если аккаунт заблокировали?</summary>
-            <p data-i18n="faq_a2">Если блокировка произошла в первые 24 часа не по вашей вине, мы бесплатно заменим аккаунт (срок до 24ч). Напишите менеджеру со скриншотом. Гарантия не распространяется на блокировки из-за контента или агрессивных расходов.</p>
+            <p data-i18n="faq_a2">Если блокировка произошла в первые 24 часа не по вашей вине, мы бесплатно заменим аккаунт (срок до 24ч). Отправьте скриншот в поддержку. Гарантия не распространяется на блокировки из-за контента или агрессивных расходов.</p>
           </details>
           <details>
             <summary data-i18n="faq_q3">3. Как пополнить баланс?</summary>
@@ -458,17 +454,17 @@
           </details>
           <details>
             <summary data-i18n="faq_q7">7. Можно получить скидку?</summary>
-            <p data-i18n="faq_a7">Да! Если у вас есть промокод, примените его при оформлении заказа. Индивидуальные условия (для команд) можно обсудить с менеджером.</p>
+            <p data-i18n="faq_a7">Да! Если у вас есть промокод, примените его при оформлении заказа. Индивидуальные условия (для команд) также доступны после старта.</p>
           </details>
           <details>
             <summary data-i18n="faq_q8">8. Можно получать вознаграждение за клиентов?</summary>
-            <p data-i18n="faq_a8">Да, у нас есть реферальная программа. Вы приглашаете новых клиентов и получаете % за их покупки. Напишите менеджеру для подключения.</p>
+            <p data-i18n="faq_a8">Да, у нас есть реферальная программа. Вы приглашаете новых клиентов и получаете % за их покупки. Подробности доступны внутри нашей системы в Telegram.</p>
           </details>
         </div>
         
         <div class="faq-cta">
-          <p data-i18n="faq_footer">💬 Остались вопросы? Мы на связи 24/7.</p>
-          <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20У%20меня%20остались%20вопросы%20по%20аккаунтам." target="_blank" class="btn btn-secondary" data-i18n="faq_btn">Написать менеджеру ↗</a>
+          <p data-i18n="faq_footer">💬 Остались вопросы или готовы к заливу? Мы на связи 24/7.</p>
+          <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="faq_cta" target="_blank" class="btn btn-secondary" data-i18n="faq_btn">Открыть Telegram ↗</a>
         </div>
       </div>
     </section>
@@ -479,10 +475,10 @@
         <div class="final-cta">
           <div>
             <div class="kicker" data-i18n="cta_kicker">Следующий шаг</div>
-            <h2 data-i18n="cta_h2">Расскажите о задаче — обсудим подходящий вариант.</h2>
-            <p data-i18n="cta_p">Сначала согласуйте характеристики и условия. Решение об оплате остаётся за вами.</p>
+            <h2 data-i18n="cta_h2">Запустите подбор сетапа под вашу задачу прямо сейчас.</h2>
+            <p data-i18n="cta_p">Ознакомьтесь с наличием ГЕО, характеристиками и условиями в пару кликов.</p>
           </div>
-          <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20получить%20консультацию%20и%20подобрать%20аккаунт." target="_blank" class="btn btn-dark" data-i18n="cta_btn">Получить консультацию и аккаунт ↗</a>
+          <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="final_cta" target="_blank" class="btn btn-dark" data-i18n="cta_btn">Перейти к подбору в Telegram ↗</a>
         </div>
       </div>
     </section>
@@ -501,7 +497,7 @@
   </footer>
 
   <div class="mobile-cta">
-    <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20получить%20консультацию." target="_blank" class="btn btn-primary" style="width: 100%" data-i18n="mob_btn">Подобрать аккаунт ↗</a>
+    <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="mob_cta" target="_blank" class="btn btn-primary" style="width: 100%" data-i18n="mob_btn">Подобрать в Telegram ↗</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
@@ -509,6 +505,44 @@
   <script>
     // Инициализация Fancybox для картинок
     Fancybox.bind('[data-fancybox="cases"]', {});
+
+    // --- ОСНОВНАЯ ССЫЛКА НА БОТА С ПАРАМЕТРОМ ?start=b_01 ---
+    const DEFAULT_TG_DEST = 'https://t.me/trust_googleadsbot?start=b_01';
+
+    function getActiveBotUrl() {
+      // 1. Если CNAME-скрипт Cloudflare уже модифицировал ссылку в шапке (дописал туда хэш клика/fbclid),
+      // берем её за эталон, чтобы не затереть динамический параметр для кнопки Start!
+      const existingBtn = document.querySelector('a[data-tg-target="test_banner"]');
+      if (existingBtn && existingBtn.href && existingBtn.href.includes('trust_googleadsbot') && existingBtn.href !== DEFAULT_TG_DEST) {
+        return existingBtn.href;
+      }
+
+      // 2. Проверяем, не передана ли кастомная ссылка в самом URL объявления
+      const rawSearch = decodeURIComponent(window.location.search);
+      const urlMatch = rawSearch.match(/(https?:\/\/(?:t\.me|telegram\.me)\/[^\s&]+(?:\?start=[^\s&]+)?)/i);
+      if (urlMatch && urlMatch[1]) {
+        return urlMatch[1];
+      }
+
+      // 3. Если в URL передан отдельный параметр start, склеиваем его
+      const params = new URLSearchParams(window.location.search);
+      const customStart = params.get('start');
+      if (customStart) {
+        return `https://t.me/trust_googleadsbot?start=${encodeURIComponent(customStart)}`;
+      }
+
+      return DEFAULT_TG_DEST;
+    }
+
+    // Синхронизируем динамические кнопки (включая карточки тарифов) с сохранением CNAME-параметров
+    function syncAllTelegramLinks() {
+      const targetHref = getActiveBotUrl();
+      document.querySelectorAll('a[data-tg-target]').forEach(link => {
+        if (!link.href || !link.href.includes('start=')) {
+          link.href = targetHref;
+        }
+      });
+    }
 
     // --- ТАЙМЕР ---
     function startTimer(duration, display) {
@@ -532,6 +566,7 @@
       let thirtyMinutes = 60 * 30,
           display = document.querySelector('#countdown');
       startTimer(thirtyMinutes, display);
+      syncAllTelegramLinks();
     };
 
     // --- МУЛЬТИЯЗЫЧНОСТЬ ---
@@ -539,12 +574,12 @@
       ru: {
         page_title: "PALMA MEDIA — аккаунты Google Ads",
         banner_accent: "Выдаем под реальные заливы!", banner_text: "Возьми аккаунт на тест и оцени качество сетапа в деле.", banner_btn: "Взять в тест",
-        nav_plans: "Аккаунты", nav_how: "Как это работает", nav_guarantee: "Гарантия", nav_faq: "FAQ", nav_cta: "Подобрать аккаунт ↗",
+        nav_plans: "Аккаунты", nav_how: "Как это работает", nav_guarantee: "Гарантия", nav_faq: "FAQ", nav_cta: "Запустить подбор ↗",
         hero_eyebrow: "Качественная инфраструктура для команд и соло Buyer.",
         hero_h1: "Больше контроля<br><span>Меньше хаоса</span>",
         hero_lead: "Трастовые аккаунты Google Ads для команд и соло-байеров. Обеспечиваем стабильный запуск, понятные условия замены и саппорт, который говорит с вами на одном языке. Все необходимые расходники уже в наличии.",
-        hero_btn_1: "Подобрать аккаунт ↗", hero_btn_2: "Сравнить варианты ↓",
-        hero_microproof: "<strong>Поддержка по делу</strong> · прозрачные условия до покупки",
+        hero_btn_1: "Подобрать в Telegram ↗", hero_btn_2: "Сравнить варианты ↓",
+        hero_microproof: "<strong>Быстрая выдача</strong> · прозрачные условия до покупки",
         art_float_1_1: "Поддержка", art_float_1_2: "На связи по вопросам запуска",
         art_dash_sub: "Аккаунт под вашу рабочую задачу",
         art_dash_b1_1: "Подбор", art_dash_b1_2: "По задаче",
@@ -554,10 +589,10 @@
         trust_2_1: "До оплаты", trust_2_2: "Согласование условий",
         trust_3_1: "Поддержка", trust_3_2: "По вопросам заказа",
         trust_4_1: "Прозрачно", trust_4_2: "Условия без сюрпризов",
-        plans_kicker: "Выберите решение", plans_h2: "Три варианта<br>Один понятный выбор", plans_p: "Сравните варианты и выберите подходящий. Точную цену, наличие сетапов и лимиты менеджер подскажет перед оформлением заказа.",
-        plans_note: "Перед оплатой запросите актуальные характеристики, цену, правила использования и полные условия гарантии.",
+        plans_kicker: "Выберите решение", plans_h2: "Три варианта<br>Один понятный выбор", plans_p: "Сравните варианты и выберите подходящий. Актуальный прайс, наличие сетапов и лимиты доступны сразу после перехода в Telegram.",
+        plans_note: "Перед оплатой ознакомьтесь с актуальными характеристиками, ценой, правилами использования и условиями гарантии.",
         
-        // ТАРИФЫ (Без цен, только описание в аккордеоне)
+        // ТАРИФЫ (Кнопки ведут строго на https://t.me/trust_googleadsbot?start=b_01)
         plan_base: `
             <span class="pill">СТАРТ</span>
             <h3>🚀 Google Ads BASE</h3>
@@ -569,7 +604,7 @@
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Особенности:</strong></li><li>🌍 GEO: MIX</li><li>❌ Без верификации</li><li>❌ Без прогрева</li><li>❌ Без прокси</li><li>🚫 Без Google Ads</li><li>⏱️ Передача: 1–2 дня</li></ul>
               </div>
             </details>
-            <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20узнать%20подробнее%20про%20Google%20Ads%20BASE." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Уточнить BASE ↗</a>
+            <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="plan_base" target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Выбрать BASE ↗</a>
         `,
         plan_verif: `
             <span class="pill">СБАЛАНСИРОВАННЫЙ ВЫБОР</span>
@@ -582,7 +617,7 @@
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Особенности:</strong></li><li>🌍 GEO: Индонезия, Индия и др.</li><li>✅ Пройдена верификация</li><li>✍️ Ручная регистрация</li><li>❌ Без прогрева</li><li>⚡️ Фарм: от 7 дней</li><li>⏱️ Передача: 1–2 дня</li></ul>
               </div>
             </details>
-            <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20узнать%20подробнее%20про%20Google%20Ads%20VERIFIED." target="_blank" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Уточнить VERIFIED ↗</a>
+            <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="plan_verified" target="_blank" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Выбрать VERIFIED ↗</a>
         `,
         plan_trust: `
             <span class="pill">ДЛЯ ОПЫТНЫХ</span>
@@ -595,18 +630,18 @@
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Особенности:</strong></li><li>🌍 Топовые ГЕО под задачу</li><li>🔥 Прогрев белой кампанией</li><li>⏱️ Передача: 2–4 дня</li></ul>
               </div>
             </details>
-            <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20узнать%20подробнее%20про%20Google%20Ads%20TRUST%20MAX." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Уточнить TRUST MAX ↗</a>
+            <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="plan_trust_max" target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Выбрать TRUST MAX ↗</a>
         `,
 
-        quiz_kicker: "Быстрый подбор", quiz_h2: "Какой вариант вам подходит?", quiz_p: "Ответьте на три простых вопроса — и система покажет, какой аккаунт вам нужен для обсуждения.",
+        quiz_kicker: "Быстрый подбор", quiz_h2: "Какой вариант вам подходит?", quiz_p: "Ответьте на три простых вопроса — система подберет оптимальный сетап под ваш залив.",
         quiz_q1: "1. Ваш опыт настройки окружения?", quiz_a1_1: "Сам всё настраиваю", quiz_a1_2: "Нужен готовый сетап",
         quiz_q2: "2. Нужна ли пройденая верификация?", quiz_a2_1: "Нет, пройду сам", quiz_a2_2: "Да, нужна пройденая",
         quiz_q3: "3. Требования к истории аккаунта?", quiz_a3_1: "Можно без истории", quiz_a3_2: "Нужен прогрев и траст",
-        quiz_rec_label: "Рекомендуемый вариант:", quiz_btn: "Обсудить выбор ↗",
-        how_kicker: "Без сюрпризов", how_h2: "От выбора до заказа<br>в три шага", how_p: "Заранее объясняем, что будет дальше, и помогаем разобраться в условиях.",
-        how_s1_tag: "ШАГ 01 / ВЫБОР", how_s1_h3: "Опишите задачу", how_s1_p: "Выберите вариант на сайте или расскажите менеджеру о своих требованиях.",
-        how_s2_tag: "ШАГ 02 / СОГЛАСОВАНИЕ", how_s2_h3: "Проверьте детали", how_s2_p: "Уточните цену, комплектацию, ограничения, поддержку и условия гарантии.",
-        how_s3_tag: "ШАГ 03 / ОФОРМЛЕНИЕ", how_s3_h3: "Примите решение", how_s3_p: "Переходим к оплате и выдаче только после того, как согласуем все детали и у вас не останется вопросов.",
+        quiz_rec_label: "Рекомендуемый вариант:", quiz_btn: "Продолжить в Telegram ↗",
+        how_kicker: "Без сюрпризов", how_h2: "От выбора до заказа<br>в три шага", how_p: "Простой и быстрый процесс получения готовой инфраструктуры под ваш трафик.",
+        how_s1_tag: "ШАГ 01 / ВЫБОР", how_s1_h3: "Выберите сетап", how_s1_p: "Определитесь с подходящим вариантом на сайте и перейдите в наш Telegram.",
+        how_s2_tag: "ШАГ 02 / ПАРАМЕТРЫ", how_s2_h3: "Уточните детали", how_s2_p: "Ознакомьтесь с прайсом, доступными ГЕО, комплектацией и условиями гарантии.",
+        how_s3_tag: "ШАГ 03 / ЗАПУСК", how_s3_h3: "Получите доступ", how_s3_p: "Оформляйте заказ в пару кликов и получайте полностью готовый к заливу аккаунт.",
         cases_kicker: "Практика, а не обещания", cases_h2: "Кейсы с понятным<br>контекстом", cases_p: "Подтверждённые результаты работы наших аккаунтов на реальном трафике.",
         cases_t1: "КЕЙС 01 · ВЫСОКИЙ СПЕНД", cases_h1: "Открут $2,050+", cases_p1: "Стабильный открут без вылетов на полиси. Аккаунт держит нагрузку на объемах.",
         cases_t2: "КЕЙС 02 · ИДЕАЛЬНЫЙ БИЛЛИНГ", cases_h2: "Стабильные списания", cases_p2: "Никаких проблем с привязкой карт. Биллинги проходят ровно, траст максимальный.",
@@ -620,14 +655,14 @@
         gar_h3: "Честная гарантия 48 часов на замену", 
         gar_p: "Улетел на полиси до запуска РК? Выдадим новый бесплатно. Меняем аккаунты при блокировках Suspicious Payment и Unacceptable Business до старта вашего трафика.", 
         gar_b1: "⏱️ 48 часов на тест", gar_b2: "🔄 Бесплатная замена", gar_btn: "Читать условия в FAQ ↓",
-        gar_cta: "Попробуй взять один из качественных аккаунтов в тест ↗",
+        gar_cta: "Получить качественный аккаунт в тест ↗",
         
         sup_kicker: "Всё для залива", sup_h2: "Другие необходимые<br>инструменты", sup_p: "Закрываем технические вопросы под ключ, чтобы вы сфокусировались на ROI.",
         sup_wp_desc: "Наши white page проходят проверку Google Ads, Facebook Ads, TikTok Ads и Bing Ads с первого раза, повышают Trust Score аккаунта и продлевают жизнь кампаний.",
         sup_wp_1: "📄 Single Page:", sup_wp_1d: "Одностраничник с уникальным контентом, адаптивным дизайном, SSL и формой обратной связи. Лучший выбор для быстрого старта.",
         sup_wp_2: "📑 Multi Page:", sup_wp_2d: "3–5 страниц: главная, о компании, услуги, контакты. Выглядит как реальный бизнес-сайт — максимум траста.",
         sup_wp_3: "⭐️ Special (custom):", sup_wp_3d: "Кастомный проект под вашу нишу и GEO. Для долгих кампаний и крупных бюджетов.",
-        sup_wp_time: "⏱️ Готовность — от 2 до 12 часов", sup_wp_btn: "Заказать White Page ↗",
+        sup_wp_time: "⏱️ Готовность — от 2 до 12 часов", sup_wp_btn: "Оформить White Page ↗",
         sup_qs_desc: "Забудьте про баны и техническую возню. Мы собираем полный рекламный стек под ключ и отдаём готовую инфраструктуру за 12 часов — остаётся только залить трафик.",
         sup_qs_1: "⚙️ <strong>Tracker (TDS)</strong> — потоки, постбэки, распределение трафика", 
         sup_qs_2: "🛡 <strong>Клоакинг-фильтры</strong> — защита от модерации, ботов и ручных проверок", 
@@ -635,31 +670,31 @@
         sup_qs_4: "🖥 <strong>White Page</strong> — сайт под модерацию уже в пакете", 
         sup_qs_5: "📊 Настройка потоков по GEO, устройствам и источникам", 
         sup_qs_6: "🔧 Техподдержка 24/7",
-        sup_qs_btn: "Узнать про Quick START ↗",
+        sup_qs_btn: "Подключить Quick START ↗",
 
-        faq_kicker: "Ответы на частые вопросы", faq_h2: "FAQ", faq_p: "Собрали всё, что полезно знать перед заказом. Если не нашли нужный ответ — напишите нашему менеджеру 🤝",
+        faq_kicker: "Ответы на частые вопросы", faq_h2: "FAQ", faq_p: "Собрали всё, что полезно знать перед заказом. Переходите в наш Telegram для быстрого подбора и связи с поддержкой 🤝",
         faq_q1: "1. Какие аккаунты Google Ads можно заказать?", faq_a1: "У нас три варианта:<br>🔹 BASE — чистый аккаунт для самостоятельного прогрева.<br>🔹 VERIFIED — аккаунт с пройденной верификацией.<br>🔹 TRUST MAX — аккаунт с верификацией документами и запущенной белой РК.",
-        faq_q2: "2. Что делать, если аккаунт заблокировали?", faq_a2: "Если блокировка произошла в первые 24 часа не по вашей вине, мы бесплатно заменим аккаунт (срок до 24ч). Напишите менеджеру со скриншотом. Гарантия не распространяется на блокировки из-за контента или агрессивных расходов.",
+        faq_q2: "2. Что делать, если аккаунт заблокировали?", faq_a2: "Если блокировка произошла в первые 24 часа не по вашей вине, мы бесплатно заменим аккаунт (срок до 24ч). Отправьте скриншот в поддержку. Гарантия не распространяется на блокировки из-за контента или агрессивных расходов.",
         faq_q3: "3. Как пополнить баланс?", faq_a3: "Мы принимаем USDT, BTC, ETH, LTC и другие криптомонеты. Выбираете сумму (от $20), оплачиваете по ссылке. Средства зачисляются автоматически после транзакции.",
         faq_q4: "4. Что входит в Quick START?", faq_a4: "Пакет технической инфраструктуры: трекер, клоакинг, домены, White Page и настройка потоков. Пакет оплачивается на месяц, домены отдельно.",
         faq_q5: "5. Что такое White Page?", faq_a5: "Это 'белый' сайт, который используется для прохождения модерации в кампаниях. Создаем под Google, Facebook, TikTok и Bing.",
         faq_q6: "6. Когда будет готов мой заказ?", faq_a6: "🔹 BASE и VERIFIED — 1–2 дня.<br>🔹 TRUST MAX — 2–4 дня.<br>🔹 Quick START — до 12 часов.<br>🔹 White Page — от 2 до 12 часов.",
-        faq_q7: "7. Можно получить скидку?", faq_a7: "Да! Если у вас есть промокод, примените его при оформлении заказа. Индивидуальные условия (для команд) можно обсудить с менеджером.",
-        faq_q8: "8. Можно получать вознаграждение за клиентов?", faq_a8: "Да, у нас есть реферальная программа. Вы приглашаете новых клиентов и получаете % за их покупки. Напишите менеджеру для подключения.",
-        faq_footer: "💬 Остались вопросы? Мы на связи 24/7.", faq_btn: "Написать менеджеру ↗",
+        faq_q7: "7. Можно получить скидку?", faq_a7: "Да! Если у вас есть промокод, примените его при оформлении заказа. Индивидуальные условия (для команд) также доступны после старта.",
+        faq_q8: "8. Можно получать вознаграждение за клиентов?", faq_a8: "Да, у нас есть реферальная программа. Вы приглашаете новых клиентов и получаете % за их покупки. Подробности доступны внутри нашей системы в Telegram.",
+        faq_footer: "💬 Остались вопросы или готовы к заливу? Мы на связи 24/7.", faq_btn: "Открыть Telegram ↗",
 
-        cta_kicker: "Следующий шаг", cta_h2: "Расскажите о задаче — обсудим подходящий вариант.", cta_p: "Сначала согласуйте характеристики и условия. Решение об оплате остаётся за вами.", cta_btn: "Получить консультацию и аккаунт ↗",
-        footer_disc: "Информация на странице должна соответствовать фактическим условиям продукта.", mob_btn: "Подобрать аккаунт ↗"
+        cta_kicker: "Следующий шаг", cta_h2: "Запустите подбор сетапа под вашу задачу прямо сейчас.", cta_p: "Ознакомьтесь с наличием ГЕО, характеристиками и условиями в пару кликов.", cta_btn: "Перейти к подбору в Telegram ↗",
+        footer_disc: "Информация на странице должна соответствовать фактическим условиям продукта.", mob_btn: "Подобрать в Telegram ↗"
       },
       en: {
         page_title: "PALMA MEDIA — Google Ads accounts",
         banner_accent: "Issued for real traffic!", banner_text: "Take an account for a test and evaluate the setup quality in action.", banner_btn: "Take a test",
-        nav_plans: "Accounts", nav_how: "How it works", nav_guarantee: "Guarantee", nav_faq: "FAQ", nav_cta: "Choose account ↗",
+        nav_plans: "Accounts", nav_how: "How it works", nav_guarantee: "Guarantee", nav_faq: "FAQ", nav_cta: "Start selection ↗",
         hero_eyebrow: "Quality infrastructure for teams and solo Buyers.",
         hero_h1: "More control<br><span>Less chaos</span>",
         hero_lead: "Trusted Google Ads accounts for teams and solo buyers. We provide stable launches, clear replacement terms, and support that speaks your language. All necessary supplies are in stock.",
-        hero_btn_1: "Choose account ↗", hero_btn_2: "Compare plans ↓",
-        hero_microproof: "<strong>Dedicated support</strong> · transparent terms before purchase",
+        hero_btn_1: "Select in Telegram ↗", hero_btn_2: "Compare plans ↓",
+        hero_microproof: "<strong>Fast delivery</strong> · transparent terms before purchase",
         art_float_1_1: "Support", art_float_1_2: "Online for launch questions",
         art_dash_sub: "Account tailored to your task",
         art_dash_b1_1: "Selection", art_dash_b1_2: "By task",
@@ -669,8 +704,8 @@
         trust_2_1: "Before payment", trust_2_2: "Clear agreements",
         trust_3_1: "Support", trust_3_2: "For order questions",
         trust_4_1: "Transparent", trust_4_2: "No hidden surprises",
-        plans_kicker: "Choose solution", plans_h2: "Three options<br>One clear choice", plans_p: "Compare the options and choose the right one. The manager will provide exact pricing, setup availability, and limits before ordering.",
-        plans_note: "Before payment, request current features, price, usage rules, and full warranty terms.",
+        plans_kicker: "Choose solution", plans_h2: "Three options<br>One clear choice", plans_p: "Compare the options and choose the right one. Current pricing, setup availability, and limits are available right after opening Telegram.",
+        plans_note: "Before payment, check current features, price, usage rules, and warranty terms.",
         
         plan_base: `
             <span class="pill">START</span>
@@ -683,7 +718,7 @@
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Features:</strong></li><li>🌍 GEO: MIX</li><li>❌ No verification</li><li>❌ No warm-up</li><li>❌ No proxy</li><li>🚫 No Google Ads history</li><li>⏱️ Delivery: 1–2 days</li></ul>
               </div>
             </details>
-            <a href="https://t.me/alex_palma_0001?text=Hello!%20I%20want%20to%20know%20more%20about%20Google%20Ads%20BASE." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Inquire BASE ↗</a>
+            <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="plan_base" target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Select BASE ↗</a>
         `,
         plan_verif: `
             <span class="pill">BALANCED CHOICE</span>
@@ -696,7 +731,7 @@
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Features:</strong></li><li>🌍 GEO: Indonesia, India, etc.</li><li>✅ Verification passed</li><li>✍️ Manual reg</li><li>❌ No warm-up</li><li>⚡️ Farm: 7+ days</li><li>⏱️ Delivery: 1–2 days</li></ul>
               </div>
             </details>
-            <a href="https://t.me/alex_palma_0001?text=Hello!%20I%20want%20to%20know%20more%20about%20Google%20Ads%20VERIFIED." target="_blank" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Inquire VERIFIED ↗</a>
+            <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="plan_verified" target="_blank" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Select VERIFIED ↗</a>
         `,
         plan_trust: `
             <span class="pill">FOR EXPERTS</span>
@@ -709,18 +744,18 @@
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Features:</strong></li><li>🌍 Top GEOs</li><li>🔥 Warmed with white campaigns</li><li>⏱️ Delivery: 2–4 days</li></ul>
               </div>
             </details>
-            <a href="https://t.me/alex_palma_0001?text=Hello!%20I%20want%20to%20know%20more%20about%20Google%20Ads%20TRUST%20MAX." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Inquire TRUST MAX ↗</a>
+            <a href="https://t.me/trust_googleadsbot?start=b_01" data-tg-target="plan_trust_max" target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Select TRUST MAX ↗</a>
         `,
 
-        quiz_kicker: "Fast selection", quiz_h2: "Which option fits you?", quiz_p: "Answer three simple questions.",
+        quiz_kicker: "Fast selection", quiz_h2: "Which option fits you?", quiz_p: "Answer three simple questions to get the optimal setup.",
         quiz_q1: "1. Setup experience?", quiz_a1_1: "I do it myself", quiz_a1_2: "Need ready setup",
         quiz_q2: "2. Need passed verification?", quiz_a2_1: "No", quiz_a2_2: "Yes",
         quiz_q3: "3. Account history?", quiz_a3_1: "No history", quiz_a3_2: "Need warm-up",
-        quiz_rec_label: "Recommended:", quiz_btn: "Discuss choice ↗",
-        how_kicker: "No surprises", how_h2: "From selection to order<br>in three steps", how_p: "We explain in advance what will happen next.",
-        how_s1_tag: "STEP 01 / SELECTION", how_s1_h3: "Describe task", how_s1_p: "Choose an option or tell the manager.",
-        how_s2_tag: "STEP 02 / AGREEMENT", how_s2_h3: "Check details", how_s2_p: "Clarify price, package, and terms.",
-        how_s3_tag: "STEP 03 / ORDER", how_s3_h3: "Make a decision", how_s3_p: "We proceed to payment and delivery only after agreeing on all details.",
+        quiz_rec_label: "Recommended:", quiz_btn: "Continue in Telegram ↗",
+        how_kicker: "No surprises", how_h2: "From selection to order<br>in three steps", how_p: "Simple and fast process to get ready infrastructure.",
+        how_s1_tag: "STEP 01 / SELECTION", how_s1_h3: "Choose setup", how_s1_p: "Pick an option on the site and proceed to our Telegram.",
+        how_s2_tag: "STEP 02 / DETAILS", how_s2_h3: "Check parameters", how_s2_p: "See pricing, available GEOs, package, and warranty terms.",
+        how_s3_tag: "STEP 03 / LAUNCH", how_s3_h3: "Get access", how_s3_p: "Complete your order in a few clicks and get a ready-to-run account.",
         cases_kicker: "Practice, not promises", cases_h2: "Cases with clear<br>context", cases_p: "Confirmed results of our accounts.",
         cases_t1: "CASE 01 · HIGH SPEND", cases_h1: "Spend $2,050+", cases_p1: "Stable spend without policy bans.",
         cases_t2: "CASE 02 · PERFECT BILLING", cases_h2: "Stable charges", cases_p2: "No problems with card linking.",
@@ -734,7 +769,7 @@
         gar_h3: "Fair 48-Hour Replacement Guarantee", 
         gar_p: "Got a policy ban before launch? We'll issue a new one for free. We replace accounts for Suspicious Payment and Unacceptable Business bans.", 
         gar_b1: "⏱️ 48 hours test", gar_b2: "🔄 Free replacement", gar_btn: "Read terms in FAQ ↓",
-        gar_cta: "Try one of our high-quality accounts for a test ↗",
+        gar_cta: "Get a high-quality account for a test ↗",
 
         sup_kicker: "Everything for launch", sup_h2: "Other necessary<br>tools", sup_p: "Turnkey technical solutions.",
         sup_wp_desc: "Our white pages pass Ads moderation the first time.",
@@ -745,25 +780,28 @@
         sup_qs_desc: "Full infrastructure ready in 12 hours.",
         sup_qs_1: "⚙️ <strong>Tracker (TDS)</strong>", sup_qs_2: "🛡 <strong>Cloaking filters</strong>", sup_qs_3: "🌐 <strong>Domains</strong>",
         sup_qs_4: "🖥 <strong>White Page</strong>", sup_qs_5: "📊 Flow setup", sup_qs_6: "🔧 24/7 Support",
-        sup_qs_btn: "About Quick START ↗",
+        sup_qs_btn: "Connect Quick START ↗",
 
-        faq_kicker: "Common Questions", faq_h2: "FAQ", faq_p: "Answers to common questions.",
+        faq_kicker: "Common Questions", faq_h2: "FAQ", faq_p: "Answers to common questions. Proceed to Telegram for fast selection and support 🤝",
         faq_q1: "1. What accounts can I order?", faq_a1: "BASE, VERIFIED, or TRUST MAX.",
         faq_q2: "2. What if account gets banned?", faq_a2: "Free replacement within 24h if it's not your fault.",
         faq_q3: "3. How to add funds?", faq_a3: "Crypto payments: USDT, BTC, ETH.",
         faq_q4: "4. What is Quick START?", faq_a4: "Tracker, cloaking, domains, WP setup.",
         faq_q5: "5. What is a White Page?", faq_a5: "Clean site for passing moderation.",
         faq_q6: "6. Delivery time?", faq_a6: "1-4 days depending on account type.",
-        faq_q7: "7. Any discounts?", faq_a7: "Yes, use promo codes or ask manager.",
+        faq_q7: "7. Any discounts?", faq_a7: "Yes, use promo codes or team terms.",
         faq_q8: "8. Referral program?", faq_a8: "Yes, invite clients and get %.",
-        faq_footer: "💬 Have questions? We are 24/7.", faq_btn: "Contact Manager ↗",
+        faq_footer: "💬 Have questions or ready to launch? We are 24/7.", faq_btn: "Open Telegram ↗",
 
-        cta_kicker: "Next step", cta_h2: "Tell us about the task.", cta_p: "The decision to pay remains yours.", cta_btn: "Get consultation and account ↗",
-        footer_disc: "Information must correspond to actual conditions.", mob_btn: "Choose account ↗"
+        cta_kicker: "Next step", cta_h2: "Start selecting a setup for your task right now.", cta_p: "Check GEO availability, specs, and terms in a couple of clicks.", cta_btn: "Proceed to Telegram ↗",
+        footer_disc: "Information must correspond to actual conditions.", mob_btn: "Select in Telegram ↗"
       }
     };
 
     function toggleLang(lang) {
+      // Сохраняем текущую ссылку (на случай если CNAME-скрипт уже подставил свой subid в start=b_01...)
+      const currentBotHref = getActiveBotUrl();
+
       document.getElementById('btn-ru').classList.remove('active');
       document.getElementById('btn-en').classList.remove('active');
       document.getElementById('btn-' + lang).classList.add('active');
@@ -782,6 +820,11 @@
       `;
       document.getElementById('plans-container').innerHTML = plansHtml;
       
+      // Проставляем сохраненную ссылку на свежесозданные карточки тарифов
+      document.querySelectorAll('#plans-container a[data-tg-target]').forEach(a => {
+        a.href = currentBotHref;
+      });
+
       document.querySelectorAll('.plan-accordion').forEach(acc => {
         acc.addEventListener('toggle', function() {
           const summaryText = this.querySelector('summary').childNodes[0];
@@ -836,22 +879,11 @@
       });
     });
 
-    // Обработка кнопки результата квиза + чистый отбив Contact
-    document.getElementById('send-choice').addEventListener('click', () => {
-      if (typeof window.fireTelegramContact === 'function') {
-        window.fireTelegramContact('Quiz: ' + selections.plan);
-      }
-
-      const msg = `Здравствуйте! Мне нужен аккаунт.\n\nМои ответы:\n- Опыт: ${selections.experience}\n- Верификация: ${selections.verification}\n- История: ${selections.history}\n\nПредварительный выбор: ${selections.plan}\n\nПодскажите стоимость и актуальные гео.`;
-      const url = 'https://t.me/alex_palma_0001?text=' + encodeURIComponent(msg);
-      window.open(url, '_blank', 'noopener');
-    });
-
-    // Нативный отбив Contact при клике по любой ссылке на менеджера @alex_palma_0001 (без блокировки перехода!)
+    // Вспомогательный трекинг клика по любой кнопке перехода в бота (сам Lead отбивает бот при нажатии Start!)
     document.addEventListener('click', function(e) {
-      const tgLink = e.target.closest('a[href*="t.me/alex_palma_0001"]');
-      if (tgLink && typeof window.fireTelegramContact === 'function') {
-        window.fireTelegramContact(tgLink.innerText.trim());
+      const tgLink = e.target.closest('a[data-tg-target]');
+      if (tgLink && typeof window.trackBotRedirect === 'function') {
+        window.trackBotRedirect(tgLink.innerText.trim());
       }
     });
 

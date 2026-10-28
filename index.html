@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
   <link rel="stylesheet" href="style.css">
 
-  <!-- Meta Pixel Code (Чистая связка под отбив Lead по кнопке Start в боте ?start=b_01) -->
+  <!-- Meta Pixel Code (Точный отбив Lead + Динамический ?px=) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -35,22 +35,22 @@
       });
     }
 
-    // Отбиваем PageView при входе (передает fbclid и куки _fbp/_fbc в систему)
+    // Отбиваем PageView при входе
     fbq('track', 'PageView');
 
-    // ВАЖНО: Поскольку событие Lead отбивается сервером/ботом при нажатии START (start=b_01),
-    // на самом сайте при клике по кнопке мы НЕ шлем Lead (чтобы не было фейковых лидов от тех, кто не нажал Start).
-    // Вместо этого фиксируем микро-конверсию перехода в бота (InitiateCheckout).
-    window.trackBotRedirect = function(btnName) {
-      if (sessionStorage.getItem('tg_redirect_tracked')) return;
-      sessionStorage.setItem('tg_redirect_tracked', '1');
+    // ЧЕТКИЙ ОТБИВ LEAD ПРИ ПЕРЕХОДЕ В БОТА (Строго 1 раз на уникального юзера, без дублей)
+    window.trackBotLead = function(btnName) {
+      if (sessionStorage.getItem('tg_lead_fired')) return;
+      sessionStorage.setItem('tg_lead_fired', '1');
 
-      fbq('track', 'InitiateCheckout', {
-        content_name: btnName || 'Bot Redirect b_01',
+      const eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+
+      fbq('track', 'Lead', {
+        content_name: btnName || 'Telegram Bot b_01',
         utm_campaign: urlParams.get('utm_campaign') || '',
         adset_id: urlParams.get('adset_id') || '',
         utm_content: urlParams.get('utm_content') || ''
-      });
+      }, { eventID: eventId });
     };
   </script>
   <noscript>
@@ -503,28 +503,22 @@
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
   <script>
-    // Инициализация Fancybox для картинок
     Fancybox.bind('[data-fancybox="cases"]', {});
 
-    // --- ОСНОВНАЯ ССЫЛКА НА БОТА С ПАРАМЕТРОМ ?start=b_01 ---
     const DEFAULT_TG_DEST = 'https://t.me/trust_googleadsbot?start=b_01';
 
     function getActiveBotUrl() {
-      // 1. Если CNAME-скрипт Cloudflare уже модифицировал ссылку в шапке (дописал туда хэш клика/fbclid),
-      // берем её за эталон, чтобы не затереть динамический параметр для кнопки Start!
       const existingBtn = document.querySelector('a[data-tg-target="test_banner"]');
       if (existingBtn && existingBtn.href && existingBtn.href.includes('trust_googleadsbot') && existingBtn.href !== DEFAULT_TG_DEST) {
         return existingBtn.href;
       }
 
-      // 2. Проверяем, не передана ли кастомная ссылка в самом URL объявления
       const rawSearch = decodeURIComponent(window.location.search);
       const urlMatch = rawSearch.match(/(https?:\/\/(?:t\.me|telegram\.me)\/[^\s&]+(?:\?start=[^\s&]+)?)/i);
       if (urlMatch && urlMatch[1]) {
         return urlMatch[1];
       }
 
-      // 3. Если в URL передан отдельный параметр start, склеиваем его
       const params = new URLSearchParams(window.location.search);
       const customStart = params.get('start');
       if (customStart) {
@@ -532,16 +526,6 @@
       }
 
       return DEFAULT_TG_DEST;
-    }
-
-    // Синхронизируем динамические кнопки (включая карточки тарифов) с сохранением CNAME-параметров
-    function syncAllTelegramLinks() {
-      const targetHref = getActiveBotUrl();
-      document.querySelectorAll('a[data-tg-target]').forEach(link => {
-        if (!link.href || !link.href.includes('start=')) {
-          link.href = targetHref;
-        }
-      });
     }
 
     // --- ТАЙМЕР ---
@@ -566,7 +550,6 @@
       let thirtyMinutes = 60 * 30,
           display = document.querySelector('#countdown');
       startTimer(thirtyMinutes, display);
-      syncAllTelegramLinks();
     };
 
     // --- МУЛЬТИЯЗЫЧНОСТЬ ---
@@ -592,7 +575,6 @@
         plans_kicker: "Выберите решение", plans_h2: "Три варианта<br>Один понятный выбор", plans_p: "Сравните варианты и выберите подходящий. Актуальный прайс, наличие сетапов и лимиты доступны сразу после перехода в Telegram.",
         plans_note: "Перед оплатой ознакомьтесь с актуальными характеристиками, ценой, правилами использования и условиями гарантии.",
         
-        // ТАРИФЫ (Кнопки ведут строго на https://t.me/trust_googleadsbot?start=b_01)
         plan_base: `
             <span class="pill">СТАРТ</span>
             <h3>🚀 Google Ads BASE</h3>
@@ -799,7 +781,6 @@
     };
 
     function toggleLang(lang) {
-      // Сохраняем текущую ссылку (на случай если CNAME-скрипт уже подставил свой subid в start=b_01...)
       const currentBotHref = getActiveBotUrl();
 
       document.getElementById('btn-ru').classList.remove('active');
@@ -820,7 +801,6 @@
       `;
       document.getElementById('plans-container').innerHTML = plansHtml;
       
-      // Проставляем сохраненную ссылку на свежесозданные карточки тарифов
       document.querySelectorAll('#plans-container a[data-tg-target]').forEach(a => {
         a.href = currentBotHref;
       });
@@ -879,11 +859,11 @@
       });
     });
 
-    // Вспомогательный трекинг клика по любой кнопке перехода в бота (сам Lead отбивает бот при нажатии Start!)
+    // ТОЧНЫЙ ОТБИВ LEAD ПРИ КЛИКЕ НА ЛЮБУЮ КНОПКУ БОТА (1 раз на юзера)
     document.addEventListener('click', function(e) {
       const tgLink = e.target.closest('a[data-tg-target]');
-      if (tgLink && typeof window.trackBotRedirect === 'function') {
-        window.trackBotRedirect(tgLink.innerText.trim());
+      if (tgLink && typeof window.trackBotLead === 'function') {
+        window.trackBotLead(tgLink.innerText.trim());
       }
     });
 

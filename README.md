@@ -1,13 +1,16 @@
-# PANTHEON GROUP — Performance Landing Page
+# PANTHEON GROUP — Performance Media Buying Landing Page
 
-Высококонверсионный промо-лендинг для закрытой performance-команды по **Google Ads**.
+Строгий, современный B2B-лендинг для performance-команды по **Google Ads**.
 
-### Визуальный стиль и концепция:
-* **Бренд:** PANTHEON GROUP (логотип с монограммой `PG`, «5+ лет в рынке»).
-* **Аватар/Арт:** Черный глянцевый манекен с неоновым розовым акцентом (папка `assets/pantheon-visual.jpg`).
-* **Цветовая палитра:** «Мерло и сливочный» (Merlot & Cream) с неоновым розовым свечением.
-* **Шрифты:** Migra / Lobelia (Cormorant Garamond, Playfair Display), Gochi Hand Cyrillic (Caveat), Montserrat.
-* **Прямая воронка:** Вся конверсия направлена прямо в официального Telegram-бота без лишних отвлекающих шагов.
+### Стилистика и принципы:
+* **Стиль:** Строгий Dark B2B Fintech (в духе Stripe, Linear, Vercel). Никаких лишних элементов, выверенный баланс и чёткость ценностного предложения.
+* **Единый шрифт:** `Inter` — один универсальный гротеск для идеальной читаемости на смартфонах, планшетах и мониторах.
+* **Структура без воды:**
+  1. Четкий оффер по масштабированию трафика из Google Ads
+  2. Ключевые метрики (спенд, скорость старта, трекинг)
+  3. 6 блоков закрытой инхаус-инфраструктуры (Google Farm Factory, Tech, Bots, Media Buying, Caps, Finance)
+  4. Регламент старта в 3 шага
+  5. Фокусная конверсия прямо в Telegram-бота
 
 ---
 
@@ -17,7 +20,6 @@
    * `index.html`
    * папка `css/style.css`
    * папка `js/main.js`
-   * папка `assets/pantheon-visual.jpg`
-2. В `index.html` замените `https://t.me/your_telegram_bot` и `@your_telegram_bot` на ссылку вашего бота.
-3. В репозитории откройте **Settings** → **Pages** → выберите ветку `main` (папка `/root`) → нажмите **Save**.
-4. Сайт сразу доступен по вашей ссылке на GitHub Pages.
+2. В файле `index.html` замените `https://t.me/your_telegram_bot` и `@your_telegram_bot` на актуальные контактные данные вашего бота.
+3. В GitHub перейдите в **Settings** → **Pages** → выберите ветку `main` (папка `/root`) → нажмите **Save**.
+4. Сайт мгновенно доступен онлайн.

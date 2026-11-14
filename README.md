@@ -20,6 +20,6 @@
    * `index.html`
    * папка `css/style.css`
    * папка `js/main.js`
-2. В файле `index.html` замените `https://t.me/your_telegram_bot` и `@your_telegram_bot` на актуальные контактные данные вашего бота.
+2. Все кнопки и ссылки уже настроены на официального Telegram-бота: **@pg_performance_team_bot** (`https://t.me/pg_performance_team_bot`).
 3. В GitHub перейдите в **Settings** → **Pages** → выберите ветку `main` (папка `/root`) → нажмите **Save**.
 4. Сайт мгновенно доступен онлайн.

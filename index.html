@@ -3,40 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>PANTHEON GROUP — Заливаем любой трафик в Google Ads</title>
-  <meta name="description" content="Сильная закрытая команда в Google Ads. Заливаем трафик под ключ под любую вертикаль: от Adult до чернухи. Без цензуры, жесткий пробив модерации.">
+  <title>PANTHEON GROUP — Underground Google Ads Media Buying</title>
+  <meta name="description" content="Закрытая performance-команда по Google Ads. Заливаем трафик под любую вертикаль: от Adult и Dating до чернухи и схем. Инхаус-клоакинг, безлимитный спенд.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   
   <style>
 /* ==========================================================================
-   PANTHEON GROUP — LUXURY BLACK & GOLD UNDERGROUND STYLE
-   Ultra-fast, punchy, high-converting lander
+   PANTHEON GROUP — ASYMMETRIC LUXURY BLACK & GOLD LAYOUT
+   Optimized for PC, Laptops, Tablets, and Smartphones
    ========================================================================== */
 
 :root {
-  --bg-deep: #050507;
-  --bg-surface: #0a0b0e;
-  --bg-card: rgba(14, 15, 20, 0.7);
-  --bg-card-hover: rgba(20, 22, 30, 0.9);
+  --bg-deep: #060709;
+  --bg-surface: #0b0d12;
+  --bg-card: #0f1218;
+  --bg-card-hover: #141822;
   
   --gold-primary: #d4af37;
   --gold-light: #f7e7be;
   --gold-dark: #aa820a;
-  --gold-glow: rgba(212, 175, 55, 0.25);
+  --gold-glow: rgba(212, 175, 55, 0.28);
 
-  --silver-primary: #e2e8f0;
-  --silver-muted: #94a3b8;
+  --silver-primary: #ffffff;
+  --silver-secondary: #94a3b8;
+  --silver-muted: #64748b;
   
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-gold: rgba(212, 175, 55, 0.35);
+  --border-gold-hover: rgba(212, 175, 55, 0.65);
+
+  --accent-emerald: #10b981;
+  --accent-cyan: #06b6d4;
 
   --font-serif: 'Cinzel', serif;
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
   --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -48,10 +56,10 @@
 
 body {
   background-color: var(--bg-deep);
-  color: #ffffff;
+  color: var(--silver-primary);
   font-family: var(--font-main);
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -59,13 +67,24 @@ body {
 /* Background Atmosphere */
 .ambient-gold-glow {
   position: fixed;
-  top: -150px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
+  top: -180px;
+  left: 20%;
+  width: 750px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(6, 7, 9, 0) 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-cyan-glow {
+  position: fixed;
+  bottom: -100px;
+  right: 10%;
+  width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(5, 5, 7, 0) 70%);
-  filter: blur(90px);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, rgba(6, 7, 9, 0) 70%);
+  filter: blur(140px);
   pointer-events: none;
   z-index: 0;
 }
@@ -76,26 +95,26 @@ body {
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 48px 48px;
   pointer-events: none;
   z-index: 0;
 }
 
 .container {
-  max-width: 980px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
   position: relative;
   z-index: 1;
 }
 
 /* Header */
 .header {
-  padding: 20px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(5, 5, 7, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(6, 7, 9, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -110,39 +129,40 @@ body {
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-decoration: none;
 }
 
-.logo-img-small {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
+.logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   border: 1px solid var(--border-gold);
   object-fit: cover;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
 }
 
-.logo-text-wrap {
+.logo-text-block {
   display: flex;
   flex-direction: column;
 }
 
-.logo-title-pantheon {
+.logo-pantheon {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-primary) 70%, var(--gold-dark) 100%);
+  letter-spacing: 0.07em;
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-primary) 65%, var(--gold-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.1;
 }
 
-.logo-title-group {
+.logo-group {
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.22em;
-  color: var(--silver-primary);
+  letter-spacing: 0.24em;
+  color: #fff;
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -150,103 +170,109 @@ body {
 .header-status {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--silver-muted);
+  font-size: 0.78rem;
+  color: var(--silver-secondary);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-subtle);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 30px;
 }
 
 .status-dot {
-  width: 7px;
-  height: 7px;
-  background: #10b981;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-emerald);
   border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
+  box-shadow: 0 0 10px var(--accent-emerald);
 }
 
-/* Gold Button Style */
+/* Gold CTA Buttons */
 .btn-gold {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   background: linear-gradient(135deg, #f7e7be 0%, #d4af37 50%, #b8860b 100%);
-  color: #050507;
+  color: #060709;
   font-family: var(--font-main);
   font-weight: 800;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   border: none;
   transition: var(--transition);
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.28);
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
   filter: brightness(1.08);
 }
 
 .btn-sm {
-  padding: 9px 18px;
-  font-size: 0.85rem;
+  padding: 10px 20px;
+  font-size: 0.88rem;
 }
 
 .btn-hero {
-  padding: 18px 36px;
-  font-size: 1.05rem;
+  padding: 18px 34px;
+  font-size: 1.02rem;
   letter-spacing: 0.02em;
 }
 
+.btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-gold:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
 /* ==========================================================================
-   HERO SECTION (COMPACT & PUNCHY)
+   HERO: ASYMMETRIC SPLIT (LEFT CONTENT, RIGHT TERMINAL CARD)
    ========================================================================== */
 .hero {
-  padding: 55px 0 45px;
-  text-align: center;
+  padding: 70px 0 60px;
 }
 
-.hero-emblem-wrap {
-  margin-bottom: 24px;
-  display: inline-block;
-  position: relative;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.28fr 1fr;
+  align-items: center;
+  gap: 60px;
 }
 
-.hero-emblem {
-  width: 140px;
-  height: 140px;
-  border-radius: 20px;
-  border: 1px solid var(--border-gold);
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
-  object-fit: cover;
+/* Left Hero Column */
+.hero-content {
+  text-align: left;
 }
 
-.badge-tag {
-  display: inline-block;
+.badge-pill-tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--gold-light);
   background: rgba(212, 175, 55, 0.08);
   border: 1px solid var(--border-gold);
-  padding: 6px 16px;
-  border-radius: 30px;
-  margin-bottom: 22px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 24px;
   text-transform: uppercase;
 }
 
 .hero-h1 {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 20px;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  margin-bottom: 22px;
   text-transform: uppercase;
 }
 
@@ -254,169 +280,464 @@ body {
   background: linear-gradient(180deg, #ffffff 0%, var(--gold-light) 40%, var(--gold-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: block;
+  display: inline-block;
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--silver-primary);
-  max-width: 680px;
-  margin: 0 auto 32px;
-  line-height: 1.6;
+.hero-lead {
+  font-size: 1.15rem;
+  color: var(--silver-secondary);
+  line-height: 1.65;
+  margin-bottom: 34px;
+  max-width: 580px;
 }
 
-.hero-subtitle strong {
+.hero-lead strong {
   color: #fff;
-  border-bottom: 1px dashed var(--gold-primary);
-}
-
-.hero-cta-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 45px;
-}
-
-.hero-sla {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--silver-muted);
-}
-
-.hero-sla span {
-  color: #10b981;
   font-weight: 700;
 }
 
-/* ==========================================================================
-   3 CARDS: ЧТО МЫ ЗАЛИВАЕМ
-   ========================================================================== */
-.niche-grid {
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.hero-trust-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.trust-sla {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+}
+
+.trust-sub {
+  font-size: 0.78rem;
+  color: var(--silver-muted);
+}
+
+/* Mini Metrics Strip */
+.hero-metrics-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 40px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+  max-width: 560px;
 }
 
-.niche-card {
+.metric-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-num {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.metric-num span {
+  color: var(--gold-primary);
+}
+
+.metric-label {
+  font-size: 0.76rem;
+  color: var(--silver-muted);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   RIGHT SHOWCASE: LIVE PERFORMANCE TERMINAL CARD
+   ========================================================================== */
+.terminal-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 24px 20px;
-  text-align: left;
-  transition: var(--transition);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(212, 175, 55, 0.1);
   position: relative;
   overflow: hidden;
 }
 
-.niche-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-gold);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  background: var(--bg-card-hover);
+.terminal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d4af37, #06b6d4, #10b981);
 }
 
-.niche-icon {
-  font-size: 1.8rem;
-  margin-bottom: 14px;
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.niche-title {
-  font-size: 1.15rem;
+.terminal-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.terminal-emblem {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--border-gold);
+  object-fit: cover;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.3);
+}
+
+.terminal-title-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
   font-weight: 800;
-  margin-bottom: 8px;
+  color: var(--gold-light);
+}
+
+.terminal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.terminal-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.terminal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: var(--transition);
+}
+
+.terminal-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.t-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.t-icon {
+  font-size: 1.15rem;
+}
+
+.t-name {
+  font-weight: 700;
+  font-size: 0.92rem;
   color: #fff;
 }
 
-.niche-desc {
-  font-size: 0.88rem;
+.t-sub {
+  font-size: 0.74rem;
   color: var(--silver-muted);
+}
+
+.t-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.badge-gold {
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--border-gold);
+}
+
+.badge-cyan {
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.terminal-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 14px 18px;
+  gap: 12px;
+}
+
+.tf-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.tf-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tf-sub {
+  font-size: 0.75rem;
+  color: var(--silver-muted);
+}
+
+.btn-term-go {
+  background: var(--gold-primary);
+  color: #060709;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.btn-term-go:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3 VERTICAL FOCUS CARDS (GRID ALIGNED)
+   ========================================================================== */
+.section-niches {
+  padding: 30px 0 60px;
+}
+
+.section-head {
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--gold-primary);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.niches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.n-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  transition: var(--transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.n-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  background: var(--bg-card-hover);
+}
+
+.n-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.n-icon {
+  font-size: 2rem;
+}
+
+.n-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--border-gold);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.n-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.n-card p {
+  font-size: 0.92rem;
+  color: var(--silver-secondary);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.n-features {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-emerald);
+}
+
+/* ==========================================================================
+   4 INFRASTRUCTURE PILLARS
+   ========================================================================== */
+.section-pillars {
+  padding: 0 0 60px;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.p-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  transition: var(--transition);
+}
+
+.p-item:hover {
+  border-color: var(--border-gold);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.p-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.p-item h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.p-item p {
+  font-size: 0.85rem;
+  color: var(--silver-secondary);
   line-height: 1.5;
 }
 
 /* ==========================================================================
-   3 FACT BULLETS
+   FINAL CTA: WIDE ASYMMETRIC BANNER
    ========================================================================== */
-.facts-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  margin-bottom: 45px;
-  text-align: left;
+.section-cta {
+  padding: 0 0 70px;
 }
 
-.fact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.fact-dot {
-  font-size: 1.2rem;
-  color: var(--gold-primary);
-  line-height: 1;
-  margin-top: 2px;
-}
-
-.fact-text strong {
-  display: block;
-  font-size: 0.95rem;
-  color: #fff;
-  margin-bottom: 4px;
-}
-
-.fact-text p {
-  font-size: 0.82rem;
-  color: var(--silver-muted);
-}
-
-/* ==========================================================================
-   FINAL CTA BOX
-   ========================================================================== */
-.final-box {
-  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1) 0%, rgba(10, 11, 14, 0.9) 70%);
+.cta-banner {
+  background: radial-gradient(circle at 75% 50%, rgba(212, 175, 55, 0.12) 0%, rgba(15, 18, 24, 0.95) 70%);
   border: 1px solid var(--border-gold);
-  border-radius: 16px;
-  padding: 40px 30px;
-  text-align: center;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-  margin-bottom: 50px;
+  border-radius: var(--radius-lg);
+  padding: 44px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7);
 }
 
-.final-box h2 {
-  font-size: 2rem;
+.cta-banner-content h2 {
+  font-size: 2.2rem;
   font-weight: 900;
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  letter-spacing: -0.025em;
+  color: #fff;
 }
 
-.final-box p {
+.cta-banner-content p {
   font-size: 1.05rem;
-  color: var(--silver-muted);
-  max-width: 550px;
-  margin: 0 auto 28px;
+  color: var(--silver-secondary);
+  max-width: 580px;
 }
 
-.bot-tag-hint {
+.cta-banner-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.bot-tag {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--silver-muted);
-  margin-top: 14px;
-  display: block;
 }
 
 /* Footer */
 .footer {
   padding: 24px 0 90px;
   border-top: 1px solid var(--border-subtle);
-  text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--silver-muted);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-link {
+  color: var(--gold-light);
+  text-decoration: none;
+  font-family: var(--font-mono);
 }
 
 /* Sticky Mobile Bar */
@@ -424,32 +745,97 @@ body {
   display: none;
 }
 
-@media (max-width: 768px) {
+/* ==========================================================================
+   RESPONSIVE DESIGN (PC, LAPTOPS, TABLETS, MOBILE)
+   ========================================================================== */
+/* Laptops & Small Desktops (max-width: 1080px) */
+@media (max-width: 1080px) {
+  .hero-grid {
+    gap: 40px;
+  }
   .hero-h1 {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
-  .hero-subtitle {
-    font-size: 1.05rem;
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .niche-grid {
+}
+
+/* Tablets (max-width: 860px) */
+@media (max-width: 860px) {
+  .hero-grid {
     grid-template-columns: 1fr;
+    gap: 45px;
   }
-  .facts-strip {
+  .hero-content {
+    text-align: left;
+  }
+  .hero-h1 {
+    font-size: 2.5rem;
+  }
+  .niches-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
-  .final-box {
-    padding: 30px 18px;
+  .cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 34px 26px;
   }
-  .final-box h2 {
-    font-size: 1.6rem;
+  .cta-banner-action {
+    width: 100%;
+    align-items: stretch;
+  }
+  .cta-banner-action .btn-hero {
+    width: 100%;
+  }
+}
+
+/* Mobile Smartphones (max-width: 580px) */
+@media (max-width: 580px) {
+  .container {
+    padding: 0 18px;
+  }
+  .header {
+    padding: 14px 0;
+  }
+  .header-status {
+    display: none;
+  }
+  .hero {
+    padding: 40px 0 35px;
+  }
+  .hero-h1 {
+    font-size: 2.1rem;
+    line-height: 1.12;
+  }
+  .hero-lead {
+    font-size: 0.98rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
   }
   .btn-hero {
     width: 100%;
     padding: 16px 20px;
+    font-size: 0.95rem;
   }
-  .header-status {
-    display: none;
+  .hero-metrics-strip {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .metric-num {
+    font-size: 1.15rem;
+  }
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
   .sticky-mobile-cta {
     display: flex;
@@ -458,7 +844,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 999;
-    background: rgba(5, 5, 7, 0.96);
+    background: rgba(6, 7, 9, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     padding: 12px 16px;
@@ -475,22 +861,23 @@ body {
 <body>
   <!-- Ambient Gold Glow & Dark Grid -->
   <div class="ambient-gold-glow"></div>
+  <div class="ambient-cyan-glow"></div>
   <div class="ambient-grid"></div>
 
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
-      <div class="header-logo">
-        <img src="assets/pantheon-logo.webp" alt="Pantheon Group" class="logo-img-small">
-        <div class="logo-text-wrap">
-          <span class="logo-title-pantheon">PANTHEON</span>
-          <span class="logo-title-group">GROUP</span>
+      <a href="https://t.me/pg_performance_team_bot" class="header-logo">
+        <img src="assets/pantheon-logo.webp" alt="Pantheon Group" class="logo-img">
+        <div class="logo-text-block">
+          <span class="logo-pantheon">PANTHEON</span>
+          <span class="logo-group">GROUP</span>
         </div>
-      </div>
+      </a>
 
       <div class="header-status">
         <span class="status-dot"></span>
-        <span>ONLINE // ACCEPTING OFFERS</span>
+        <span>GOOGLE ADS ONLY // ACCEPTING HARD OFFERS</span>
       </div>
 
       <div class="header-cta">
@@ -502,105 +889,253 @@ body {
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Section 1: Dynamic Hero Split (60% / 40%) -->
     <section class="hero">
       <div class="container">
         
-        <div class="hero-emblem-wrap">
-          <img src="assets/pantheon-logo.webp" alt="Pantheon Group Syndicate" class="hero-emblem">
-        </div>
-
-        <div>
-          <span class="badge-tag">PRIVATE PERFORMANCE // GOOGLE ADS ONLY</span>
-        </div>
-
-        <h1 class="hero-h1">
-          ЗАЛЬЁМ ТРАФИК В GOOGLE ADS <br>
-          <span class="gold-gradient">ПОД ЛЮБУЮ ВЕРТИКАЛЬ.</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          От <strong>Adult и Dating</strong> до жесткого <strong>Black Hat и схем</strong>. 
-          Пробиваем любую модерацию Google Ads. Не боимся сложных тем и объемов. 
-          Заливаем через свои адаптивные воронки под ключ.
-        </p>
-
-        <div class="hero-cta-box">
-          <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn-gold btn-hero">
-            <span>⚡ ОБСУДИТЬ ЗАЛИВ В TELEGRAM БОТЕ</span>
-            <span>→</span>
-          </a>
-          <span class="hero-sla"><span>●</span> Ответ тимлида до 10 мин · Полная анонимность · Без цензуры</span>
-        </div>
-
-        <!-- 3 Niche Cards: Что мы заливаем -->
-        <div class="niche-grid">
+        <div class="hero-grid">
           
-          <div class="niche-card">
-            <div class="niche-icon">🔞</div>
-            <h3 class="niche-title">Adult & Dating</h3>
-            <p class="niche-desc">
-              OnlyFans, вебкам, знакомства, 18+ воронки и приватные связки. Держим стабильный открут в Google без банов.
+          <!-- Left Column: Sharp Copy & Action -->
+          <div class="hero-content">
+            
+            <div class="badge-pill-tech">
+              <span>⚡</span> UNDERGROUND PERFORMANCE // PRIVATE SYNDICATE
+            </div>
+
+            <h1 class="hero-h1">
+              ЗАЛЬЁМ ТРАФИК В GOOGLE ADS <br>
+              <span class="gold-gradient">ПОД ЛЮБУЮ ВЕРТИКАЛЬ.</span>
+            </h1>
+
+            <p class="hero-lead">
+              От <strong>Adult и Dating</strong> до жесткого <strong>Black Hat и схем</strong>. 
+              Пробиваем любую модерацию Google Ads. Не боимся сложных тем, серых связок и объемов. 
+              Заливаем через свои адаптивные воронки под ключ.
             </p>
+
+            <div class="hero-actions">
+              <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn-gold btn-hero">
+                <span>⚡ ОБСУДИТЬ ЗАЛИВ В TELEGRAM БОТЕ</span>
+                <span class="btn-arrow">→</span>
+              </a>
+
+              <div class="hero-trust-info">
+                <span class="trust-sla">⚡ Ответ тимлида до 10 минут</span>
+                <span class="trust-sub">Полная анонимность · Без цензуры</span>
+              </div>
+            </div>
+
+            <!-- Mini Numbers Row -->
+            <div class="hero-metrics-strip">
+              <div class="metric-box">
+                <div class="metric-num">500K<span>+</span></div>
+                <div class="metric-label">кликов / сут</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-num">99.8<span>%</span></div>
+                <div class="metric-label">пробив модерации</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-num">USDT</div>
+                <div class="metric-label">Daily / Net-3</div>
+              </div>
+            </div>
+
           </div>
 
-          <div class="niche-card">
-            <div class="niche-icon">💀</div>
-            <h3 class="niche-title">Gray & Black Hat</h3>
-            <p class="niche-desc">
-              Схемы, чернуха, агрессивный арбитраж и софт. Пробиваем жесткие фильтры через инхаус-клоакинг Keitaro.
-            </p>
-          </div>
+          <!-- Right Column: Live Performance Terminal Card -->
+          <div class="hero-showcase">
+            <div class="terminal-card">
+              
+              <div class="terminal-header">
+                <div class="terminal-logo-wrap">
+                  <img src="assets/pantheon-logo.webp" alt="Pantheon Emblem" class="terminal-emblem">
+                  <div>
+                    <div class="terminal-title-text">PANTHEON CLUSTER</div>
+                    <div class="t-sub">Google Ads Infrastructure</div>
+                  </div>
+                </div>
+                <span class="terminal-tag">ACTIVE 24/7</span>
+              </div>
 
-          <div class="niche-card">
-            <div class="niche-icon">🎰</div>
-            <h3 class="niche-title">Gambling & High-Risk</h3>
-            <p class="niche-desc">
-              Казино, слоты, беттинг, схемный трафик и крипто-проекты. Заливаем любые ГЕО с высоким ROI.
-            </p>
+              <div class="terminal-rows">
+                
+                <div class="terminal-row">
+                  <div class="t-left">
+                    <span class="t-icon">🔞</span>
+                    <div>
+                      <div class="t-name">Adult & Dating</div>
+                      <div class="t-sub">Webcam, OnlyFans, 18+ воронки</div>
+                    </div>
+                  </div>
+                  <span class="t-badge badge-gold">NO LIMITS</span>
+                </div>
+
+                <div class="terminal-row">
+                  <div class="t-left">
+                    <span class="t-icon">💀</span>
+                    <div>
+                      <div class="t-name">Gray & Black Hat</div>
+                      <div class="t-sub">Схемы, софт, чернуха, жесть</div>
+                    </div>
+                  </div>
+                  <span class="t-badge badge-cyan">KEITARO TDS</span>
+                </div>
+
+                <div class="terminal-row">
+                  <div class="t-left">
+                    <span class="t-icon">🎰</span>
+                    <div>
+                      <div class="t-name">Gambling & Crypto</div>
+                      <div class="t-sub">Казино, ставки, хай-риск</div>
+                    </div>
+                  </div>
+                  <span class="t-badge badge-gold">HIGH SPEND</span>
+                </div>
+
+                <div class="terminal-row">
+                  <div class="t-left">
+                    <span class="t-icon">🛡</span>
+                    <div>
+                      <div class="t-name">Google Cloaking Shield</div>
+                      <div class="t-sub">Вайты под модераторов Google</div>
+                    </div>
+                  </div>
+                  <span class="t-badge badge-cyan">99.8% PASS</span>
+                </div>
+
+              </div>
+
+              <div class="terminal-footer-bar">
+                <div class="tf-text">
+                  <span class="tf-title">Свободные капы доступны</span>
+                  <span class="tf-sub">Запустим тест связки прямо сегодня</span>
+                </div>
+                <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn-term-go">
+                  Запустить →
+                </a>
+              </div>
+
+            </div>
           </div>
 
         </div>
 
-        <!-- 3 Facts: Почему мы -->
-        <div class="facts-strip">
+      </div>
+    </section>
+
+    <!-- Section 2: 3 Focus Niche Cards -->
+    <section class="section-niches">
+      <div class="container">
+        
+        <div class="section-head">
+          <span class="section-tag">// С ЧЕМ МЫ РАБОТАЕМ</span>
+          <h2 class="section-title">ВЕРТИКАЛИ БЕЗ ОГРАНИЧЕНИЙ</h2>
+        </div>
+
+        <div class="niches-grid">
           
-          <div class="fact-item">
-            <span class="fact-dot">◆</span>
-            <div class="fact-text">
-              <strong>Любые объемы</strong>
-              <p>Безлимитные капы. Разгоняем связки x5–x10 без зависания открута.</p>
+          <div class="n-card">
+            <div>
+              <div class="n-top">
+                <span class="n-icon">🔞</span>
+                <span class="n-pill">ADULT / DATING</span>
+              </div>
+              <h3>Adult & Dating</h3>
+              <p>
+                OnlyFans, вебкам, адалт-дейтинг и 18+ воронки. Удерживаем стабильный открут в Google Ads без моментальных сносов аккаунтов.
+              </p>
             </div>
+            <div class="n-features">✓ Поисковый PPC & YouTube трафик</div>
           </div>
 
-          <div class="fact-item">
-            <span class="fact-dot">◆</span>
-            <div class="fact-text">
-              <strong>Своя инфраструктура</strong>
-              <p>Агентские кабинеты, TDS-клоакинг, вайты и адаптивные TG-прокладки.</p>
+          <div class="n-card">
+            <div>
+              <div class="n-top">
+                <span class="n-icon">💀</span>
+                <span class="n-pill">GRAY / BLACK</span>
+              </div>
+              <h3>Gray & Black Hat</h3>
+              <p>
+                Схемы, чернуха, агрессивный арбитраж и нестандартные связки. Пробиваем жесткие автоматические и ручные чекеры Google.
+              </p>
             </div>
+            <div class="n-features">✓ Инхаус-клоакинг Keitaro S2S</div>
           </div>
 
-          <div class="fact-item">
-            <span class="fact-dot">◆</span>
-            <div class="fact-text">
-              <strong>Крипта и анонимность</strong>
-              <p>Сверки Daily / Net-3, расчеты строго в USDT без договоров и лишних вопросов.</p>
+          <div class="n-card">
+            <div>
+              <div class="n-top">
+                <span class="n-icon">🎰</span>
+                <span class="n-pill">HIGH RISK</span>
+              </div>
+              <h3>Gambling & Crypto</h3>
+              <p>
+                Казино, слоты, ставки, крипто-проекты и хай-риск офферы. Заливаем любые ГЕО (Tier-1, LatAm, Азия) с максимальной окупаемостью.
+              </p>
             </div>
+            <div class="n-features">✓ Безлимитные капы и масштаб</div>
           </div>
 
         </div>
 
-        <!-- Final CTA Box -->
-        <div class="final-box">
-          <h2>ЕСТЬ ОФФЕР? ЗАПУСТИМ ТЕСТ СЕГОДНЯ</h2>
-          <p>
-            Перейдите в бота и оставьте краткий запрос (вертикаль, ГЕО, бюджет). Тимлид свяжется с вами в течение 10 минут.
-          </p>
-          <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn-gold btn-hero">
-            <span>ОСТАВИТЬ ЗАЯВКУ В БОТЕ →</span>
-          </a>
-          <span class="bot-tag-hint">Официальный бот команды: @pg_performance_team_bot</span>
+      </div>
+    </section>
+
+    <!-- Section 3: 4 Infrastructure Pillars (Balanced Horizontal Grid) -->
+    <section class="section-pillars">
+      <div class="container">
+        
+        <div class="pillars-grid">
+          
+          <div class="p-item">
+            <span class="p-num">01 / CAPACITY</span>
+            <h4>Безлимитный спенд</h4>
+            <p>Если связка цепляется — готовы разгонять объемы x5–x10 за 24–48 часов без просадки качества.</p>
+          </div>
+
+          <div class="p-item">
+            <span class="p-num">02 / CLOAKING</span>
+            <h4>Свой инхаус-сетап</h4>
+            <p>Мобильные прокси, Keitaro TDS и динамические Whitepages под модераторов Google.</p>
+          </div>
+
+          <div class="p-item">
+            <span class="p-num">03 / FUNNELS</span>
+            <h4>TG-воронки под ключ</h4>
+            <p>Создаем конвертящие прокладки и Telegram-боты, которые фильтруют ботов и дожимают лидов.</p>
+          </div>
+
+          <div class="p-item">
+            <span class="p-num">04 / FINANCE</span>
+            <h4>Крипта и анонимность</h4>
+            <p>Сверки в реалтайме, расчеты strictly в USDT (Daily / Net-3). Без договоров и лишних вопросов.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Final Wide Asymmetric CTA Banner -->
+    <section class="section-cta">
+      <div class="container">
+        
+        <div class="cta-banner">
+          <div class="cta-banner-content">
+            <h2>ЕСТЬ ОФФЕР? ЗАПУСТИМ ТЕСТ СЕГОДНЯ.</h2>
+            <p>
+              Перейдите в бота и отправьте вводные по вашей связке (вертикаль, ГЕО, бюджет). Тимлид выйдет на связь в течение 10 минут.
+            </p>
+          </div>
+
+          <div class="cta-banner-action">
+            <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn-gold btn-hero">
+              <span>ОСТАВИТЬ ЗАЯВКУ В БОТЕ</span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <span class="bot-tag">Официальный бот: @pg_performance_team_bot</span>
+          </div>
         </div>
 
       </div>
@@ -614,10 +1149,11 @@ body {
     </a>
   </div>
 
-  <!-- Minimal Footer -->
+  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="container footer-inner">
       <p>© 2026 PANTHEON GROUP. Underground Performance & Google Ads Media Buying.</p>
+      <a href="https://t.me/pg_performance_team_bot" target="_blank" class="footer-link">@pg_performance_team_bot</a>
     </div>
   </footer>
 

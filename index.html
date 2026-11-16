@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>PANTHEON GROUP — Performance Media Buying & Infrastructure</title>
-  <meta name="description" content="Закрытая performance-команда по Google Ads. Полный цикл инфраструктуры: фарм аккаунтов, клоакинг, разработка Telegram-воронок и масштабирование офферов.">
+  <title>PANTHEON GROUP — Underground Google Ads Performance & Cloaking Infrastructure</title>
+  <meta name="description" content="Закрытая performance-инфраструктура по Google Ads. Заливаем сложные и жесткие вертикали: от Adult и Dating до Gray и Black Hat. Агентские аккаунты, инхаус-клоакинг Keitaro, TG-воронки.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -968,6 +968,156 @@ p {
     gap: 16px;
   }
 }
+
+/* Quiz Selector Component */
+.quiz-section {
+  padding: 40px 0 65px;
+}
+.quiz-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 38px 34px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+.quiz-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+}
+.quiz-header {
+  text-align: left;
+  margin-bottom: 28px;
+}
+.quiz-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+.quiz-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.quiz-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+.quiz-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.step-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-group-label span {
+  color: var(--accent-blue);
+}
+.pill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+.quiz-pill {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  transition: var(--transition);
+  user-select: none;
+}
+.quiz-pill:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #fff;
+}
+.quiz-pill.active {
+  background: rgba(59, 130, 246, 0.22);
+  border-color: var(--accent-blue);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
+}
+.quiz-cta-box {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+.quiz-summary-hint {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+.quiz-summary-hint strong {
+  color: var(--accent-emerald);
+}
+.sticky-mobile-cta {
+  display: none;
+}
+@media (max-width: 768px) {
+  .sticky-mobile-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: rgba(8, 10, 14, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 10px 14px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .sticky-mobile-cta .btn {
+    width: 100%;
+    font-size: 0.92rem;
+    padding: 14px 20px;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+  }
+  .quiz-card {
+    padding: 24px 18px;
+  }
+  .pill-grid {
+    grid-template-columns: 1fr;
+  }
+  .quiz-cta-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .quiz-cta-box .btn-lg {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
@@ -983,17 +1133,16 @@ p {
         <span class="logo-badge">PG</span>
         <div class="logo-info">
           <span class="logo-name">PANTHEON GROUP</span>
-          <span class="logo-tag">Performance Media Buying</span>
+          <span class="logo-tag">Google Ads Underground Performance</span>
         </div>
       </div>
 
       <div class="header-status">
         <span class="status-indicator"></span>
-        <span class="status-label">STATUS: <strong>ACCEPTING OFFERS</strong></span>
+        <span class="status-label">STATUS: <strong>ACCEPTING HARD OFFERS</strong></span>
       </div>
 
       <div class="header-cta">
-        <!-- Ссылка на вашего Telegram-бота -->
         <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
           <span>Связаться в боте</span>
           <span class="btn-arrow">→</span>
@@ -1013,30 +1162,30 @@ p {
           <div class="hero-col-content">
             
             <div class="hero-badges-row">
-              <span class="badge-pill-tech">B2B TRAFFIC CLUSTER // GOOGLE ADS</span>
-              <span class="badge-pill-exp">5+ лет в рынке</span>
+              <span class="badge-pill-tech">UNDERGROUND MEDIA BUYING // GOOGLE ADS ONLY</span>
+              <span class="badge-pill-exp">5+ лет обхода модерации</span>
             </div>
 
             <h1 class="hero-title">
-              ВСЕ ВИДЯТ РЕКЛАМУ. <br>
-              <span class="highlight">МЫ ДАЁМ РЕЗУЛЬТАТ.</span>
+              ЗАЛИВАЕМ ТО, ЗА ЧТО ДРУГИХ <br>
+              <span class="highlight">СНОСЯТ В ПЕРВЫЕ 5 МИНУТ.</span>
             </h1>
 
             <p class="hero-desc">
               Закрытая performance-команда со своей <strong>инфраструктурой полного цикла в Google Ads</strong>. 
-              Заливаем и выкупаем трафик под ключ: от трастовых агентских кабинетов и клоакинга 
-              до адаптивных Telegram-воронок с высоким конвертом.
+              Заливаем и выкупаем трафик под ключ на любые сложные вертикали: от Adult и Dating до схемного трафика и жесткого Black Hat. 
+              Инхаус-ферма трастовых кабинетов, Keitaro TDS клоакинг и адаптивные Telegram-воронки.
             </p>
 
             <div class="hero-cta-wrapper">
               <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-primary">
-                <span>ОБСУДИТЬ ОФФЕР В TELEGRAM БОТЕ</span>
+                <span>ОБСУДИТЬ ЖЁСТКИЙ ОФФЕР В TELEGRAM</span>
                 <span class="btn-arrow">→</span>
               </a>
 
               <div class="hero-sla">
-                <span class="sla-val">⚡ Ответ до 15 минут</span>
-                <span class="sla-lbl">Прямая связь с тимлидом</span>
+                <span class="sla-val">⚡ Ответ тимлида до 10 минут</span>
+                <span class="sla-lbl">Полная анонимность / Без цензуры</span>
               </div>
             </div>
 
@@ -1047,8 +1196,8 @@ p {
                 <span class="mini-lbl">K+ кликов / сут</span>
               </div>
               <div class="mini-stat">
-                <span class="mini-num">2–4 ч</span>
-                <span class="mini-lbl">Старт сплит-теста</span>
+                <span class="mini-num">15 мин</span>
+                <span class="mini-lbl">Замена сетапа при бане</span>
               </div>
               <div class="mini-stat">
                 <span class="mini-num">USDT</span>
@@ -1065,7 +1214,7 @@ p {
               <div class="telemetry-header">
                 <div class="telemetry-title">
                   <span class="pulsing-dot"></span>
-                  <span>INFRASTRUCTURE STATUS</span>
+                  <span>UNDERGROUND INFRASTRUCTURE</span>
                 </div>
                 <span class="telemetry-tag">ACTIVE 24/7</span>
               </div>
@@ -1075,41 +1224,41 @@ p {
                 <div class="telemetry-row">
                   <div class="row-label">
                     <span class="row-name">Google Farm Factory</span>
-                    <span class="row-sub">Трастовые агентские аккаунты</span>
+                    <span class="row-sub">Агентские аккаунты & инвойсы</span>
                   </div>
-                  <span class="row-badge badge-green">LIVE // RESERVE</span>
+                  <span class="row-badge badge-green">UNLIMITED SPEND</span>
                 </div>
 
                 <div class="telemetry-row">
                   <div class="row-label">
                     <span class="row-name">TDS & Cloaking Shield</span>
-                    <span class="row-sub">Keitaro S2S / Чистый трафик</span>
+                    <span class="row-sub">Keitaro S2S / Whitepages под модерацию</span>
                   </div>
-                  <span class="row-badge badge-green">99.8% CLEAN</span>
+                  <span class="row-badge badge-green">99.8% PASS RATE</span>
                 </div>
 
                 <div class="telemetry-row">
                   <div class="row-label">
                     <span class="row-name">Telegram Funnels & Bots</span>
-                    <span class="row-sub">Свои прокладки и прогрев</span>
+                    <span class="row-sub">Прокладки и дожим лида</span>
                   </div>
-                  <span class="row-badge badge-blue">HIGH CR</span>
+                  <span class="row-badge badge-blue">HIGH RETENTION</span>
                 </div>
 
                 <div class="telemetry-row">
                   <div class="row-label">
-                    <span class="row-name">Active Formats</span>
-                    <span class="row-sub">Search PPC, YouTube, PMax, UAC</span>
+                    <span class="row-name">Google Search, YouTube & PMax</span>
+                    <span class="row-sub">Пробив любой жесткой модерации</span>
                   </div>
-                  <span class="row-badge badge-blue">SCALABLE</span>
+                  <span class="row-badge badge-blue">NO BANS SHOCK</span>
                 </div>
 
               </div>
 
               <div class="telemetry-footer-bar">
                 <div class="footer-bar-info">
-                  <span class="f-title">Свободные капы доступны</span>
-                  <span class="f-sub">Готовы принять бриф прямо сейчас</span>
+                  <span class="f-title">Готовы взять сложный оффер</span>
+                  <span class="f-sub">Без цензуры и лишних вопросов</span>
                 </div>
                 <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn-telemetry-go">
                   Запустить →
@@ -1117,6 +1266,68 @@ p {
               </div>
 
             </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- NEW Section: Interactive Express Quiz / Setup Configurator -->
+    <section class="quiz-section">
+      <div class="container">
+        
+        <div class="quiz-card">
+          <div class="quiz-header">
+            <span class="quiz-tag">// ЭКСПРЕСС-ПОДБОР СЕТАПА ПОД ВАШ ОФФЕР</span>
+            <h2 class="quiz-title">ВЫБЕРИТЕ ПАРАМЕТРЫ СВЯЗКИ ДЛЯ ТИМЛИДА</h2>
+            <p class="quiz-subtitle">Укажите вводные вашего оффера, чтобы бот сразу выдал подходящие условия, ставку и доступ к сетапу.</p>
+          </div>
+
+          <div class="quiz-steps">
+            
+            <!-- Step 1: Vertical -->
+            <div class="step-group">
+              <div class="step-group-label"><span>01 //</span> ВЕРТИКАЛЬ ВАШЕГО ОФФЕРА:</div>
+              <div class="pill-grid" data-group="vertical">
+                <div class="quiz-pill active" data-val="Adult_Dating">🔞 Adult / Dating (Webcam, 18+)</div>
+                <div class="quiz-pill" data-val="Gray_Black">💀 Gray & Black Hat (Схемы, софт)</div>
+                <div class="quiz-pill" data-val="Gambling">🎰 Gambling & Betting (Казино)</div>
+                <div class="quiz-pill" data-val="Crypto">⚡ Crypto & High-Risk (Инвест)</div>
+                <div class="quiz-pill" data-val="Hard_Other">🏴 Любая другая жесть</div>
+              </div>
+            </div>
+
+            <!-- Step 2: Service Type -->
+            <div class="step-group">
+              <div class="step-group-label"><span>02 //</span> ЧТО ТРЕБУЕТСЯ:</div>
+              <div class="pill-grid" data-group="service">
+                <div class="quiz-pill active" data-val="Turnkey_Traffic">Трафик под ключ (нашими руками)</div>
+                <div class="quiz-pill" data-val="Agency_Accounts">Аренда агентских аккаунтов Google</div>
+                <div class="quiz-pill" data-val="Cloak_Funnel">Клоакинг + Whitepages + TG-воронка</div>
+              </div>
+            </div>
+
+            <!-- Step 3: Spend -->
+            <div class="step-group">
+              <div class="step-group-label"><span>03 //</span> ДНЕВНОЙ БЮДЖЕТ / СПЕНД:</div>
+              <div class="pill-grid" data-group="budget">
+                <div class="quiz-pill" data-val="UpTo1K">до $1,000 / сут</div>
+                <div class="quiz-pill active" data-val="1Kto5K">$1,000 – $5,000 / сут</div>
+                <div class="quiz-pill" data-val="5KPlus">$5,000+ / сут (безлимитные капы)</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="quiz-cta-box">
+            <div class="quiz-summary-hint">
+              Выбран сетап: <strong id="quiz-summary-text">Adult / Dating · Трафик под ключ · $1,000 – $5,000</strong>
+            </div>
+            <a href="https://t.me/pg_performance_team_bot" id="quiz-cta-btn" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-primary">
+              <span>ПОЛУЧИТЬ СЕТАП В TELEGRAM БОТЕ</span>
+              <span class="btn-arrow">→</span>
+            </a>
           </div>
 
         </div>
@@ -1133,16 +1344,16 @@ p {
           <!-- Sticky Left Context -->
           <div class="infra-sticky-col">
             <span class="section-tag">// ИНХАУС-ДЕПАРТАМЕНТЫ</span>
-            <h2>СОБСТВЕННАЯ ИНФРАСТРУКТУРА GOOGLE ADS</h2>
+            <h2>ПОЛНЫЙ ЦИКЛ ОБХОДА МОДЕРАЦИИ GOOGLE ADS</h2>
             <p>
-              Мы не зависим от капризов модерации и внешних поставщиков. 
-              Каждый этап работы закрыт профильным отделом, что гарантирует стабильный спенд и объемы без зависаний.
+              Мы не зависим от капризов и штормов Google. 
+              Каждый этап работы закрыт профильным отделом, что гарантирует стабильный спенд на вертикалях любой жесткости.
             </p>
 
             <div class="guarantee-box">
-              <div class="guarantee-title">Закрытый B2B регламент</div>
+              <div class="guarantee-title">Zero Bullshit & Анонимность</div>
               <div class="guarantee-text">
-                Работаем с рекламодателями и партнерскими сетями без посредников. Прозрачные сверки и персональные ставки.
+                Никаких нравоучений и белых шаблонов. Работаем с рекламодателями, вебмастерами и командами без лишних вопросов и бюрократии.
               </div>
             </div>
           </div>
@@ -1155,9 +1366,9 @@ p {
                 <span class="card-num">01 / FARM</span>
                 <span class="card-dept">FARM FACTORY</span>
               </div>
-              <h3>ФЕРМА АККАУНТОВ</h3>
+              <h3>ФЕРМА АККАУНТОВ GOOGLE</h3>
               <p>
-                Собственная ферма трастовых сетапов и агентских аккаунтов. Держим спенд даже в моменты жестких системных штормов Google.
+                Для нас аккаунты — расходники. Собственная ферма прогретых трастовых агентских аккаунтов. Если Google сносит сетап — переносим баланс за 15 минут.
               </p>
               <div class="card-advantage">✓ Постоянный резерв мощностей</div>
             </div>
@@ -1167,11 +1378,11 @@ p {
                 <span class="card-num">02 / TECH</span>
                 <span class="card-dept">DEV & SECURITY</span>
               </div>
-              <h3>ТЕХНИЧЕСКИЙ ОТДЕЛ</h3>
+              <h3>НЕПРОБИВАЕМЫЙ КЛОАКИНГ</h3>
               <p>
-                Инхаус white-страницы, TDS-маршрутизация, продвинутый клоакинг и интеграция S2S Postback через Keitaro с фильтрацией ботов.
+                Инхаус white-страницы, мобильные и резидентские прокси, TDS-маршрутизация и Keitaro S2S. Модераторы Google видят белый блог, юзер летит в ваш оффер.
               </p>
-              <div class="card-advantage">✓ 0% расхождения в трекинге</div>
+              <div class="card-advantage">✓ 99.8% пробив ручных и авто-чекеров</div>
             </div>
 
             <div class="infra-card">
@@ -1181,7 +1392,7 @@ p {
               </div>
               <h3>TG-ВОРОНКИ & БОТЫ</h3>
               <p>
-                Разрабатываем посадочные прокладки и Telegram-ботов с высокой конверсией, которые моментально дожимают и удерживают лида.
+                Разрабатываем посадочные прокладки и Telegram-ботов с высокой конверсией, которые моментально фильтруют ботов, прогревают и дожимают лида.
               </p>
               <div class="card-advantage">✓ Максимальный Retention & LTV</div>
             </div>
@@ -1191,11 +1402,11 @@ p {
                 <span class="card-num">04 / BUYING</span>
                 <span class="card-dept">MEDIA BUYING</span>
               </div>
-              <h3>ВСЕ ФОРМАТЫ GOOGLE</h3>
+              <h3>ВСЕ ФОРМАТЫ GOOGLE ADS</h3>
               <p>
-                Поисковый трафик (Search PPC), видео-кампании YouTube, алгоритмический Performance Max и мобильный In-App (UAC).
+                Поисковый трафик (Google Search PPC), видео-кампании YouTube, алгоритмический Performance Max и мобильный In-App (UAC). Залив под любые KPI.
               </p>
-              <div class="card-advantage">✓ Залив под любые KPI рекла</div>
+              <div class="card-advantage">✓ Залив любой сложности</div>
             </div>
 
             <div class="infra-card">
@@ -1215,9 +1426,9 @@ p {
                 <span class="card-num">06 / FINANCE</span>
                 <span class="card-dept">FINANCIAL DESK</span>
               </div>
-              <h3>ФИНАНСОВАЯ ДИСЦИПЛИНА</h3>
+              <h3>АНОНИМНОСТЬ И РАСЧЕТЫ USDT</h3>
               <p>
-                Своевременные выплаты без задержек: USDT (TRC20, ERC20), Wire или Capitalist. Модели CPA, CPL, RevShare.
+                Своевременные выплаты и пополнения без задержек: USDT (TRC20, ERC20). Модели CPA, CPL, RevShare. Никаких договоров и пустой бюрократии.
               </p>
               <div class="card-advantage">✓ Расчеты Daily / Net-3 / Net-7</div>
             </div>
@@ -1235,7 +1446,7 @@ p {
         
         <div class="workflow-header">
           <span class="section-tag">// РЕГЛАМЕНТ РАБОТЫ</span>
-          <h2>КАК ПРОИСХОДИТ ЗАПУСК</h2>
+          <h2>КАК ПРОИСХОДИТ ЗАПУСК СВЯЗКИ</h2>
         </div>
 
         <div class="workflow-timeline">
@@ -1245,8 +1456,8 @@ p {
               <span class="step-num-pill">ШАГ 01</span>
               <span class="step-time">5–10 минут</span>
             </div>
-            <h4>Бриф оффера</h4>
-            <p>Переходите в Telegram-бота, выбираете вашу вертикаль, целевое ГЕО и требуемый формат трафика.</p>
+            <h4>Анонимный бриф</h4>
+            <p>Переходите в Telegram-бота, передаете параметры оффера без цензуры (вертикаль, ГЕО, бюджет).</p>
           </div>
 
           <div class="step-card">
@@ -1254,8 +1465,8 @@ p {
               <span class="step-num-pill">ШАГ 02</span>
               <span class="step-time">до 15 минут</span>
             </div>
-            <h4>Согласование капы</h4>
-            <p>Тимлид выходит на связь, согласует стартовые лимиты, ставку и передает ссылки для настройки Postback.</p>
+            <h4>Согласование сетапа</h4>
+            <p>Тимлид выходит на связь, согласует стартовые лимиты, клоакинг, ставки и передает ссылки для тестов.</p>
           </div>
 
           <div class="step-card">
@@ -1264,7 +1475,7 @@ p {
               <span class="step-time">2–4 часа</span>
             </div>
             <h4>Тест и масштаб</h4>
-            <p>Запуск кампании. По итогам 24–48 часов сводим стату и переходим к бесперебойному масштабированию.</p>
+            <p>Запуск кампании через прогретые кабинеты Google. Держим спенд и выводим связку на объемы.</p>
           </div>
 
         </div>
@@ -1279,16 +1490,16 @@ p {
         <div class="cta-box-asymmetric">
           
           <div class="cta-left">
-            <span class="cta-tag">B2B ПАРТНЁРСТВО // ЗАКРЫТЫЙ КЛАСТЕР</span>
-            <h2>ГОТОВЫ ОБСУДИТЬ УСЛОВИЯ И КАПЫ?</h2>
+            <span class="cta-tag">ЗАКРЫТЫЙ СЕТАП // БЕЗ ЦЕНЗУРЫ</span>
+            <h2>ГОТОВЫ ЗАПУСТИТЬ ОФФЕР, КОТОРЫЙ ДРУГИЕ БОЯТСЯ БРАТЬ?</h2>
             <p>
               Напишите нам напрямую через Telegram-бота. Передайте параметры вашего оффера 
               и получите персональные условия и доступ к мощностям команды.
             </p>
             <div class="cta-checks">
               <span>✓ Быстрый старт за 2–4 часа</span>
-              <span>✓ Без бюрократии</span>
-              <span>✓ Конфиденциальность</span>
+              <span>✓ Без белых нравоучений</span>
+              <span>✓ Полная конфиденциальность</span>
             </div>
           </div>
 
@@ -1306,6 +1517,13 @@ p {
     </section>
   </main>
 
+  <!-- Sticky Mobile Bar -->
+  <div class="sticky-mobile-cta">
+    <a href="https://t.me/pg_performance_team_bot" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+      <span>⚡ ОБСУДИТЬ ЖЁСТКИЙ ОФФЕР В TG (ОТВЕТ ДО 10 МИН) →</span>
+    </a>
+  </div>
+
   <!-- Clean Corporate Footer -->
   <footer class="footer">
     <div class="container footer-content">
@@ -1314,7 +1532,7 @@ p {
           <span class="logo-badge">PG</span>
           <span class="footer-title">PANTHEON GROUP</span>
         </div>
-        <p class="footer-copy">© 2026 PANTHEON GROUP. Performance Media Buying & Infrastructure. Все права защищены.</p>
+        <p class="footer-copy">© 2026 PANTHEON GROUP. Underground Performance & Google Ads Infrastructure. Все права защищены.</p>
       </div>
 
       <div class="footer-right">
@@ -1324,10 +1542,11 @@ p {
     </div>
   </footer>
 
-  <!-- Counter animation script & Dynamic FB Tracking -->
+  <!-- Counter animation script & Dynamic Tracking + Quiz -->
   <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dynamic FB & UTM tracking to Telegram Bot
+  // 1. Dynamic FB & UTM tracking state
+  let fbTrackingParams = '';
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const pixel = urlParams.get('pixel') || urlParams.get('px') || urlParams.get('pixel_id') || '';
@@ -1344,19 +1563,79 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fbclid) parts.push('fbclid_' + fbclid.slice(0, 15));
 
     if (parts.length > 0) {
-      let payload = parts.join('_').replace(/[^a-zA-Z0-9_-]/g, '');
-      if (payload.length > 64) payload = payload.slice(0, 64);
-
-      const tgLinks = document.querySelectorAll('a[href*="t.me/pg_performance_team_bot"]');
-      tgLinks.forEach(link => {
-        link.href = 'https://t.me/pg_performance_team_bot?start=' + payload;
-      });
+      fbTrackingParams = parts.join('_').replace(/[^a-zA-Z0-9_-]/g, '');
     }
   } catch (err) {
     console.error('FB UTM tracking error:', err);
   }
 
-  // 2. Metrics Counter
+  // 2. Interactive Quiz Logic
+  const quizState = {
+    vertical: 'Adult_Dating',
+    service: 'Turnkey_Traffic',
+    budget: '1Kto5K'
+  };
+
+  const verticalLabels = {
+    'Adult_Dating': 'Adult / Dating',
+    'Gray_Black': 'Gray & Black Hat',
+    'Gambling': 'Gambling & Betting',
+    'Crypto': 'Crypto & High-Risk',
+    'Hard_Other': 'Любая жесть'
+  };
+
+  const serviceLabels = {
+    'Turnkey_Traffic': 'Трафик под ключ',
+    'Agency_Accounts': 'Агентские аккаунты',
+    'Cloak_Funnel': 'Клоака & Воронка'
+  };
+
+  const budgetLabels = {
+    'UpTo1K': 'до $1,000 / сут',
+    '1Kto5K': '$1,000 – $5,000 / сут',
+    '5KPlus': '$5,000+ / сут'
+  };
+
+  function updateAllLinks() {
+    let payload = `v_${quizState.vertical}_s_${quizState.service}`;
+    if (fbTrackingParams) {
+      payload = fbTrackingParams + '_' + payload;
+    }
+    if (payload.length > 64) payload = payload.slice(0, 64);
+
+    const fullBotLink = 'https://t.me/pg_performance_team_bot?start=' + payload;
+
+    const allTgLinks = document.querySelectorAll('a[href*="t.me/pg_performance_team_bot"]');
+    allTgLinks.forEach(link => {
+      link.href = fullBotLink;
+    });
+
+    const summaryEl = document.getElementById('quiz-summary-text');
+    if (summaryEl) {
+      summaryEl.innerText = `${verticalLabels[quizState.vertical]} · ${serviceLabels[quizState.service]} · ${budgetLabels[quizState.budget]}`;
+    }
+  }
+
+  // Handle pill clicks
+  const pills = document.querySelectorAll('.quiz-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const parent = pill.closest('.pill-grid');
+      const group = parent.getAttribute('data-group');
+      const val = pill.getAttribute('data-val');
+
+      parent.querySelectorAll('.quiz-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      quizState[group] = val;
+      updateAllLinks();
+    });
+  });
+
+  // Initial link setup
+  updateAllLinks();
+
+  // 3. Metrics Counter
   const counters = document.querySelectorAll('[data-counter]');
   counters.forEach(counter => {
     const target = +counter.getAttribute('data-counter');
